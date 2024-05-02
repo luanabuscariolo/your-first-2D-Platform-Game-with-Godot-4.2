@@ -37,12 +37,10 @@ func follow_camera(camera):
 
 func _set_state():
 	var state = "idle"
-	
 	if !is_on_floor():
 		state = "jump"
 	elif direction != 0:
 		state = "walk"
-	
 	if anim.name != state:
 		anim.play(state)
 

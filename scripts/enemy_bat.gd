@@ -1,7 +1,8 @@
 extends CharacterBody2D
-
-@onready var anim = $anim
-
-func _on_anim_animation_finished(anim_name: StringName):
-	if anim_name == "death":
+var state = "fly"
+func animHasFinished():
+	if state == "damaged":
 		queue_free()
+@onready var anim = $anim
+func _ready():
+	anim.animation_finished.connect(animHasFinished)
