@@ -30,6 +30,7 @@ func _physics_process(delta):
 	
 	_set_state()
 	move_and_slide()
+	drop_platform()
 
 func follow_camera(camera):
 	var camera_path = camera.get_path()
@@ -48,7 +49,9 @@ func _on_hurtbox_body_entered(body):
 	if body.is_in_group("enemies"):
 		queue_free()
 
-
+func drop_platform():
+	if Input.is_action_pressed("drop_platform"):
+		position.y += 1
 
 
 
