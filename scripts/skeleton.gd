@@ -84,7 +84,6 @@ func spawn_bone():
 
 func _on_hitbox_body_entered(body):
 	if current_state != EnemyState.HURT:
-		print("colisão")
 		_change_state(EnemyState.HURT)
 		hurt_state()
 
