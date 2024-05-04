@@ -42,13 +42,26 @@ func hurt_state():
 	hurt_sprite.visible = true
 	await get_tree().create_timer(0.3).timeout
 	hurt_sprite.visible = false
-	_change_state(EnemyState.PATROL)
-	if health_points > 0:
+	if health_points > 1:
 		health_points -= 1
+		_change_state(EnemyState.PATROL)
 	else:
-		anim.play("dead")
-		await  anim.animation_finished
-		queue_free()
+		dead_state()
+		await get_tree().create_timer(5).timeout
+		revive_state()
+
+func dead_state():
+	anim.play("dead")
+	$collision.disabled = true
+	$hitbox/collision.disabled = true
+	await  anim.animation_finished
+
+func revive_state():
+	anim.play("revive")
+	$collision.disabled = false
+	$hitbox/collision.disabled = false
+	health_points = 3
+	_change_state(EnemyState.PATROL)
 
 func _change_state(state):
 	current_state = state
@@ -69,5 +82,10 @@ func spawn_bone():
 	new_bone.global_position = bone_spawn_point.global_position
 
 func _on_hitbox_body_entered(body):
-	_change_state(EnemyState.HURT)
-	hurt_state()
+	if current_state != EnemyState.HURT:
+		print("colisão")
+		_change_state(EnemyState.HURT)
+		hurt_state()
+
+
+

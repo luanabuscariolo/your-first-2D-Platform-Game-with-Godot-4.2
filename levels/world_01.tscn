@@ -23209,13 +23209,13 @@ position = Vector2(2135.1, 334)
 [node name="fall_platform6" parent="fall_platforms" instance=ExtResource("16_o85ae")]
 position = Vector2(2217.81, 282.315)
 
-[node name="player" parent="." instance=ExtResource("7_tgcif")]
-position = Vector2(2211.59, 291.765)
-collision_mask = 13
-
 [node name="skeleton" parent="." node_paths=PackedStringArray("target") instance=ExtResource("16_3pviu")]
 position = Vector2(2346.17, 324.512)
 target = NodePath("../player")
+
+[node name="player" parent="." instance=ExtResource("7_tgcif")]
+position = Vector2(2211.59, 291.765)
+collision_mask = 13
 
 [node name="enemy_bat" parent="." instance=ExtResource("13_yos34")]
 position = Vector2(758, 235)

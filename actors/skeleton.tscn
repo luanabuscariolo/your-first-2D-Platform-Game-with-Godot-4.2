@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bmbnpyr07v7ku"]
+[gd_scene load_steps=17 format=3 uid="uid://bmbnpyr07v7ku"]
 
 [ext_resource type="Script" path="res://scripts/skeleton.gd" id="1_0s8pr"]
 [ext_resource type="Texture2D" uid="uid://bwkmgvn3a67go" path="res://sprites/Skeleton/Limping_Movement (32 x 32).png" id="1_by7u8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://csh5cpaht8k4p" path="res://sprites/Skeleton/Hurt (32 x 32).png" id="3_7xs3f"]
 [ext_resource type="Texture2D" uid="uid://cbi5dto4r7diu" path="res://sprites/Skeleton/Crumbling_Into_Bone_Pile (32 x 32).png" id="3_ld600"]
 [ext_resource type="PackedScene" uid="uid://dj5q0fcblxbck" path="res://scenes/hitbox.tscn" id="5_vwgq3"]
+[ext_resource type="Texture2D" uid="uid://cexpvrvjpefde" path="res://sprites/Skeleton/Bone_Pile_Wakeup (32 x 32).png" id="6_njjdk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m34jl"]
 height = 21.1761
@@ -224,13 +225,55 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_81e0j"]
+resource_name = "revive"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_njjdk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tj21c"]
 _data = {
 "RESET": SubResource("Animation_vmj53"),
 "attack": SubResource("Animation_3umgs"),
 "dead": SubResource("Animation_kxxpv"),
 "hurt": SubResource("Animation_ggr2i"),
-"limping": SubResource("Animation_l1kyy")
+"limping": SubResource("Animation_l1kyy"),
+"revive": SubResource("Animation_81e0j")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvd3i"]
@@ -260,7 +303,6 @@ shape = SubResource("CapsuleShape2D_m34jl")
 libraries = {
 "": SubResource("AnimationLibrary_tj21c")
 }
-autoplay = "limping"
 
 [node name="ground_detector" type="RayCast2D" parent="."]
 position = Vector2(0, -4)
