@@ -61,6 +61,7 @@ func revive_state():
 	$collision.disabled = false
 	$hitbox/collision.disabled = false
 	health_points = 3
+	await  anim.animation_finished
 	_change_state(EnemyState.PATROL)
 
 func _change_state(state):
