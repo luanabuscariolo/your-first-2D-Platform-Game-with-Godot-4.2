@@ -3,7 +3,7 @@ extends CharacterBody2D
 const BONE = preload("res://prefabs/bones.tscn")
 var move_speed := 30
 var direction := 1
-var health_points := 2
+var health_points := 3
 
 @onready var sprite = $sprite
 @onready var anim = $anim
@@ -47,8 +47,8 @@ func hurt_state():
 		health_points -= 1
 	else:
 		anim.play("dead")
-		#await  anim.animation_finished
-		#queue_free()
+		await  anim.animation_finished
+		queue_free()
 
 func _change_state(state):
 	current_state = state
