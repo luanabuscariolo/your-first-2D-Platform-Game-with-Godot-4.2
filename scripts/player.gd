@@ -48,6 +48,9 @@ func _set_state():
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("enemies"):
 		queue_free()
+		
+	if body.is_in_group("fireball"):
+		body.queue_free()
 
 func drop_platform():
 	if Input.is_action_pressed("drop_platform"):

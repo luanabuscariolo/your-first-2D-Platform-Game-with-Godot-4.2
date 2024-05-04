@@ -59,7 +59,7 @@ func flip_enemy():
 	player_detector.scale.x *= -1
 	bone_spawn_point.position.x *= -1
 
-func spawn_fireball():
+func spawn_bone():
 	var new_bone = BONE.instantiate()
 	if sign(bone_spawn_point.position.x) == 1:
 		new_bone.set_direction(1)
