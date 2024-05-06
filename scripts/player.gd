@@ -1,36 +1,60 @@
 extends CharacterBody2D
 
 const SPEED = 150.0
-const JUMP_VELOCITY = -300.0
+const AIR_FRICTION := 0.5
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var is_jumping := false
 var direction
+var is_hurted := false
+var knockback_vector := Vector2.ZERO
+var knockback_power := 20
+
+var jump_velocity
+var gravity
+var fall_gravity
+var jump_velocity_knockback := -340
+
+
+@export var jump_height := 64
+@export var max_time_to_peak := 0.5
 
 @onready var remote = $remote as RemoteTransform2D
 @onready var anim = $anim
 
+signal player_has_died()
+
+func _ready():
+	Globals.player_life = 10
+	jump_velocity = (jump_height * 2) / max_time_to_peak
+	gravity = (jump_height * 2) / pow(max_time_to_peak, 2)
+	fall_gravity = gravity * 2
+
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle jump.
+		velocity.x = 0
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+		velocity.y = -jump_velocity
+		is_jumping = true
+	elif is_on_floor():
+		is_jumping = false
+	if velocity.y > 0 or not Input.is_action_pressed("ui_accept"):
+		velocity.y += fall_gravity * delta
+	else:
+		velocity.y += gravity * delta
+	
 	direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = lerp(velocity.x, direction * SPEED, AIR_FRICTION)
 		anim.scale.x = direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if knockback_vector != Vector2.ZERO:
+		velocity = knockback_vector
 	
 	_set_state()
 	move_and_slide()
 	drop_platform()
+	apply_push_force()
 
 func follow_camera(camera):
 	var camera_path = camera.get_path()
@@ -46,15 +70,52 @@ func _set_state():
 		anim.play(state)
 
 func _on_hurtbox_body_entered(body):
-	if body.is_in_group("enemies"):
-		queue_free()
-		
-	if body.is_in_group("fireball"):
+	var knockback = Vector2((global_position.x - body.global_position.x) * knockback_power, -200)
+	call_deferred("take_damage", knockback)
+	
+	if body.is_in_group("bones"):
 		body.queue_free()
 
 func drop_platform():
 	if Input.is_action_pressed("drop_platform"):
 		position.y += 1
+
+func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
+	if Globals.player_life > 0:
+		Globals.player_life -= 1
+		print("perdeu 1 vida")
+		if knockback_force != Vector2.ZERO:
+			knockback_vector = knockback_force
+			var knockback_tween := get_tree().create_tween()
+			if knockback_tween != null:
+				knockback_tween.parallel().tween_property(self, "knockback_vector", Vector2.ZERO, duration)
+				anim.modulate = Color(1,0,0,1)
+				knockback_tween.parallel().tween_property(anim, "modulate", Color(1,1,1,1), duration)
+			else:
+				print("Erro: falha ao criar tweener!")
+		is_hurted = true
+		await get_tree().create_timer(.3).timeout
+		is_hurted = false
+	else:
+		#queue_free()
+		#para evitar manipulações de cena durante a sinalização:
+		call_deferred("queue_free")
+		emit_signal("player_has_died")
+
+func apply_push_force():
+	for objects in get_slide_collision_count():
+		var collision = get_slide_collision(objects)
+		if collision.get_collider() is Pushables:
+			collision.get_collider().slide_object(-collision.get_normal())
+
+
+
+
+
+
+
+
+
 
 
 

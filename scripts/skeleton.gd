@@ -44,6 +44,7 @@ func hurt_state():
 	hurt_sprite.visible = false
 	if health_points > 1:
 		health_points -= 1
+		print("Inimigo tomou dano")
 		_change_state(EnemyState.PATROL)
 	else:
 		dead_state()
