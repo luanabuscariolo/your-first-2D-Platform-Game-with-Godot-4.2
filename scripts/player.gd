@@ -14,16 +14,26 @@ var gravity
 var fall_gravity
 var jump_velocity_knockback := -340
 
+var has_key := false
 
 @export var jump_height := 64
 @export var max_time_to_peak := 0.5
 
 @onready var remote = $remote as RemoteTransform2D
 @onready var anim = $anim
+@onready var chest = %chest
+@onready var chest_pcam = $"../../chest/ChestPhantomCamera2D"
+@onready var key = %key
+@onready var key_pcam = $"../../key/KeyPhantomCamera2D"
 
 signal player_has_died()
 
 func _ready():
+	key.body_entered.connect(zoom_to_chest)
+	key.body_exited.connect(return_to_player_cam)
+	#chest.body_entered.connect(zoom_to_key)
+	chest.body_exited.connect(return_to_player_cam)
+	
 	Globals.player_life = 10
 	jump_velocity = (jump_height * 2) / max_time_to_peak
 	gravity = (jump_height * 2) / pow(max_time_to_peak, 2)
@@ -48,6 +58,7 @@ func _physics_process(delta):
 		anim.scale.x = direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
 	
@@ -97,7 +108,6 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 		await get_tree().create_timer(.3).timeout
 		is_hurted = false
 	else:
-		#queue_free()
 		#para evitar manipulações de cena durante a sinalização:
 		call_deferred("queue_free")
 		emit_signal("player_has_died")
@@ -108,12 +118,27 @@ func apply_push_force():
 		if collision.get_collider() is Pushables:
 			collision.get_collider().slide_object(-collision.get_normal())
 
+func zoom_to_chest(body):
+	set_physics_process(false)
+	chest_pcam.set_priority(10)
+	await  chest_pcam.tween_completed
+	await  get_tree().create_timer(0.5).timeout
+	chest_pcam.set_priority(0)
+	set_physics_process(true)
+	has_key = true
+	key.body_entered.disconnect(zoom_to_chest)
+	key.queue_free()
 
-
-
-
-
-
+#func zoom_to_key(body):
+	#key_pcam.set_priority(10)
+	#await  key_pcam.tween_completed
+	#await  get_tree().create_timer(0.5).timeout
+	#key_pcam.set_priority(0)
+ 
+func return_to_player_cam(body):
+	if key_pcam != null:
+		key_pcam.set_priority(0)
+	chest_pcam.set_priority(0)
 
 
 

@@ -174,7 +174,7 @@ position = Vector2(1, 1)
 [node name="anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rnwm8")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="."]

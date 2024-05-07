@@ -3,10 +3,12 @@
 [ext_resource type="Script" path="res://scripts/crate.gd" id="1_ylbwg"]
 [ext_resource type="Texture2D" uid="uid://bluib3dftrlk4" path="res://sprites/Assets/Interior-01.png" id="2_mpuud"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqik"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkmpx"]
 size = Vector2(32, 32)
 
 [node name="crate" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_ylbwg")
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -17,4 +19,4 @@ region_rect = Rect2(96, 128, 32, 32)
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_ysqik")
+shape = SubResource("RectangleShape2D_gkmpx")
