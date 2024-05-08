@@ -21,6 +21,7 @@ var has_key := false
 
 @onready var remote = $remote as RemoteTransform2D
 @onready var anim = $anim
+
 @onready var chest = %chest
 @onready var chest_pcam = $"../../chest/ChestPhantomCamera2D"
 @onready var key = %key
