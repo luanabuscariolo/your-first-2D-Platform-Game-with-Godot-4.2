@@ -23193,7 +23193,8 @@ layer_12/name = "platforms"
 layer_12/tile_data = PackedInt32Array(2097205, 524292, 6, 2162741, 524292, 7, 2097206, 4, 7, 2162742, 4, 8, 2097207, 65540, 7, 2162743, 65540, 8, 2097208, 131076, 7, 2162744, 131076, 8, 2228277, 524292, 8, 2293813, 524292, 9, 2228278, 4, 9, 2097209, 196612, 7, 2162745, 196612, 8, 2228281, 196612, 9, 2097210, 524292, 6, 2162746, 524292, 7, 2228282, 524292, 8, 2293818, 524292, 9, 1835066, 524292, 6, 1900602, 524292, 7, 1966138, 524292, 8, 2031674, 524292, 9, 1835061, 524292, 6, 1900597, 524292, 7, 1966133, 524292, 8, 2031669, 524292, 9, 1835062, 4, 7, 1900598, 4, 8, 1966134, 4, 9, 1835063, 65540, 7, 1900599, 65540, 8, 1835064, 131076, 7, 1900600, 131076, 8, 1835065, 196612, 7, 1900601, 196612, 8, 1966137, 196612, 9, 2097215, 327689, 2, 2097216, 393225, 2, 2162752, 393225, 3, 2228288, 393225, 4, 2293824, 393225, 5, 2097217, 458761, 2, 1900607, 524297, 9, 1966143, 524297, 10, 2031679, 524297, 11, 1900608, 589833, 9, 1966144, 589833, 10, 2031680, 589833, 11, 1900609, 655369, 9, 1966145, 655369, 10, 2031681, 655369, 11, 2162858, 720902, 14, 2228394, 720902, 15, 2162859, 786438, 14, 2228395, 786438, 15, 2162860, 786438, 14, 2228396, 786438, 15, 2293937, 655366, 14, 2359473, 655366, 15, 2425009, 655366, 16, 2097329, 655366, 14, 2162865, 655366, 15, 2228401, 655366, 16, 1900721, 655366, 14, 1966257, 655366, 15, 2031793, 655366, 16, 1704113, 655366, 14, 1769649, 655366, 15, 1835185, 655366, 16, 2031779, 786438, 14, 2097315, 786438, 15, 2031780, 786438, 14, 2097316, 786438, 15, 2031781, 851974, 14, 2097317, 851974, 15, 2424988, 655366, 13, 2424989, 720902, 12, 2424990, 786438, 12, 2228380, 655366, 13, 2228381, 720902, 12, 2228382, 786438, 12, 2293916, 655366, 13, 2359453, 786438, 12, 2293918, 720902, 12, 2293919, 786438, 13, 2424991, 786438, 13, 2228383, 786438, 13, 2359452, 655366, 13, 2359455, 786438, 13, 2293917, 786438, 12, 2359454, 720902, 12, 2162861, 786438, 14, 2228397, 786438, 15, 2162862, 786438, 14, 2228398, 786438, 15, 2162863, 851974, 14, 2228399, 851974, 15, 2031778, 786438, 14, 2097314, 786438, 15, 2031777, 720902, 14, 2097313, 720902, 15, 2490545, 655366, 16, 2556081, 655366, 16)
 
 [node name="camera" type="Camera2D" parent="."]
-position = Vector2(320, 180)
+visible = false
+position = Vector2(698.956, 120)
 limit_left = 0
 limit_top = 0
 limit_bottom = 300
@@ -23276,7 +23277,7 @@ position = Vector2(2217.81, 282.315)
 position = Vector2(1045.66, 169.624)
 
 [node name="skeleton" parent="." node_paths=PackedStringArray("target") instance=ExtResource("16_3pviu")]
-position = Vector2(2346.17, 324.512)
+position = Vector2(2347.49, 323.251)
 target = NodePath("../player2/player")
 
 [node name="enemy_bat" parent="." instance=ExtResource("13_yos34")]
@@ -23290,6 +23291,7 @@ collision_mask = 2
 script = ExtResource("19_74bj0")
 
 [node name="chest_collision" type="CollisionShape2D" parent="chest"]
+visible = false
 position = Vector2(-0.266418, -2.11876)
 shape = SubResource("RectangleShape2D_sfs8t")
 
@@ -23299,6 +23301,7 @@ sprite_frames = SubResource("SpriteFrames_nie1y")
 frame_progress = 0.688798
 
 [node name="ChestPhantomCamera2D" type="Node2D" parent="chest"]
+visible = false
 script = ExtResource("20_nubmc")
 zoom = Vector2(2, 2)
 tween_resource = SubResource("Resource_5poe2")
@@ -23331,7 +23334,7 @@ limit_top = 0
 
 [node name="player" parent="player2" instance=ExtResource("7_tgcif")]
 unique_name_in_owner = true
-position = Vector2(313.034, 176.901)
+position = Vector2(698.956, 248.987)
 collision_mask = 13
 
 [node name="alert" type="Sprite2D" parent="player2/player"]
@@ -23343,7 +23346,8 @@ region_enabled = true
 region_rect = Rect2(32, 48, 16, 16)
 
 [node name="PlayerPhantomCamera2D" type="Node2D" parent="player2" node_paths=PackedStringArray("follow_target")]
-position = Vector2(320, 180)
+visible = false
+position = Vector2(698.956, 120)
 script = ExtResource("20_nubmc")
 priority = 5
 follow_mode = 2
