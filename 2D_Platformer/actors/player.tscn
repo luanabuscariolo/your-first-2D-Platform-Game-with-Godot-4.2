@@ -174,10 +174,13 @@ position = Vector2(1, 1)
 [node name="anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rnwm8")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.757262
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 11)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_x77h6")
@@ -187,6 +190,7 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+visible = false
 position = Vector2(2.00001, 9)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_f1ltw")
