@@ -1,28 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://bc3w3f4cqskps"]
+[gd_scene load_steps=23 format=3 uid="uid://bc3w3f4cqskps"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_j1dxv"]
-[ext_resource type="Texture2D" uid="uid://4rja86jkelj4" path="res://sprites/Orange/Kick_Attack (32 x 32).png" id="2_4fb12"]
 [ext_resource type="Texture2D" uid="uid://jquad10a0lcx" path="res://sprites/Orange/Hurt (32 x 32).png" id="2_od0cr"]
 [ext_resource type="Texture2D" uid="uid://byayl3hahcutw" path="res://sprites/Orange/Idle (32 x 32).png" id="2_qiavj"]
 [ext_resource type="Texture2D" uid="uid://cesv11ec385le" path="res://sprites/Orange/Jumping (32 x 32).png" id="4_e512e"]
 [ext_resource type="Texture2D" uid="uid://cgej4rw0e6lhs" path="res://sprites/Orange/Walking (32 x 32).png" id="5_4s6sg"]
 [ext_resource type="PackedScene" uid="uid://cehx3foyfxkqk" path="res://scenes/hurtbox.tscn" id="7_lg2o3"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m0ich"]
-atlas = ExtResource("2_4fb12")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_26sqf"]
-atlas = ExtResource("2_4fb12")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0du8s"]
-atlas = ExtResource("2_4fb12")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0yxg"]
-atlas = ExtResource("2_4fb12")
-region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l3wei"]
 atlas = ExtResource("2_od0cr")
@@ -78,23 +61,6 @@ region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rnwm8"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m0ich")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_26sqf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0du8s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p0yxg")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l3wei")
@@ -178,7 +144,6 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(2, 11)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_x77h6")
@@ -188,7 +153,6 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
-visible = false
 position = Vector2(2.00001, 9)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_f1ltw")
