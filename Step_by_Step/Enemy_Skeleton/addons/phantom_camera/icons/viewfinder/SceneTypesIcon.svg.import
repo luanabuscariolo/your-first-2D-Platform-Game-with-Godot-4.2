@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj40xyr75hu0i"
-path="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+uid="uid://dk7omm0x44suj"
+path="res://.godot/imported/SceneTypesIcon.svg-66e2255bd3398007bec03a5cbfa4d0aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"]
+source_file="res://addons/phantom_camera/icons/viewfinder/SceneTypesIcon.svg"
+dest_files=["res://.godot/imported/SceneTypesIcon.svg-66e2255bd3398007bec03a5cbfa4d0aa.ctex"]
 
 [params]
 
