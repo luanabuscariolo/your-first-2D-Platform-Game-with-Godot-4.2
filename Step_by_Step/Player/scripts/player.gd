@@ -14,6 +14,7 @@ var gravity
 var fall_gravity
 var jump_velocity_knockback := -340
 
+var has_key := false
 
 @export var jump_height := 64
 @export var max_time_to_peak := 0.5
@@ -23,7 +24,7 @@ var jump_velocity_knockback := -340
 
 signal player_has_died()
 
-func _ready():
+func _ready():	
 	Globals.player_life = 10
 	jump_velocity = (jump_height * 2) / max_time_to_peak
 	gravity = (jump_height * 2) / pow(max_time_to_peak, 2)
@@ -95,6 +96,8 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 		#para evitar manipulações de cena durante a sinalização:
 		call_deferred("queue_free")
 		emit_signal("player_has_died")
+
+
 
 
 
