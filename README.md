@@ -4,11 +4,12 @@
 
 ## O PROJETO COMPLETO SE ENCONTRA NA PASTA [2D_Platformer](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/2D_Platformer)
 
-## Jogo de plataforma 2D sendo construído aos poucos, mas com o intuito de ser ensinado no passo a passo, dando ênfase em cada etapa de seu desenvolvimento.
-### Passo a passos prontos para te ajudarem a compreender a construção do jogo:
+## Jogo de plataforma 2D sendo construído aos poucos, mas com o intuito de ser ensinado no [passo a passo](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/Step_by_Step), dando ênfase em cada etapa de seu desenvolvimento.
+
+## Passo a passos prontos que podem te ajudar a compreender a construção do jogo:
  - [Inimigo esqueleto](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/Step_by_Step/Enemy_Skeleton)
 
-## Se já tem baixado o programa da Godot 4.2 então é só importar o projeto, senão [clique aqui](https://godotengine.org/download/windows/) para baixar.
+### Se já tem baixado o programa da Godot 4.2 então é só importar o projeto, senão [clique aqui](https://godotengine.org/download/windows/) para baixar.
 
 ### Enquanto estudo e aprendo, passo adiante o conhecimento adquirido da melhor forma que eu puder escrever!
 
@@ -22,5 +23,5 @@ O projeto ainda está em desenvolvimento, portanto contém bugs e ainda há muit
 [Rentro_Ghost - Bat Sprites](https://rentro-ghost.itch.io/bat-sprites)  
 
 ### Recomendação:
-Canal do YouTube para aprendizado de Godot: [Clécio Espindola GameDev](https://www.youtube.com/@clecioespindolagamedev) 
+Canal do YouTube para aprender muito sobre a Godot: [Clécio Espindola GameDev](https://www.youtube.com/@clecioespindolagamedev) 
 
