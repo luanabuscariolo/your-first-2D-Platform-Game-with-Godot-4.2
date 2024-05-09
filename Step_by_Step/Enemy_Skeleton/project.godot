@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="project"
+config/name="project_skeleton"
 run/main_scene="res://levels/world_01.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"

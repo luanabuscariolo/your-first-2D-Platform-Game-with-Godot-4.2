@@ -22,19 +22,9 @@ var has_key := false
 @onready var remote = $remote as RemoteTransform2D
 @onready var anim = $anim
 
-@onready var chest = %chest
-@onready var chest_pcam = $"../../chest/ChestPhantomCamera2D"
-@onready var key = %key
-@onready var key_pcam = $"../../key/KeyPhantomCamera2D"
-
 signal player_has_died()
 
-func _ready():
-	key.body_entered.connect(zoom_to_chest)
-	key.body_exited.connect(return_to_player_cam)
-	#chest.body_entered.connect(zoom_to_key)
-	chest.body_exited.connect(return_to_player_cam)
-	
+func _ready():	
 	Globals.player_life = 10
 	jump_velocity = (jump_height * 2) / max_time_to_peak
 	gravity = (jump_height * 2) / pow(max_time_to_peak, 2)
@@ -65,8 +55,6 @@ func _physics_process(delta):
 	
 	_set_state()
 	move_and_slide()
-	drop_platform()
-	apply_push_force()
 
 func follow_camera(camera):
 	var camera_path = camera.get_path()
@@ -87,10 +75,6 @@ func _on_hurtbox_body_entered(body):
 	
 	if body.is_in_group("bones"):
 		body.queue_free()
-
-func drop_platform():
-	if Input.is_action_pressed("drop_platform"):
-		position.y += 1
 
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	if Globals.player_life > 0:
@@ -113,33 +97,7 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 		call_deferred("queue_free")
 		emit_signal("player_has_died")
 
-func apply_push_force():
-	for objects in get_slide_collision_count():
-		var collision = get_slide_collision(objects)
-		if collision.get_collider() is Pushables:
-			collision.get_collider().slide_object(-collision.get_normal())
 
-func zoom_to_chest(body):
-	set_physics_process(false)
-	chest_pcam.set_priority(10)
-	await  chest_pcam.tween_completed
-	await  get_tree().create_timer(0.5).timeout
-	chest_pcam.set_priority(0)
-	set_physics_process(true)
-	has_key = true
-	key.body_entered.disconnect(zoom_to_chest)
-	key.queue_free()
-
-#func zoom_to_key(body):
-	#key_pcam.set_priority(10)
-	#await  key_pcam.tween_completed
-	#await  get_tree().create_timer(0.5).timeout
-	#key_pcam.set_priority(0)
- 
-func return_to_player_cam(body):
-	if key_pcam != null:
-		key_pcam.set_priority(0)
-	chest_pcam.set_priority(0)
 
 
 
