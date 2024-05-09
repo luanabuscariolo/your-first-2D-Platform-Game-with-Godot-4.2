@@ -1,6 +1,7 @@
 # Construindo o inimigo esqueleto
 
-![Inimigo Esqueleto](/../main/images/esqueleto.png)
+![Inimigo Esqueleto](/../main/images/esqueleto.gif)
+
 
 ## Descrição do inimigo:
 
