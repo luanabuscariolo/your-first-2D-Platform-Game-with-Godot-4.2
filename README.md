@@ -2,14 +2,14 @@
  
 ![Capa do jogo](https://raw.githubusercontent.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/main/images/capa.png)
 
-## O PROJETO COMPLETO SE ENCONTRA NA PASTA [2D_Platformer](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/2D_Platformer)
+### O PROJETO COMPLETO SE ENCONTRA NA PASTA [2D_Platformer](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/2D_Platformer)
+---
+### Jogo de plataforma 2D sendo construído aos poucos, mas com o intuito de ser ensinado no [passo a passo](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/Step_by_Step), dando ênfase em cada etapa de seu desenvolvimento.
 
-## Jogo de plataforma 2D sendo construído aos poucos, mas com o intuito de ser ensinado no [passo a passo](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/Step_by_Step), dando ênfase em cada etapa de seu desenvolvimento.
-
-## Passo a passos prontos que podem te ajudar a compreender a construção do jogo:
+### Passo a passos prontos que podem te ajudar a compreender a construção do jogo:
  - [Inimigo esqueleto](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/Step_by_Step/Enemy_Skeleton)
-
-### Se já tem baixado o programa da Godot 4.2 então é só importar o projeto, senão [clique aqui](https://godotengine.org/download/windows/) para baixar.
+---
+Se já tem baixado o programa da Godot 4.2 então é só importar o projeto, senão [clique aqui](https://godotengine.org/download/windows/) para baixar.
 
 ### Enquanto estudo e aprendo, passo adiante o conhecimento adquirido da melhor forma que eu puder escrever!
 
