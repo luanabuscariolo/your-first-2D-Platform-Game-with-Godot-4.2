@@ -92,7 +92,7 @@ func set_direction(dir):
       $anim.flip_h = false
 ```
 
-### Vamos quebrar o script do nó **bones** em partes e explicar a lógica por trás de cada uma delas::
+### Vamos quebrar o script do nó **bones** em partes e explicar a lógica por trás de cada uma delas:
 
 1. **Declaração de variáveis:**
    - **move\_speed**: Velocidade de movimento do osso.
