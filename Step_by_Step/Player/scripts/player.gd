@@ -14,8 +14,6 @@ var gravity
 var fall_gravity
 var jump_velocity_knockback := -340
 
-var has_key := false
-
 @export var jump_height := 64
 @export var max_time_to_peak := 0.5
 
@@ -93,15 +91,6 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 		await get_tree().create_timer(.3).timeout
 		is_hurted = false
 	else:
-		#para evitar manipulações de cena durante a sinalização:
 		call_deferred("queue_free")
 		emit_signal("player_has_died")
-
-
-
-
-
-
-
-
 

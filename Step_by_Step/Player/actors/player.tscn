@@ -158,5 +158,4 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_f1ltw")
 debug_color = Color(0.988235, 0, 0.309804, 0.419608)
 
-[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
