@@ -2,13 +2,18 @@
 
 ![Inimigo Esqueleto](/../main/images/esqueleto.gif)
 
+## Pacote de sprites utilizadas:   
+[Anokolisa - Legacy Fantasy Bundle](https://anokolisa.itch.io/sidescroller-pixelart-sprites-asset-pack-forest-16x16)  
+[GrafxKid - Sprite Pack 6](https://grafxkid.itch.io/sprite-pack-6)  
 
-## Descrição do inimigo:
+### Necessário download da [Godot 4.2](https://godotengine.org/download/windows/)  para abrir o projeto e poder executar, modificar e criar.
+
+## Descrição do inimigo esqueleto:
 
 - Esse inimigo não morre, ressurge após 3 segundos;
 - Sofre dano quando o jogador pula na cabeça dele;
 - Detecta o jogador através do nó *RayCast2D*;
-- Não sobre ação da gravidade;
+- Não sofre ação da gravidade;
 - No ataque, lança um osso em direção ao jogador;
 - Seus estados são: patrulha, ataque, ferido, morrendo e ressurgindo.
 
@@ -253,4 +258,6 @@ func _on_hitbox_body_entered(body):
 
 Essa estrutura de script controla o comportamento do inimigo esqueleto, permitindo que ele patrulhe, ataque, seja ferido, morra e reviva, fornecendo uma interação dinâmica com o jogador no jogo.
 
+Acompanhe o projeto atual: 
+Veja outros passo a passos desse projeto: 
 
