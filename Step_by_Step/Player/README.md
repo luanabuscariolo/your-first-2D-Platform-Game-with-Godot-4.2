@@ -47,8 +47,24 @@ Na imagem, a cápsula Azul Claro é o primeiro “CollisionShape2D” e a caixa 
 
 ## Configurando a Câmera para seguir o Personagem
 
-O nó da câmera (Camera2D) estará na cena principal do nível e não na cena do Personagem. Ao colocar o nó camera2D como filho do Personagem, podem ocorrer problemas, como por exemplo na morte do Personagem a câmera se perde, pois o nó raiz do qual ela era filha foi removido do cenário, mas estando a câmera na cena principal do nível, ela continuará funcionando corretamente mesmo que ocorra a morte do Personagem.
-Para fazer a câmera seguir o Personagem é muito fácil
+O nó da câmera (Camera2D) estará na cena principal do nível e não na cena do Personagem. Ao colocar o nó camera2D como filho do Personagem, podem ocorrer problemas, como por exemplo na morte do Personagem a câmera se perde, pois o nó raiz do qual ela era filha foi removido do cenário, mas estando a câmera na cena principal do nível, ela continuará funcionando corretamente mesmo que ocorra a morte do Personagem. Na imagem a seguir exemplifica a cena do Mundo 01 e o nó World-01 que recebe um script:
+
+![Árvore de nós da cena principal](/../main/images/arvore_nos_world01.png)
+
+Para fazer a câmera seguir o Personagem é muito simples. No nó raiz da cena do primeiro nível (neste projeto é a cena World-01), adicionamos um novo script e o seguinte código:
+```
+extends Node2D
+
+@onready var player = $"%player" as CharacterBody2D
+@onready var camera = $camera as Camera2D
+
+func _ready():
+  player.follow_camera(camera)
+```
+Observações:
+ - As variáveis "player" e "camera" são referências de nós da cena World-01.
+ - Dentro da função _reay(), o método follow_camera(camera) chamado será criado no script do player.
+
 
 
 
