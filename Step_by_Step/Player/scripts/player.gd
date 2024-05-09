@@ -70,9 +70,6 @@ func _set_state():
 func _on_hurtbox_body_entered(body):
 	var knockback = Vector2((global_position.x - body.global_position.x) * knockback_power, -200)
 	call_deferred("take_damage", knockback)
-	
-	if body.is_in_group("bones"):
-		body.queue_free()
 
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	if Globals.player_life > 0:
