@@ -45,3 +45,15 @@ Na imagem, a cápsula Azul Claro é o primeiro “CollisionShape2D” e a caixa 
 
 ![Ilustração dos nós de colisão no personagem](/../main/images/player_colisoes.png)
 
+## Configurando a Câmera para seguir o Personagem
+
+O nó da câmera (Camera2D) estará na cena principal do nível e não na cena do Personagem. Ao colocar o nó camera2D como filho do Personagem, podem ocorrer problemas, como por exemplo na morte do Personagem a câmera se perde, pois o nó raiz do qual ela era filha foi removido do cenário, mas estando a câmera na cena principal do nível, ela continuará funcionando corretamente mesmo que ocorra a morte do Personagem.
+Para fazer a câmera seguir o Personagem é muito fácil
+
+
+
+
+
+
+
+
