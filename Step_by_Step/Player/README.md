@@ -33,8 +33,15 @@ O nó **anim** (AnimatedSprite2D) possui as seguintes animações:
 - “***hurt***”: estado de ferido ao receber dano de inimigo ou algo prejudicial para ele. Se desloca com um salto baseado na posição do inimigo;
 - “***jump***”: estado de pulo apertando a tecla <kbd>space</kbd>.
 
+## Física aplicada ao pulo do Personagem  
+
 A lógica de física aplicada ao pulo do Personagem fornecidade pela Godot ao criar um script para um nó CharacterBody2D, não é a mecânica mais ideal. A imagem a seguir ilustra o pulo como uma parábola. Resumindo muito todas as contas que levam ao resultado de velocidade inicial e gravidade, utilizando esses cálculos temos um pulo com maior controle e sensibilidade, ainda não é a mecânica ideal, mas já é bem melhor do que um código básico disponibilizado na engine. Essas fórmulas aparecerão em nosso script mais para frente! :wink:
 
 ![Ilustração do pulo do personagem como uma parábola e as fórmulas para velocidade e gravidade](/../main/images/calculo_pulo.png)
 
+## Nós de colisões do Personagem  
+
+Na imagem, a cápsula Azul Claro é o primeiro “CollisionShape2D” e a caixa vermelha é o “CollisionShape2D” do “hurtbox”.
+
+![Ilustração dos nós de colisão no personagem](/../main/images/player_colisoes.png)
 
