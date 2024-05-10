@@ -1,6 +1,6 @@
 # Passo a passo para fazer o Personagem
 
-![Personagem](/../main/images/laranja.png)
+![Personagem](/../main/images/player.gif)
 
 ## Pacote de sprites utilizadas:   
 [Anokolisa - Legacy Fantasy Bundle](https://anokolisa.itch.io/sidescroller-pixelart-sprites-asset-pack-forest-16x16)  
@@ -11,8 +11,8 @@
 ## Descrição do personagem:
 
 - Não possui super poderes;
-- Sofre dano quando o inimigo ou projétil o atingem;
-- Seus estados de animação são: parado, andando e ferido.
+- Sofre dano quando colide com inimigo, projétil ou algo prejudiial;
+- Seus estados de animação são: parado, andando e ferido (em breve atacando).
 
 ### A árvore de nós da cena do Personagem ficou assim:
 
