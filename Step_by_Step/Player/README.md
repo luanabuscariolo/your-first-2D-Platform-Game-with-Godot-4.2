@@ -35,8 +35,11 @@ O nó **anim** (AnimatedSprite2D) possui as seguintes animações:
 
 ## Física aplicada ao pulo do Personagem  
 
-A lógica de física aplicada ao pulo do Personagem fornecida pela Godot ao criar um script para um nó CharacterBody2D, não é a mecânica mais ideal. A imagem a seguir ilustra o pulo do jogador como uma parábola. Resumindo muito todas as contas que levam ao resultado de velocidade inicial e gravidade, utilizando esses cálculos temos um pulo com maior controle e sensibilidade, ainda não é a mecânica ideal, mas já é bem melhor do que um código básico disponibilizado na engine. Essas fórmulas aparecerão em nosso script mais para frente! :wink:
-Ao fazer o Personagem pular, após as implementações da fórmula mais trabalhada, podemos notar uma leve diferença entre apertar e soltar rapidamente a tecla <kbd>space</kbd> e apertar e não soltar enquanto o Personagem sobe e cai. A altura do pulo muda, por menor que seja, há diferença e muito mais sensibilidade e controle ao direcionar nosso Personagem. Quando o nó do Personagem for inicializado, algumas variáveis serão configuradas, como a velocidade de pulo (jump_velocity), a gravidade (gravity) e a gravidade durante a queda (fall_gravity). A essas variáveis serão atribuídas as fórmulas para posteriormente manipular a física do pulo do Personagem.
+A lógica de física aplicada ao pulo do Personagem fornecida pela Godot ao criar um script para um nó CharacterBody2D, não é a mecânica mais ideal. A imagem a seguir ilustra o pulo do jogador como uma parábola. Resumindo muito todas as contas que levam ao resultado de velocidade inicial e gravidade, utilizando esses cálculos temos um pulo com maior controle e sensibilidade, ainda não é a mecânica ideal, mas já é bem melhor do que um código básico disponibilizado na engine. Essas fórmulas aparecerão em nosso script mais para frente! :wink:  
+
+Ao fazer o Personagem pular, após as implementações da fórmula mais trabalhada, podemos notar uma leve diferença entre apertar e soltar rapidamente a tecla <kbd>space</kbd> e apertar e não soltar enquanto o Personagem sobe e cai. A altura do pulo muda, por menor que seja, há diferença e muito mais sensibilidade e controle ao direcionar nosso Personagem.   
+
+Quando o nó do Personagem for inicializado, algumas variáveis serão configuradas, como a velocidade de pulo (jump_velocity), a gravidade (gravity) e a gravidade durante a queda (fall_gravity). A essas variáveis serão atribuídas as fórmulas para posteriormente manipular a física do pulo do Personagem.
 
 ![Ilustração do pulo do personagem como uma parábola e as fórmulas para velocidade e gravidade](/../main/images/calculo_pulo.png)
 
@@ -51,6 +54,7 @@ Na imagem, a cápsula Azul Claro é o primeiro “CollisionShape2D” e a caixa 
 ## Configurando a Câmera para seguir o Personagem
 
 O nó da câmera (Camera2D) estará na cena principal do nível e não na cena do Personagem. Ao colocar o nó camera2D como filho do Personagem, podem ocorrer problemas, como por exemplo na morte do Personagem a câmera se perde, pois o nó raiz do qual ela era filha foi removido do cenário, mas estando a câmera na cena principal do nível, ela continuará funcionando corretamente mesmo que ocorra a morte do Personagem. Na imagem a seguir exemplifica a cena do Mundo 01 e o nó World-01 que recebe um script.  
+
 O nó **_spikes-area_** mostrado na imagem abaixo será visto mais adiante.
 
 ![Árvore de nós da cena principal](/../main/images/tree_world1.png)
@@ -66,7 +70,7 @@ func _ready():
   player.follow_camera(camera)
 ```
 Observações:
- - As variáveis "player" e "camera" são referências de nós da cena World-01.
+ - As variáveis "player" e "camera" são referências de nós da cena _"world_01"_.
  - Dentro da função _reay(), o método follow_camera(camera) chamado será criado no script do player.
 
 Antes de iniciarmos toda a explicação do código, adicione ao script do player o sinal body_entered(body) do nó "hurtbox" (Area2D) assim: 
@@ -81,6 +85,8 @@ Pronto! Agora podemos ir para o script do nosso Personagem player.
 
 ## Vamos ao código do Personagem:
 Quebraremos em partes o código para explicar por trechos. A sequência será a mesma do script do projeto.
+
+1. Constantes e Variáveis:
 ```gd
 extends CharacterBody2D
 
@@ -104,22 +110,20 @@ var jump_velocity_knockback := -340
 @onready var remote = $remote as RemoteTransform2D
 @onready var anim = $anim
 ```
-1. Constantes:
-	- **SPEED:** Define a velocidade máxima de movimento horizontal do personagem.
-	- **AIR_FRICTION:** Define a fricção do ar, usada para suavizar o movimento horizontal enquanto o personagem está no ar.
-2. Variáveis:
-	- **is_jumping:** Indica se o Personagem está atualmente pulando.
-	- **direction:** Armazena a direção do movimento horizontal do personagem (-1 para esquerda, 1 para direita, 0 para parado).
-	- **is_hurted:** Indica se o Personagem está atualmente machucado.
-	- **knockback_vector:** Vetor que armazena a força de knockback aplicada ao personagem quando ele é atingido.
-	- **knockback_power:** Define a potência do knockback.
- 	- **jump_velocity:** Velocidade inicial do pulo calculada com base na altura máxima de salto e no tempo necessário para alcançar o pico do pulo.
-	- **gravity:** Força da gravidade aplicada ao Personagem durante o pulo.
-	- **fall_gravity:** Força da gravidade aplicada ao Personagem enquanto ele está caindo.
- 	- **jump_height:** Altura máxima do pulo.
- 	- **max_time_to_peak:** Tempo máximo para alcançar o pico do pulo.
-	- **remote:** Referência ao nó RemoteTransform2D utilizado para sincronizar a posição do Personagem com a câmera.
-	- **anim:** Referência ao nó da animação do Personagem.
+- **SPEED:** Define a velocidade máxima de movimento horizontal do personagem.
+- **AIR_FRICTION:** Define a fricção do ar, usada para suavizar o movimento horizontal enquanto o personagem está no ar.
+- **is_jumping:** Indica se o Personagem está atualmente pulando.
+- **direction:** Armazena a direção do movimento horizontal do personagem (-1 para esquerda, 1 para direita, 0 para parado).
+- **is_hurted:** Indica se o Personagem está atualmente machucado.
+- **knockback_vector:** Vetor que armazena a força de knockback aplicada ao personagem quando ele é atingido.
+- **knockback_power:** Define a potência do knockback.
+- **jump_velocity:** Velocidade inicial do pulo calculada com base na altura máxima de salto e no tempo necessário para alcançar o pico do pulo.
+- **gravity:** Força da gravidade aplicada ao Personagem durante o pulo.
+- **fall_gravity:** Força da gravidade aplicada ao Personagem enquanto ele está caindo.
+- **jump_height:** Altura máxima do pulo.
+- **max_time_to_peak:** Tempo máximo para alcançar o pico do pulo.
+- **remote:** Referência ao nó RemoteTransform2D utilizado para sincronizar a posição do Personagem com a câmera.
+- **anim:** Referência ao nó da animação do Personagem.
 
 As variáveis **jump_height** e **max_time_to_peak** estão marcadas com _@export_. Isso significa que elas podem ser ajustadas diretamente no editor da Godot sem precisar abrir o código-fonte. Isso é útil para ajustar parâmetros do personagem ou do jogo sem a necessidade de mexer no código, tornando o desenvolvimento e o ajuste mais acessíveis e intuitivos para os desenvolvedores e designers.
 
