@@ -184,11 +184,13 @@ func _set_state():
     state = "jump"
   elif direction != 0:
     state = "walk"
+  if is_hurted:
+    state = "hurt"
   if anim.name != state:
     anim.play(state)
 ```
 6.	**Método _set_state():**
-	- Atualiza o estado da animação do Personagem com base em sua ação atual (parado, andando, pulando).
+	- Atualiza o estado da animação do Personagem com base em sua ação atual (parado, andando, pulando ou ferido).
 ```gd
 func _on_hurtbox_body_entered(body):
   var knockback = Vector2((global_position.x - body.global_position.x) * knockback_power, -200)
