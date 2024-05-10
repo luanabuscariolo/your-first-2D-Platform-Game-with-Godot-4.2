@@ -1,18 +1,17 @@
 <img src="/../main/images/octocat.png" align="right" width="300">
 
-# Jogo de plataforma 2D na Godot 4.2 com GDScript
+# Passo a passos para te auxiliarem no desenvolvimento de um jogo de plataforma 2D na Godot 4.2.
 
-### Passo a passos que podem te auxiliar no desenvolvimento de um jogo de plataforma 2D.
 - [Construa seu Personagem](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step/Player) 
 - [Faça um inimigo esqueleto](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/Step_by_Step/Enemy_Skeleton)
 
-#### O PROJETO COMPLETO VOCÊ ENCONTRA [AQUI](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/2D_Platformer)!
+#### O PROJETO EM DESENVOLVIMENTO VOCÊ ENCONTRA [AQUI](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/2D_Platformer)!
 ---
-### Jogo de plataforma 2D sendo construído aos poucos, mas com o intuito de ser ensinado no [passo a passo](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/Step_by_Step), dando ênfase em cada etapa de seu desenvolvimento.
+#### Jogo de plataforma 2D sendo construído aos poucos, mas com o intuito de ser ensinado no [passo a passo](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/Step_by_Step), dando ênfase em cada etapa de seu desenvolvimento.
 ---
 Se já tem baixado o programa da Godot 4.2 então é só importar o projeto, senão [clique aqui](https://godotengine.org/download/windows/) para baixar.
 
-### Enquanto estudo e aprendo, passo adiante o conhecimento adquirido da melhor forma que eu puder escrever!
+#### Enquanto estudo e aprendo, passo adiante o conhecimento adquirido da melhor forma que eu puder escrever!
 
 <p align="justify"> Vamos ver no passo a passo a construção por etapas de partes importantes no desenvolvimento do joguinho que será simples, mas um excelente início no aprendizado em desenvolvimento de jogos de plataforma 2D na Godot 4.2 sendo a linguagem de programação GDScript.
 O projeto ainda está em desenvolvimento, portanto contém bugs e ainda há muito a ser feito. Sinta-se a vontade para acrescentar, modificar, corrigir e aperfeiçoar. No passo a passo, para fins didáticos, os scripts, cenários, personagens, itens, etc.. não estarão idênticos ao projeto em andamento disponível na pasta 2D_Platformer, justamente para que o passo a passo seja uma ajuda a quem está começando e não o projeto completo que pode ser confuso para quem ainda não tem domínio da engine e nem de programação.</p>  
