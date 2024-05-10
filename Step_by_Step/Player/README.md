@@ -220,9 +220,45 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 
 ## Por último, mas não menos importante, vamos testar o dano ao Personagem.
 
-Na árvore de nós da cena _"world_01"_, temos o nó _"spikes-area"_ (Area2D). Na imagem a baixo 
+Na árvore de nós da cena _"world_01"_, temos o nó _"spikes-area"_ (Area2D) e seus nós filhos: _"spikes"_ e _"collision"_, como mostra a imagem a baixo.
+![Árvore de nós da cena world_01](/../main/images/arvore_world_spikes.png)
 
+Os nomes de cada nó são:
+- Area2D
+	- Sprite2D
+ 	- CollisionShape2D
 
+### Próximos passos:
+- Adicione ao nó _"spikes"_ um sprite;
+- Crie uma nova forma de colisão como _RectangleShape2D_, mas não altere o tamanho para cobrir os espinhos, isso será feito através do script;
+- Crie um script para o nó _"spikes-area"_;
+- Adicione um sinal deste nó no próprio script. O sinal é body_entered();
 
+Antes de vermos o código, vamos configurar o nó _"spikes"_ para que possamos repetir a quantidade que quisermos do sprite de espinhos:  
+Veja como deve ser configurado o _Inspector_ do nó  _"spikes"_:
 
+![Árvore de nós da cena world_01](/../main/images/spike_config.png)
 
+- Adicione um sprite em Texture;
+- Em *Region* deixe habilitado _Enabled_ e em _Rect_ tamanho 8 em _h_ e _y_;
+- O _w_ de _Rect_ será o tamanho de repetição de espinhos.
+- Por último, habilite em *Texture* o _Repeat_ para _Enabled_
+
+### O script deve conter o seguinte conteúdo:
+```gd
+extends Area2D
+
+@onready var spikes = $spikes as Sprite2D
+@onready var collision = $collision as CollisionShape2D
+
+func _ready():
+	collision.shape.size = spikes.get_rect().size
+
+func _on_body_entered(body):
+	if body.name == "player" && body.has_method("take_damage"):
+		body.take_damage(Vector2(0, -250))
+```
+
+***Função _ready()***: Aqui, o tamanho da forma de colisão (collision.shape.size) é definido para ser o mesmo tamanho que a sprite de espinhos (spikes). Isso garante que a área de colisão corresponda visualmente aos espinhos.   
+
+***Função  _on_body_entered(body)***: Esta função é chamada quando outro corpo (como o jogador) entra na área deste nó de espinho. Ele verifica se o nome do corpo é "player" e se o corpo tem um método chamado "take_damage". Se essas condições forem verdadeiras, o jogador é atingido por um dano de 250, com um vetor de direção de (0, -250), presumivelmente para empurrar o jogador para cima, como se estivesse sendo empurrado pelos espinhos.
