@@ -220,7 +220,7 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 
 ## Por último, mas não menos importante, vamos testar o dano ao Personagem.
 
-
+Na árvore de nós da cena _"world_01"_, temos o nó _"spikes-area"_ (Area2D). Na imagem a baixo 
 
 
 
