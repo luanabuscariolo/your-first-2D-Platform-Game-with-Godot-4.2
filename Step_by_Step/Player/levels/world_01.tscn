@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://err4w3svls65"]
+[gd_scene load_steps=28 format=3 uid="uid://err4w3svls65"]
 
 [ext_resource type="Texture2D" uid="uid://chdw26e1xv7pl" path="res://sprites/Background/Background.png" id="1_33noj"]
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_dj7cu"]
@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bluib3dftrlk4" path="res://sprites/Assets/Interior-01.png" id="5_4pbsj"]
 [ext_resource type="Texture2D" uid="uid://bljqna3cg0ssh" path="res://sprites/Trees/Dark-Tree.png" id="5_a5cb4"]
 [ext_resource type="PackedScene" uid="uid://bc3w3f4cqskps" path="res://actors/player.tscn" id="7_tgcif"]
-[ext_resource type="PackedScene" uid="uid://bmbnpyr07v7ku" path="res://actors/skeleton.tscn" id="16_3pviu"]
+[ext_resource type="Script" path="res://scripts/spikes-area.gd" id="12_goadu"]
+[ext_resource type="Texture2D" uid="uid://2rut25e44xhu" path="res://sprites/Spike.png" id="13_sxsut"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ybpwa"]
 tile_data = PackedInt32Array(0, 327686, 1, 65536, 327686, 2)
@@ -23042,6 +23043,8 @@ pattern_1 = SubResource("TileMapPattern_2cpgo")
 pattern_2 = SubResource("TileMapPattern_0014s")
 pattern_3 = SubResource("TileMapPattern_518ja")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3fo3"]
+
 [node name="World-01" type="Node2D"]
 script = ExtResource("1_dj7cu")
 
@@ -23097,10 +23100,23 @@ limit_bottom = 300
 drag_horizontal_enabled = true
 editor_draw_drag_margin = true
 
-[node name="skeleton" parent="." instance=ExtResource("16_3pviu")]
-position = Vector2(453.296, 261.448)
-
 [node name="player" parent="." instance=ExtResource("7_tgcif")]
 unique_name_in_owner = true
-position = Vector2(332.06, 239.473)
+position = Vector2(219.415, 239.344)
 collision_mask = 13
+
+[node name="spikes-area" type="Area2D" parent="."]
+position = Vector2(326.851, 288.794)
+collision_mask = 2
+script = ExtResource("12_goadu")
+
+[node name="spikes" type="Sprite2D" parent="spikes-area"]
+texture_repeat = 2
+texture = ExtResource("13_sxsut")
+region_enabled = true
+region_rect = Rect2(0, 8, 31, 8)
+
+[node name="collision" type="CollisionShape2D" parent="spikes-area"]
+shape = SubResource("RectangleShape2D_w3fo3")
+
+[connection signal="body_entered" from="spikes-area" to="spikes-area" method="_on_body_entered"]

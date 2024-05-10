@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdk16c7ucuayy"
-path="res://.godot/imported/Jumping (32 x 32).png-06c31c6f6931f7c52c7814d1368c430e.ctex"
+uid="uid://2rut25e44xhu"
+path="res://.godot/imported/Spike.png-266a432b6be81b4d727e92e868d617ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Skeleton/Jumping (32 x 32).png"
-dest_files=["res://.godot/imported/Jumping (32 x 32).png-06c31c6f6931f7c52c7814d1368c430e.ctex"]
+source_file="res://sprites/Spike.png"
+dest_files=["res://.godot/imported/Spike.png-266a432b6be81b4d727e92e868d617ef.ctex"]
 
 [params]
 

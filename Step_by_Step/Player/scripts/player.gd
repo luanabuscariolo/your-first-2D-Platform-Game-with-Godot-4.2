@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 150.0
 const AIR_FRICTION := 0.5
 
+var player_life := 3
 var is_jumping := false
 var direction
 var is_hurted := false
@@ -23,7 +24,7 @@ var jump_velocity_knockback := -340
 signal player_has_died()
 
 func _ready():	
-	Globals.player_life = 10
+	player_life = 3
 	jump_velocity = (jump_height * 2) / max_time_to_peak
 	gravity = (jump_height * 2) / pow(max_time_to_peak, 2)
 	fall_gravity = gravity * 2
@@ -72,8 +73,8 @@ func _on_hurtbox_body_entered(body):
 	call_deferred("take_damage", knockback)
 
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
-	if Globals.player_life > 0:
-		Globals.player_life -= 1
+	if player_life > 0:
+		player_life -= 1
 		print("perdeu 1 vida")
 		if knockback_force != Vector2.ZERO:
 			knockback_vector = knockback_force
