@@ -23277,7 +23277,7 @@ position = Vector2(2217.81, 282.315)
 position = Vector2(1045.66, 169.624)
 
 [node name="skeleton" parent="." node_paths=PackedStringArray("target") instance=ExtResource("16_3pviu")]
-position = Vector2(2347.49, 323.251)
+position = Vector2(2459.21, 322.544)
 target = NodePath("../player2/player")
 
 [node name="enemy_bat" parent="." instance=ExtResource("13_yos34")]

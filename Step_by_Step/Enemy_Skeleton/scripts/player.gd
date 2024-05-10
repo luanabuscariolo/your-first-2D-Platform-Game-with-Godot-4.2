@@ -66,6 +66,10 @@ func _set_state():
 		state = "jump"
 	elif direction != 0:
 		state = "walk"
+	
+	if is_hurted:
+		state = "hurt"
+	
 	if anim.name != state:
 		anim.play(state)
 
