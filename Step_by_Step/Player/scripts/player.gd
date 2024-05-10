@@ -21,7 +21,7 @@ var jump_velocity_knockback := -340
 @onready var remote = $remote as RemoteTransform2D
 @onready var anim = $anim
 
-signal player_has_died()
+#signal player_has_died()
 
 func _ready():	
 	player_life = 3
@@ -90,5 +90,5 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 		is_hurted = false
 	else:
 		call_deferred("queue_free")
-		emit_signal("player_has_died")
+		#emit_signal("player_has_died")
 
