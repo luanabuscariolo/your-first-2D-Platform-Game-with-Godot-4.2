@@ -1,10 +1,7 @@
  <img src="/../main/images/mascote.png" align="right" width="300">
  
 # Faça seu jogo de plataforma 2D na Godot 4.2 com GDScript
-
-<h4 align="center"> 
-	🚧  Projeto em construção...  🚧
-</h4>
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 ### ACESSE AGORA O PROJETO EM ANDAMENTO DO JOGO: [RUN ORANGE](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/2D_Platformer)
 
