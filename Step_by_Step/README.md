@@ -1,4 +1,4 @@
-<img src="/../main/images/octocat.png" align="right" width="300">
+<img src="/../main/images/mascote.png" align="right" width="300">
 
 # Passo a passos para te auxiliarem no desenvolvimento de um jogo de plataforma 2D na Godot 4.2.
 
