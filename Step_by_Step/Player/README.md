@@ -49,7 +49,7 @@ Na imagem, a cápsula Azul Claro é o primeiro “CollisionShape2D” e a caixa 
 
 O nó da câmera (Camera2D) estará na cena principal do nível e não na cena do Personagem. Ao colocar o nó camera2D como filho do Personagem, podem ocorrer problemas, como por exemplo na morte do Personagem a câmera se perde, pois o nó raiz do qual ela era filha foi removido do cenário, mas estando a câmera na cena principal do nível, ela continuará funcionando corretamente mesmo que ocorra a morte do Personagem. Na imagem a seguir exemplifica a cena do Mundo 01 e o nó World-01 que recebe um script:
 
-AQUI MUNDO
+![Árvore de nós da cena principal](/../main/images/tree_world1.png)
 
 Para fazer a câmera seguir o Personagem é muito simples. No nó raiz da cena do primeiro nível do jogo (neste projeto é a cena World-01), adicionamos um script e o seguinte código nele:
 ```gd
