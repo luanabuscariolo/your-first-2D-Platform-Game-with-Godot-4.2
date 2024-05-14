@@ -23101,39 +23101,39 @@ limit_bottom = 300
 drag_horizontal_enabled = true
 editor_draw_drag_margin = true
 
-[node name="Node" type="Node" parent="."]
+[node name="coins" type="Node" parent="."]
 
-[node name="coin" parent="Node" instance=ExtResource("13_3jxws")]
-position = Vector2(755.437, 233.228)
+[node name="coin" parent="coins" instance=ExtResource("13_3jxws")]
+position = Vector2(820.543, 263.711)
 
-[node name="coin2" parent="Node" instance=ExtResource("13_3jxws")]
-position = Vector2(755.011, 259.619)
+[node name="coin2" parent="coins" instance=ExtResource("13_3jxws")]
+position = Vector2(763.162, 263.309)
 
-[node name="coin3" parent="Node" instance=ExtResource("13_3jxws")]
-position = Vector2(754.177, 285.81)
+[node name="coin3" parent="coins" instance=ExtResource("13_3jxws")]
+position = Vector2(791.86, 263.26)
 
-[node name="coin4" parent="Node" instance=ExtResource("13_3jxws")]
-position = Vector2(530.885, 255.404)
+[node name="coin4" parent="coins" instance=ExtResource("13_3jxws")]
+position = Vector2(683.62, 224.291)
 
-[node name="coin5" parent="Node" instance=ExtResource("13_3jxws")]
-position = Vector2(577.634, 256.111)
+[node name="coin5" parent="coins" instance=ExtResource("13_3jxws")]
+position = Vector2(702.085, 249.04)
 
-[node name="coin6" parent="Node" instance=ExtResource("13_3jxws")]
-position = Vector2(621.333, 255.318)
+[node name="coin6" parent="coins" instance=ExtResource("13_3jxws")]
+position = Vector2(669.416, 249.661)
 
 [node name="key" parent="." instance=ExtResource("14_2ld50")]
 unique_name_in_owner = true
-position = Vector2(805.001, 270.25)
+position = Vector2(985.314, 266.714)
 
 [node name="chest" parent="." instance=ExtResource("15_4n7wa")]
 unique_name_in_owner = true
 position = Vector2(892.611, 284.614)
 
 [node name="skeleton" parent="." node_paths=PackedStringArray("target") instance=ExtResource("16_3pviu")]
-position = Vector2(453.296, 261.448)
+position = Vector2(411.577, 293.268)
 target = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource("7_tgcif")]
 unique_name_in_owner = true
-position = Vector2(701.679, 231.057)
+position = Vector2(602.684, 243.785)
 collision_mask = 13
