@@ -8,7 +8,7 @@ var open_chest := false
 
 func _on_body_entered(body):
 	if player.has_key:
-		anim.play("opening")
+		anim.play("open")
 		player.has_key = false
 		open_chest = true
 	elif open_chest:

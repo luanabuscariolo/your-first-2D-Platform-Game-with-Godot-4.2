@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnlvmbl87fdhv"]
+[gd_scene load_steps=9 format=3 uid="uid://dnlvmbl87fdhv"]
 
 [ext_resource type="Script" path="res://scripts/chest.gd" id="1_a02cw"]
 [ext_resource type="Texture2D" uid="uid://dadt6cy2le2d7" path="res://sprites/items/Treasure_Chest (32 x 16).png" id="1_bpmxb"]
@@ -6,14 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udu7w"]
 size = Vector2(18.73, 15.4597)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6cn7m"]
-atlas = ExtResource("1_bpmxb")
-region = Rect2(0, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7q5um"]
-atlas = ExtResource("1_bpmxb")
-region = Rect2(64, 0, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1bcl"]
 atlas = ExtResource("1_bpmxb")
@@ -31,22 +23,6 @@ region = Rect2(64, 0, 32, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6cn7m")
-}],
-"loop": false,
-"name": &"closed",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7q5um")
-}],
-"loop": false,
-"name": &"open",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_t1bcl")
 }, {
 "duration": 1.0,
@@ -56,7 +32,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_fbcpf")
 }],
 "loop": false,
-"name": &"opening",
+"name": &"open",
 "speed": 5.0
 }]
 
@@ -71,7 +47,7 @@ shape = SubResource("RectangleShape2D_udu7w")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dj2uh")
-animation = &"opening"
+animation = &"open"
 
 [node name="alert" type="Sprite2D" parent="."]
 visible = false
