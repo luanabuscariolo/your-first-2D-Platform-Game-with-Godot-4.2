@@ -152,75 +152,125 @@ O código para a chave é:
 ```gd
 extends Area2D
 
-var collected_key := false
-
 @onready var anim = $anim
 
 func _on_body_entered(body):
   if body.name == "player":
     anim.play("collected")
-    collected_key = true
 ```
-1. A variável `collected_key` será utilizada para 
-2. A variável `anim` faz referência ao nó de animação `anim` (AnimationPLayer).
-3. A `func _on_body_entered(body)` é um sinal (signal) conectado ao evento de colisão. Quando um corpo (neste caso, o jogador) entra na área da moeda, esta função é chamada.
-     - Verifica se o corpo que entrou na área é o jogador então:
-         - a animação é iniciada;
-         - a variável `collected_key` recebe valor verdadeiro.
+1. A variável `anim` faz referência ao nó de animação `anim` (AnimationPLayer).
+2. A `func _on_body_entered(body)` é um sinal (signal) conectado ao evento de colisão. Quando um corpo (neste caso, o jogador) entra na área da moeda, esta função é chamada.
+     - Verifica se o corpo que entrou na área é o jogador (if body.name == "player").
+     - Se for o jogador, a animação "collected" é reproduzida (anim.play("collected")).
+
+#### No script do player é necessário adicionar o seguinte código para lidar com a posse da chave:
+
+```gd
+var has_key := false
+
+@onready var key = %key
+
+func _ready():
+  key.body_entered.connect(collected)
+
+func collected(body):
+  has_key = true
+  print("pegou chave")
+```
+
+Explicando o código:
+
+1. `var has_key := false`: Esta linha declara uma variável chamada `has_key` e a inicializa como false. Esta variável é um indicador booleano usado para rastrear se o personagem do jogador coletou a chave.
+
+2. `@onready var key = %key`: Usa o @onready para atribuir o nó de Area2D `%key` à variável `key` assim que o nó for carregado.
+
+3. `func _ready()`: Esta linha conecta o sinal `body_entered` do nó `key` à função `collected()`. Isso significa que quando o corpo do jogador entra em contato com o corpo da chave, a função `collected()` será chamada.
+
+4. `func collected(body)`:
+   - ***Parâmetro***: `body` representa o corpo que entrou na área da chave (geralmente o corpo do jogador);
+   - ***Atribuição***: `has_key = true` altera o estado da variável `has_key` para true, indicando que o jogador coletou a chave;
+   - ***Mensagem***: `print("pegou chave")` imprime uma mensagem no console indicando que a chave foi coletada (somente para teste, pode ser retirada). 
+
+## Para terminar o Passo a passo de coletáveis, vamos ao baú e a ligação dele com a chave desenvolvida anteriormente:
+
+Os nós que compõem a árvore da cena do baú são:
+- Area2D
+  - CollisionShape2D
+  - AnimatedSprite2D
+  - Sprite2D
+
+Na imagem a seguir os mesmos nós renomeados:
+
+![Árvore de nós da cena do baú](/../main/images/arvore_nos_bau.png)
+
+O nó `anim`(AnimatedSprite2D) possui somente uma animação que é a de abertura do baú. Não tem o Looping e nem o Autoplay ativado. Segue imagem de exemplo:
+
+![Animação de abertura do baú](/../main/images/animacao_bau.png)
+
+#### Sobre o alerta para o jogador sobre a chave:
+
+- No nó `alert` (Sprite2D) vamos adicionar à `Inspector / Texture` o sprite de uma chave.
+- Posicione o sprite logo acima do baú.
+- Quando o jogador tiver colisão com a área do baú, o alerta aparecerá para que o jogador compreenda que necessita de uma chave para abrir aquele baú.
+- Esse alerta será exibido somente se o jogador colidir seu personagem com a área do báu e se ele não estiver com a posse da chave.
+- Ao coletar a chave e retornar ao baú, este se abrirá e o aviso não aparecerá mais.
+
+#### Vamos ao código:
+
+- Crie um script para o nó `chest` (Area2D);
+- Adicione dois sinais do nó `chest` ao script:
+  - `body_entered(body: Node2D)`;
+  - `body_exited(body: Node2D)`;
+
+```gd
+extends Area2D
+
+@onready var anim = $anim
+@onready var player = %player
+@onready var alert = $alert
+
+var open_chest := false
+
+func _on_body_entered(body):
+  if player.has_key:
+    anim.play("open")
+    player.has_key = false
+    open_chest = true
+  elif open_chest:
+    alert.visible = false
+  else:
+    alert.visible = true
+
+func _on_body_exited(body):
+  alert.visible = false
+```
+1. ***Extensão e Variáveis***:
+    - `extends Area2D`: Indica que o script está estendendo a classe Area2D, que é usada para detectar colisões em uma área 2D;
+    - `@onready var anim = $anim`: Usa @onready para obter uma referência ao nó chamado `anim`;
+    - `@onready var player = %player`: Usa @onready para obter uma referência ao nó chamado `player`;
+    - `@onready var alert = $alert`: Usa @onready para obter uma referência ao nó chamado `alert`;
+    - `var open_chest := false`: Variável booleana que rastreia se o baú está aberto.
+
+2. ***Função*** `_on_body_entered(body)`: Essa função é chamada quando um corpo entra na área do baú.
+    - Verificação da Chave: `if player.has_key`:
+        - Se o jogador `player` tiver a chave `has_key`, a animação de abrir o baú é executada `anim.play("open")`;
+        - A chave é consumida `player.has_key = false`;
+        - Marca o baú como aberto `open_chest = true`;
+    - Verificação do Estado do Baú: `elif open_chest`:
+        - Se o baú já estiver aberto, o alerta é ocultado `alert.visible = false`.
+    - Mostrar Alerta: `else`:
+        - Se o jogador não tiver a chave e o baú não estiver aberto, o alerta é exibido `alert.visible = true`.
+
+3. ***Função*** `_on_body_exited(body)`: Essa função é chamada quando um corpo sai da área do baú.
+    - Ocultar Alerta: `alert.visible = false`;
+    - Quando o corpo sai da área, o alerta é ocultado.
 
 
+> [!NOTE]
+> Pode-se observar que alguns nós referenciados no script iniciam com `$` ou `%`. A diferença é que os nós que iniciam nom `%` são nós exclusivos da cena. Para ativar essa mesma configuração basta clicar com o botão direito em cima do nó desejado e escolher a opção `Access as Unique Name`. Dessa maneira, mesmo que o caminho do nó seja alterado, não será necessário atualizar isso no script em que aquele nó é instanciado.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ É isso aí! 
+ Bons estudos :sunglasses:
 
 
 
