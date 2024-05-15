@@ -92,7 +92,7 @@ shape = SubResource("CircleShape2D_ec00d")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kipvr")
-animation = &"collected"
+animation = &"idle"
 autoplay = "idle"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
