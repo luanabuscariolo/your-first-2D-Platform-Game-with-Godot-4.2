@@ -109,7 +109,7 @@ Prontinho! Agora é só instanciar na cena principal (a minha é `World-01`) as 
 
 Criaremos duas cenas novas, uma para o báu e outra para a chave. Os nós desses dois itens podem ser criados na árvore da cena principal, mas caso em outros cenários do jogo você deseje utilizar um novo báu e outra chave, será mais fácil se já tiver criado uma cena para ambos e assim só instanciar, ao invés de criá-los novamente em outra cena.
 
-Vamos começar pela cena da chave:
+### Vamos começar pela cena da chave:
 
 Os nós criados para compor a árvore de cena da chave são:
 
@@ -142,12 +142,12 @@ Uma configuração muito legal no AnimationPlayer é o uso de Métodos, como por
  - Para chamar a função `queue_free()` ao fim da animação fazemos o seguinte:  `Add Track / Call Method Track`.  
  - Na linha do tempo, clicamos com o botão direito do mouse ao fim do tempo escolhido e escolhemos `Insert Key` e procuramos pelo método desejado e por fim `open` para adicioná-lo à animação.
 
-Tendo feito a animação, vamos para o script da chave.
+### Tendo feito a animação, vamos para o script da chave.
 
  - Crie um script para o nó raiz `key` (Area2D);
  - Adicione o sinal `body_entered(body: Node2D)` do nó `key` ao script.
  
-O código para a chave é:
+#### O código para a chave é:
 
 ```gd
 extends Area2D
@@ -178,7 +178,7 @@ func collected(body):
   print("pegou chave")
 ```
 
-Explicando o código:
+### Explicando o código:
 
 1. `var has_key := false`: Esta linha declara uma variável chamada `has_key` e a inicializa como false. Esta variável é um indicador booleano usado para rastrear se o personagem do jogador coletou a chave.
 
@@ -207,7 +207,7 @@ O nó `anim`(AnimatedSprite2D) possui somente uma animação que é a de abertur
 
 ![Animação de abertura do baú](/../main/images/animacao_bau.png)
 
-#### Sobre o alerta para o jogador sobre a chave:
+### Sobre o alerta para o jogador sobre a chave:
 
 - No nó `alert` (Sprite2D) vamos adicionar à `Inspector / Texture` o sprite de uma chave.
 - Posicione o sprite logo acima do baú.
@@ -215,7 +215,7 @@ O nó `anim`(AnimatedSprite2D) possui somente uma animação que é a de abertur
 - Esse alerta será exibido somente se o jogador colidir seu personagem com a área do báu e se ele não estiver com a posse da chave.
 - Ao coletar a chave e retornar ao baú, este se abrirá e o aviso não aparecerá mais.
 
-#### Vamos ao código:
+### Vamos ao código:
 
 - Crie um script para o nó `chest` (Area2D);
 - Adicione dois sinais do nó `chest` ao script:
@@ -269,8 +269,11 @@ func _on_body_exited(body):
 > [!NOTE]
 > Pode-se observar que alguns nós referenciados no script iniciam com `$` ou `%`. A diferença é que os nós que iniciam nom `%` são nós exclusivos da cena. Para ativar essa mesma configuração basta clicar com o botão direito em cima do nó desejado e escolher a opção `Access as Unique Name`. Dessa maneira, mesmo que o caminho do nó seja alterado, não será necessário atualizar isso no script em que aquele nó é instanciado.
 
- É isso aí! 
- Bons estudos :sunglasses:
+Acompanhe o [projeto atual](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/2D_Platformer).    
+Veja [outros](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step)  passo a passos desse projeto.
+
+### É isso aí!  
+### Bons estudos :sunglasses:
 
 
 
