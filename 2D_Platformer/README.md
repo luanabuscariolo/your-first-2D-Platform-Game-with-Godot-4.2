@@ -5,6 +5,7 @@
 ### Passo a passos prontos que podem te ajudar a compreender a construção do jogo por partes:
 - [Construa seu Personagem](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step/Player) 
 - [Faça um inimigo esqueleto](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/Step_by_Step/Enemy_Skeleton)
+- [Coletáveis - Moedas e chave que abre um baú](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step/Collectible_items)
 
 Se já tem baixado o programa da Godot 4.2 então é só importar o projeto, senão [clique aqui](https://godotengine.org/download/windows/) para baixar.
 
