@@ -104,6 +104,120 @@ Prontinho! Agora é só instanciar na cena principal (a minha é `World-01`) as 
 
 ## Agora vamos fazer uma chave coletável que abre um baú: :key: :unlock:
 
+- Quando o jogador chega ao baú, é emitido um sinal de alerta de que o jogador precisa da chave para abrir o baú;
+- Ao coletar a chave e retornar ao báu, o jogador consegue abrí-lo.
+
+Criaremos duas cenas novas, uma para o báu e outra para a chave. Os nós desses dois itens podem ser criados na árvore da cena principal, mas caso em outros cenários do jogo você deseje utilizar um novo báu e outra chave, será mais fácil se já tiver criado uma cena para ambos e assim só instanciar, ao invés de criá-los novamente em outra cena.
+
+Vamos começar pela cena da chave:
+
+Os nós criados para compor a árvore de cena da chave são:
+
+- Area2D
+   - CollisionShape2D
+   - Sprite2D
+   - AnimationPlayer
+
+Renomeei os nós da seguinte maneira:
+
+![Árvore de nós da cena da chave](/../main/images/arvore_nos_key.png)
+
+### Animação com AnimationPlayer
+
+Diferente de ***AnimatedSprite2D*** usado para fazer as animações da moeda, o ****AnimationPlayer*** vai utilizar outro nó que é o Srite2D. A cada etapa da animação, pode ser adicionado características como posição, textura, alteração de cor ou transparência, frame específico, visibilidade e tantas outras configurações da aba `Inspector`. Para adicionar um ponto a ser animado, basta clicar na figura de uma chave ao lado de cada configuração. 
+
+Para criar a animação, basta clicar no nó ***anim*** e na aba que abrirá para desenvolver a animação, clique em `Animation/New` e nomeie sua animação. 
+
+Segue imagem exemplificando as propriedades usadas para fazer a animação:
+
+![Animação da chave com o nó AnimationPlayer](/../main/images/animation_key.png)
+
+Para adicionar cada uma dessas propriedades, clique no nó sprite, escolha um sprite para o nó e já adicione sua propriedade clicando na chave ao lado esquerdo de `Texture`. Faça isso para todas as propriedades listadas na imagem. 
+
+Na posição de 0.4 segundos modifique as propriedades de `Position` e `Modulate`. Mova o sprite da chave no eixo Y para cima e após mover, clique na chave para salvar na animação a nova posição e na propriedade `Modulate`, na tabela de RGBA deixe o valor de A no zero, logo depois salve esse estado na animação clicando na chave ao lado da propriedade.  
+
+Assim que o personagem colidir com a chave coletando ela, a animação a ser executada será da chave subindo levemente e desaparecendo.  
+
+Uma configuração muito legal no AnimationPlayer é o uso de Métodos, como por exemplo chamar o método `queue_free()` na fim da animação para que o nó seja seja removido. Você se lembra que utilizamos o método _queue_free()_ no script da moeda para removê-la? Aqui não será passado no script, pois na própria linha do tempo da animação, chamaremos logo ao fim. 
+ - Para chamar a função `queue_free()` ao fim da animação fazemos o seguinte:  `Add Track / Call Method Track`.  
+ - Na linha do tempo, clicamos com o botão direito do mouse ao fim do tempo escolhido e escolhemos `Insert Key` e procuramos pelo método desejado e por fim `open` para adicioná-lo à animação.
+
+Tendo feito a animação, vamos para o script da chave.
+
+ - Crie um script para o nó raiz `key` (Area2D);
+ - Adicione o sinal `body_entered(body: Node2D)` do nó `key` ao script.
+ 
+O código para a chave é:
+
+```gd
+extends Area2D
+
+var collected_key := false
+
+@onready var anim = $anim
+
+func _on_body_entered(body):
+  if body.name == "player":
+    anim.play("collected")
+    collected_key = true
+```
+1. A variável `collected_key` será utilizada para 
+2. A variável `anim` faz referência ao nó de animação `anim` (AnimationPLayer).
+3. A `func _on_body_entered(body)` é um sinal (signal) conectado ao evento de colisão. Quando um corpo (neste caso, o jogador) entra na área da moeda, esta função é chamada.
+     - Verifica se o corpo que entrou na área é o jogador então:
+         - a animação é iniciada;
+         - a variável `collected_key` recebe valor verdadeiro.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
