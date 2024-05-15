@@ -4,6 +4,7 @@
 
 - [Construa seu Personagem](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step/Player) 
 - [Faça um inimigo esqueleto](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/Step_by_Step/Enemy_Skeleton)
+- [Coletáveis - Moedas e chave que abre um baú](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step/Collectible_items)
 
 #### O PROJETO EM DESENVOLVIMENTO VOCÊ ENCONTRA [AQUI](https://github.com/luanabuscariolo/2D_Platform_Game_Godot_4.2.1/tree/main/2D_Platformer)!
 ---
