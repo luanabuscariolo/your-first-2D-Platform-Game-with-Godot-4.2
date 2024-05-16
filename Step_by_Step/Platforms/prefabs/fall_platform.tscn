@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdf55o70pjrl"]
+
+[ext_resource type="Script" path="res://scripts/fall_platform.gd" id="1_c6pfk"]
+[ext_resource type="Texture2D" uid="uid://p4lvvnaquq1q" path="res://sprites/Assets/Tiles.png" id="1_rra3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1u00"]
+size = Vector2(5.99323, 73.4171)
+
+[sub_resource type="Animation" id="Animation_belx1"]
+resource_name = "float"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_rra3w")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_uot0v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_rra3w")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5swa"]
+_data = {
+"RESET": SubResource("Animation_uot0v"),
+"float": SubResource("Animation_belx1")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rh4q"]
+size = Vector2(73.4171, 3.66701)
+
+[node name="fall_platform" type="RigidBody2D"]
+collision_mask = 2
+lock_rotation = true
+freeze = true
+script = ExtResource("1_c6pfk")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_rra3w")
+region_enabled = true
+region_rect = Rect2(160, 168, 80, 24)
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2.45822, -1.08638)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_u1u00")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h5swa")
+}
+autoplay = "float"
+
+[node name="respawn_timer" type="Timer" parent="."]
+
+[node name="body_detector" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="collision" type="CollisionShape2D" parent="body_detector"]
+visible = false
+position = Vector2(2.45822, -5.9165)
+shape = SubResource("RectangleShape2D_2rh4q")
+debug_color = Color(0.862745, 0.34902, 0.207843, 0.419608)
