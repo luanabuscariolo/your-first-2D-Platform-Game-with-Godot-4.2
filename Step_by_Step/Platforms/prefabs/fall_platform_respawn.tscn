@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0rd5qwj3i6x1"]
+
+[ext_resource type="Script" path="res://scripts/fall_platform.gd" id="1_c6pfk"]
+[ext_resource type="Texture2D" uid="uid://p4lvvnaquq1q" path="res://sprites/Assets/Tiles.png" id="1_rra3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1u00"]
+size = Vector2(45, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rh4q"]
+size = Vector2(45, 3.66701)
+
+[node name="fall_platform_respawn" type="RigidBody2D"]
+collision_mask = 2
+lock_rotation = true
+freeze = true
+script = ExtResource("1_c6pfk")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_rra3w")
+region_enabled = true
+region_rect = Rect2(176, 232, 48, 24)
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0.500001, 2)
+shape = SubResource("RectangleShape2D_u1u00")
+one_way_collision = true
+debug_color = Color(0, 0.65098, 0.0941176, 0.419608)
+
+[node name="respawn_timer" type="Timer" parent="."]
+
+[node name="body_detector" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="collision_detector" type="CollisionShape2D" parent="body_detector"]
+position = Vector2(0.5, -5.9165)
+shape = SubResource("RectangleShape2D_2rh4q")
+debug_color = Color(0.862745, 0.34902, 0.207843, 0.419608)
+
+[connection signal="timeout" from="respawn_timer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="body_entered" from="body_detector" to="." method="_on_body_detector_body_entered"]

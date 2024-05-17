@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://err4w3svls65"]
+[gd_scene load_steps=28 format=3 uid="uid://err4w3svls65"]
 
 [ext_resource type="Texture2D" uid="uid://chdw26e1xv7pl" path="res://sprites/Background/Background.png" id="1_33noj"]
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_dj7cu"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bljqna3cg0ssh" path="res://sprites/Trees/Dark-Tree.png" id="5_a5cb4"]
 [ext_resource type="PackedScene" uid="uid://bc3w3f4cqskps" path="res://actors/player.tscn" id="7_tgcif"]
 [ext_resource type="PackedScene" uid="uid://bdf55o70pjrl" path="res://prefabs/fall_platform.tscn" id="11_vh1a6"]
+[ext_resource type="PackedScene" uid="uid://glbwsvipmhcu" path="res://prefabs/platform.tscn" id="11_yimil"]
+[ext_resource type="PackedScene" uid="uid://d0rd5qwj3i6x1" path="res://prefabs/fall_platform_respawn.tscn" id="14_f4w3i"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ybpwa"]
 tile_data = PackedInt32Array(0, 327686, 1, 65536, 327686, 2)
@@ -23085,10 +23087,25 @@ limit_bottom = 300
 drag_horizontal_enabled = true
 editor_draw_drag_margin = true
 
+[node name="platform" parent="." instance=ExtResource("11_yimil")]
+position = Vector2(1110.51, 281.808)
+
+[node name="platform2" parent="." instance=ExtResource("11_yimil")]
+position = Vector2(1041.59, 258.584)
+
 [node name="fall_platform" parent="." instance=ExtResource("11_vh1a6")]
-position = Vector2(948.74, 315.018)
+position = Vector2(923.795, 315.018)
+
+[node name="fall_platform2" parent="." instance=ExtResource("11_vh1a6")]
+position = Vector2(1012.25, 316.127)
+
+[node name="fall_platform3" parent="." instance=ExtResource("11_vh1a6")]
+position = Vector2(1097.78, 317.018)
 
 [node name="player" parent="." instance=ExtResource("7_tgcif")]
 unique_name_in_owner = true
 position = Vector2(802.74, 246.018)
 collision_mask = 13
+
+[node name="fall_platform_respawn" parent="." instance=ExtResource("14_f4w3i")]
+position = Vector2(848.264, 254.153)
