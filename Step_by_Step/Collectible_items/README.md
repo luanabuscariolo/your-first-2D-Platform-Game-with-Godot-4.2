@@ -4,6 +4,7 @@
 
 ### Pacote de sprites utilizadas:   
 [Anokolisa - Legacy Fantasy Bundle](https://anokolisa.itch.io/sidescroller-pixelart-sprites-asset-pack-forest-16x16)  
+[GrafxKid - Sprite Pack 6](https://grafxkid.itch.io/sprite-pack-6)  
 [GrafxKid - Mini FX, Items & UI](https://grafxkid.itch.io/mini-fx-items-ui)  
 
 #### Necessário download da [Godot 4.2](https://godotengine.org/download/windows/)  para abrir o projeto e poder executar, modificar e criar.
