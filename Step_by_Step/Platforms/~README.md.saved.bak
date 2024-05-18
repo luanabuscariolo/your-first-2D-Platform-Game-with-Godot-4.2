@@ -146,5 +146,6 @@ func respawn_platform():
 func _on_respawn_timer_timeout():
     respawn_platform()
 ```
-- A função `_on_respawn_timer_timeout():` é chamada quando o temporizador (respawn_timer) expira;
+- A função `_on_respawn_timer_timeout():` é chamada quando o temporizador `(respawn_timer)` expira;
 - `respawn_platform():` Chama a função `respawn_platform()` para reposicionar e "resetar" a plataforma.
+
