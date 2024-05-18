@@ -1,6 +1,6 @@
 # Passo a passo para fazer plataformas :arrow_down: :left_right_arrow: :arrow_up_down: 
 
-![Exemplo de player passando pelos tipos de plataforma](/images/platforms.gif)
+![Exemplo de player passando pelos tipos de plataforma](images/platforms.gif)
 
 ## vamos construir 3 tipos de plataformas e uma bônus :star:
 
