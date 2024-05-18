@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://err4w3svls65"]
+[gd_scene load_steps=33 format=3 uid="uid://err4w3svls65"]
 
 [ext_resource type="Texture2D" uid="uid://chdw26e1xv7pl" path="res://sprites/Background/Background.png" id="1_33noj"]
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_dj7cu"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bdf55o70pjrl" path="res://prefabs/fall_platform.tscn" id="11_vh1a6"]
 [ext_resource type="PackedScene" uid="uid://glbwsvipmhcu" path="res://prefabs/platform.tscn" id="11_yimil"]
 [ext_resource type="PackedScene" uid="uid://d0rd5qwj3i6x1" path="res://prefabs/fall_platform_respawn.tscn" id="14_f4w3i"]
+[ext_resource type="PackedScene" uid="uid://d2fe12o3q1ygg" path="res://prefabs/move_platform.tscn" id="15_8yc6e"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ybpwa"]
 tile_data = PackedInt32Array(0, 327686, 1, 65536, 327686, 2)
@@ -23032,6 +23033,60 @@ pattern_1 = SubResource("TileMapPattern_2cpgo")
 pattern_2 = SubResource("TileMapPattern_0014s")
 pattern_3 = SubResource("TileMapPattern_518ja")
 
+[sub_resource type="Animation" id="Animation_c7k27"]
+resource_name = "move_horizontal"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(982.363, 230.929), Vector2(1122.36, 230.929), Vector2(994.363, 230.929)]
+}
+
+[sub_resource type="Animation" id="Animation_rc5pf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(982.363, 230.929)]
+}
+
+[sub_resource type="Animation" id="Animation_5ty4h"]
+resource_name = "move_vertical"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(982.363, 230.929), Vector2(982.363, 170.929), Vector2(982.363, 230.929)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4rmn"]
+_data = {
+"RESET": SubResource("Animation_rc5pf"),
+"move_horizontal": SubResource("Animation_c7k27"),
+"move_vertical": SubResource("Animation_5ty4h")
+}
+
 [node name="World-01" type="Node2D"]
 script = ExtResource("1_dj7cu")
 
@@ -23087,25 +23142,48 @@ limit_bottom = 300
 drag_horizontal_enabled = true
 editor_draw_drag_margin = true
 
-[node name="platform" parent="." instance=ExtResource("11_yimil")]
-position = Vector2(1110.51, 281.808)
-
-[node name="platform2" parent="." instance=ExtResource("11_yimil")]
-position = Vector2(1041.59, 258.584)
-
-[node name="fall_platform" parent="." instance=ExtResource("11_vh1a6")]
-position = Vector2(923.795, 315.018)
-
-[node name="fall_platform2" parent="." instance=ExtResource("11_vh1a6")]
-position = Vector2(1012.25, 316.127)
-
-[node name="fall_platform3" parent="." instance=ExtResource("11_vh1a6")]
-position = Vector2(1097.78, 317.018)
-
 [node name="player" parent="." instance=ExtResource("7_tgcif")]
 unique_name_in_owner = true
 position = Vector2(802.74, 246.018)
 collision_mask = 13
 
-[node name="fall_platform_respawn" parent="." instance=ExtResource("14_f4w3i")]
-position = Vector2(848.264, 254.153)
+[node name="platforms" type="Node2D" parent="."]
+
+[node name="platform" parent="platforms" instance=ExtResource("11_yimil")]
+position = Vector2(1110.51, 281.808)
+
+[node name="platform2" parent="platforms" instance=ExtResource("11_yimil")]
+position = Vector2(1041.59, 258.584)
+
+[node name="fall_platform" parent="platforms" instance=ExtResource("11_vh1a6")]
+position = Vector2(923.795, 315.018)
+
+[node name="fall_platform2" parent="platforms" instance=ExtResource("11_vh1a6")]
+position = Vector2(1012.25, 316.127)
+
+[node name="fall_platform3" parent="platforms" instance=ExtResource("11_vh1a6")]
+position = Vector2(1097.78, 317.018)
+
+[node name="fall_platform_respawn" parent="platforms" instance=ExtResource("14_f4w3i")]
+position = Vector2(1232.58, 266.889)
+
+[node name="fall_platform_respawn2" parent="platforms" instance=ExtResource("14_f4w3i")]
+position = Vector2(1297.01, 266.889)
+
+[node name="fall_platform_respawn3" parent="platforms" instance=ExtResource("14_f4w3i")]
+position = Vector2(1356.94, 266.889)
+
+[node name="fall_platform_respawn4" parent="platforms" instance=ExtResource("14_f4w3i")]
+position = Vector2(1421.37, 266.889)
+
+[node name="move_platform" parent="." instance=ExtResource("15_8yc6e")]
+position = Vector2(982.363, 230.929)
+move_direction = 1
+
+[node name="anim" type="AnimationPlayer" parent="move_platform"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_i4rmn")
+}
+autoplay = "move_vertical"
+speed_scale = 0.2

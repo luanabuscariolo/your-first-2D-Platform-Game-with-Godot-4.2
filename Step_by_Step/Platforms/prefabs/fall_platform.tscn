@@ -200,8 +200,6 @@ libraries = {
 }
 autoplay = "float"
 
-[node name="respawn_timer" type="Timer" parent="."]
-
 [node name="body_detector" type="Area2D" parent="."]
 collision_mask = 2
 
@@ -210,5 +208,4 @@ position = Vector2(2.45822, -5.9165)
 shape = SubResource("RectangleShape2D_2rh4q")
 debug_color = Color(0.862745, 0.34902, 0.207843, 0.419608)
 
-[connection signal="timeout" from="respawn_timer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="body_entered" from="body_detector" to="." method="_on_body_detector_body_entered"]
