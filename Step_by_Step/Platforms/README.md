@@ -59,9 +59,54 @@ Renomeei os nós com os seguintes nomes:
 
 ![Nós renomeados da cena Plataforma de queda](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/arvore_nos_fall_platform_respawn.png)
 
+Após adicionar ao nó `sprite` uma imagem que será sua plataforma de queda, vamos às colisões.
 
-    
+Teremos 2 colisões (como ilustrado na imagem a seguir):
 
+![Colisões da plataforma de queda](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/platform_respawn_collisions.png)
+
+- A colisão em verde representa o colisor da plataforma com o personagem;
+- A colisão em vermelho indica o colisor da área do nó `body_detector`. Esse  colisor que dirá se o personagem entrou em contato com a plataforma para que ela caia;
+- Não esqueça de especificar a camada em que o nó está e com quem ele colidirá.
+
+> [!NOTE]
+> É importante que o colisor do nó 'Area2D' fique acima do colisor do nó raiz, para que não haja interferências na detecção do personagem e não acabe ocasionando erro na queda da plataforma.
+
+#### Animação de alerta
+
+Assim que o jogador colidir com a plataforma, ela vai tremer, informando ao jogador que ela vai cair e que ele precisa sair daquela plataforma. Esse tipo de alerta melhora a experiência do jogador ao ser avisado de possíveis acontecimentos enquanto ele joga.
+
+Para fazer essa animação vamos ao nó `anim` criar uma nova animação `alert`. Vamos trabalhar com a propriedade `Position` do nó `sprite`.
+- Crie a animação `alert`;
+- Determine o tempo de animação (eu coloquei 0.4);
+- Deixe ativado o botão de `Animation Looping` (aparecerá inicialmente com o símbolo de Looping :repeat:, clique novamente até mudar a imagem para um simbolo assim    :left_right_arrow:); 
+- Selecione o nó `sprite` e vá na aba `Inspector/Position`;
+- Agora clique na :old_key: da propriedade `Position`, isso adicionará um novo ponto na linha de animação;
+- Agora repita isso para os instantes de tempo `0.1 --> x = 2`, `0.2 --> x = 0`, `0.3 --> x = -2` e `0.4 --> x = 0`. Os valores de X são os valores da propriedade `Position` no eixo X. Não esqueça de sempre finalizar a alteração de um valor clicando na chave da propriedade para que as alterações sejam salvas na linha do tempo da animação. 
+
+A imagem abaixo exemplifica a linha do tempo da animação e as propriedades citadas como o tempo, o lopping e posição no eixo x para que você se localize melhor dentro da engine:
+
+![Propriedades para animação](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/configurações_anim_plataforma_queda.png)
+
+
+
+#### Vamos ao script da cena:
+
+No nó `fall_platform_respawn` crie um novo script e adicione a ele dois sinais:
+- Adicione ao script o sinal `body_entered(body: Node2D)` do nó `body_detector`;
+- Adicione ao script o sinal `timeout()` do nó `respawn_timer`.
+
+#### Não sabe adicionar sinais? Sem problema, é bem simples. Vamos lá!
+
+- Selecione o nó desejado, por exemplo `respawn_detector (Timer)`;
+- Na aba de propriedades temos `Inspector - Node - History`, clique em `Node`;
+- Teremos `Signals` e `Groups`, clique em `Signals` se já não estiver selecionado;
+- Procure o sinal desejado, no caso do nó `respawn_detector` queremos o sinal `timeout()`, clique duas vezes no sinal;
+- Uma janela para conectar esse sinal a um método será aberta;
+- Selecione o nó com o script que fará uso desse sinal (nesse caso o nó `fall_platform_respawn`);
+- Clique em `Connect` e então é só partir para o script! :wink:
+
+### Script da plataforma de queda:
 
 
 
