@@ -15,4 +15,5 @@ func _on_body_detector_body_entered(body):
 		await get_tree().create_timer(3).timeout
 		collision.disabled = false
 		collision_detector.disabled = false
+		anim.play("float")
 
