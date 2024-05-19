@@ -47,7 +47,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_kjdxl"]
 resource_name = "alert"
-loop_mode = 1
+length = 0.5
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -79,10 +80,10 @@ tracks/2/path = NodePath("sprite:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665]
+"values": [0.0, 0.0872665, 0.0, -0.0872665, 0.0, 0.0872665]
 }
 
 [sub_resource type="Animation" id="Animation_feeut"]
@@ -189,6 +190,7 @@ region_enabled = true
 region_rect = Rect2(160, 168, 80, 24)
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2.45822, -1.08638)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_u1u00")
@@ -204,6 +206,7 @@ autoplay = "float"
 collision_mask = 2
 
 [node name="collision_detector" type="CollisionShape2D" parent="body_detector"]
+visible = false
 position = Vector2(2.45822, -5.9165)
 shape = SubResource("RectangleShape2D_2rh4q")
 debug_color = Color(0.862745, 0.34902, 0.207843, 0.419608)
