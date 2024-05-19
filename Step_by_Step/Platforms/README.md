@@ -180,19 +180,21 @@ Agora que criamos uma cena para a plataforma, vamos instanciá-la :link: (Atalho
 ### Animação da plataforma:
 
 A plataforma terá duas animações: deslocamento no eixo X (horizontal) e outra no eixo Y (vertical). Para fazermos essas animações no nó filho `anim` (AnimationPLayer) utilizaremos somente a propriedade `Position`.  
+
 Vou citar duas maneiras de se fazer essa animação: 
-- Você pode utilizar a chave :key: ao lado da propriedade `Position` para cada posição que você desejar salvar na linha do tempo da animação, como fizemos em exemplos anteriores;
-- Pode utilizar um botão `rec`para inserir chaves nos instantes de tempo selecionados na animação. Com o `Auo insert keys` selecionado como na imagem abaixo mostra, escolha o instante de tempo, por exemplo em 0.5 segundos e mova a plataforma até a posição desejada na cena e solte o botão do mouse. Você notará que uma chave será criada na linha do tempo da animação com a posição em X e/ou Y alterada conforme posicionado.
-- Para essa simples animação determine o tempo em 1 segundo e deixe selecionado o `Animation Looping`. No instante 0 indique a posição inicial da plataforma, no instante de tempo 0.5 mova a plataforma na horizontal ou vertical e o instante de tempo 1 retorne à posição inicial da plataforma. Com isso a animação de ida e vinda estará feita.
-- Faça esse processo para a animação de movimento da horizontal `move_horizontal` e movimento na vertical `move_vertical`. Deixei minha animação `move_vertical` com o `Autoplay on Load` habilitado, pois será a animação que utilizarei.
- 
- ![Configurações de animação da plataforma de movimento](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/animation_move_platform.png)
- 
- 
- 
- 
- 
- 
+
+1. **Salvar cada posição clicando na chave ao lado da propriedade manipulada**:
+    - Você pode utilizar a chave :key: ao lado da propriedade `Position` para cada posição que você desejar salvar na linha do tempo da animação, como fizemos em exemplos anteriores.
+    
+2. **Salvar cada posição com** `Auto insert keys`:
+    - Pode utilizar o botão `rec`para inserir chaves nos instantes de tempo selecionados na animação. Com o `Auto insert keys` selecionado (ele fica em vermelho) como na imagem abaixo mostra, escolha o instante de tempo, por exemplo em 0.5 segundos e mova o sprite da plataforma até a posição desejada na cena e solte o botão do mouse. Você notará que uma chave será criada na linha do tempo da animação com a posição em X e/ou Y alterada conforme posicionado;
+    - Para essa simples animação determine o tempo em 1 segundo e deixe selecionado o `Animation Looping`. No instante 0 indique a posição inicial da plataforma, no instante de tempo 0.5 mova a plataforma na horizontal ou vertical e o instante de tempo 1 retorne à posição inicial da plataforma. Com isso a animação de ida e vinda estará feita;
+    - Faça esse processo para a animação de movimento da horizontal `move_horizontal` e movimento na vertical `move_vertical`. Deixei minha animação `move_vertical` com o `Autoplay on Load` habilitado, pois será a animação qua a minha plataforma terá.
+    - Por fim, configure a propriedade `Speed Scale` para a velocidade desejada para a  velocidade de deslocamento da plataforma.
+
+Na imagem abaixo, está em destaque o local do botão `Auto insert keys`, local de criação de uma nova animação `Animation`, botão de `Autoplay on Load`, `Animation Looping` e `Speed Scale`.
+
+![Configurações de animação da plataforma de movimento](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/animation_move_platform.png)
 
 ### Vamos ao código:
 
@@ -212,15 +214,37 @@ func _ready():
 
 #### Explicação resumida do script:
 
-1. **Extensão de** `AnimatableBody2D`:  
+1. **Extensão de** `AnimatableBody2D`: 
     - A classe atual herda funcionalidades de `AnimatableBody2D`, um nó usado para corpos animáveis em 2D.
 
 2. **Inicialização de** `anim`:
     - Utilizar `@onready` assegura que a variável `anim` seja inicializada apenas quando o nó estiver pronto. O `$anim` é um atalho para `get_node("anim")`, ou seja, ele está buscando um nó filho chamado `anim`. Isso geralmente é utilizado para acessar nós definidos na cena associada a este script.
 
 3. **Exportar Direção de Movimento**:
-    - Aqui, `@export_enum` cria uma propriedade exportada que pode ser editada diretamente no editor da Godot, sem necessidade de retornar ao código para alterar o eixo de direção da plataforma. Os valores possíveis definidos na animação feita anteriormente são `move_horizontal` e `move_vertical`, e `move_direction` será um inteiro que pode ser 0 ou 1, correspondendo a essas direções. `var move_direction = 0` define o valor padrão para `move_direction` como 0 (que representa `move_horizontal`).
+    - Aqui, `@export_enum` cria uma propriedade exportada que pode ser editada diretamente no editor da Godot, sem necessidade de retornar ao código para alterar o eixo de direção da plataforma. Os valores possíveis definidos na animação feita anteriormente são `move_horizontal` e `move_vertical`, e `move_direction` será um inteiro que pode ser 0 ou 1, correspondendo a essas direções. `var move_direction = 0` define o valor padrão para `move_direction` como 0 (que representa `move_horizontal`);
+    - Na imagem a seguir, podemos observar o resultado dessa exportação. Nas propriedades da animação, podemos escolher qual animação a plataforma terá sem que seja necesário acessar o código novamente.
+    
+        - ![Variáveis externas](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/move_platform_export_enum.png)
 
 4. **Função** `_ready()`:
     - Quando o nó e seus filhos estão prontos, a função `_ready()` configura a animação do `anim` baseado no valor de `move_direction`: se for 0, a animação é `move_horizontal`; caso contrário, é `move_vertical`.
+
+## Plataforma BÔNUS :star:
+
+Você reparou no início do passo a passo o GIF exemplificando o funcionamento de cada plataforma? Notou na plataforma no rio que ao detectar a colisão com o jogador ela emite um alerta de que é instável e após um tempo determinado afunda e sobe novamente, semelhante ao comportamento de uma madeira no rio? Afunda com a colisão e após um tempo predeterminado sobe e continua boiando na água. Vamos construí-la? :wrench:
+
+### Árvore de nós:
+
+Crie uma nova cena para essa plataforma e adicione os seguintes nós:
+
+- RigidBody2D
+    - Sprite2D
+    - CollisionShape2D
+    - AnimationPlayer
+    - Area2D
+        - CollisionShape2D
+
+Renomeados:
+
+![Árvore de nós plataforma bônus](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/arvore_nos_bonus.png)
 
