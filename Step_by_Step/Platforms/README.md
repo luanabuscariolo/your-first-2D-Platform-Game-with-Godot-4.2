@@ -244,7 +244,97 @@ Crie uma nova cena para essa plataforma e adicione os seguintes nós:
     - Area2D
         - CollisionShape2D
 
-Renomeados:
+#### Nós renomeados:
 
 ![Árvore de nós plataforma bônus](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/arvore_nos_bonus.png)
 
+#### Próximos passos:
+- Crie um script para o nó `fall_platform`;
+- Adicione a sprite desejada;
+- Configure a colisão do nó raiz `fall_platform`;
+- Configure a colisão do nó filho de `body_detector`, sendo essa colisão responsável por detectar o personagem colidindo para executar as animações (Importante! Essa colisão `collision_detector` deve ficar acima do nó de colisão `collision`, semelhante à plataforma de queda visto anteriormente);
+- Adicione o sinal `body_detector(body: Node2D)` do nó `body_detector`(Area2D) ao script criado.
+
+#### Animações:
+
+Serão utilizadas 3 animações:
+
+1. **float**: animação inicial com `"Autoplay on Load"` e `"Animation Looping"` :on: habilitados.
+    - Propriedades utilizadas: `texture`, `position` e `rotation`;
+    - Propriedade que será alterada: `position`;
+    - Tempo de animação: 1 segundo;
+    - Instante de tempo 0: valores iniciais das propridades X e Y iguais a 0;
+    - Instante de tempo 1: valor de `position` no eixo Y = `-3` e X = 0.
+
+Essas configurações darão o efeito de plataforma flutuando na água. A imagem a seguir auxilia na aplicação das propriedades:
+
+![Animação flutuando da plataforma](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/animation_float_bonus.png)
+
+2. **alert**: animação de alerta que faz a plataforma chacoalhar alertando o jogador que ela é instável e que ele precisa sair dela. 
+    - `"Animation Looping"`  :on: habilitado;
+    - Propriedades utilizadas: `texture`, `position` e `rotation`;
+    - Propriedade que será alterada: `rotation`;
+    - Tempo de animação: 0.5 segundos;
+    - Instante de tempo 0: `Rotation = 0°`;
+    - Instante de tempo 0.1: `Rotation = 5°`;
+    - Instante de tempo 0.2: `Rotation = 0°`;
+    - Instante de tempo 0.3: `Rotation = -5°`;
+    - Instante de tempo 0.4: `Rotation = 0°`;
+    - Instante de tempo 0.5: `Rotation = 5°`;
+
+![Animação de alerta da plataforma](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/animation_alert_bonus.png)
+
+3. **falling**: animação de queda da plataforma e subida. `"Animation Looping"`  :on: desabilitado;
+    - Propriedades utilizadas: `texture`, `position` e `rotation`;
+    - Propriedade que será alterada: `position`;
+    - Tempo de animação: 3 segundos;
+    - Instante de tempo 0: `position Y = 0`;
+    - Instante de tempo 0.5: `position Y = 100`;
+    - Instante de tempo 3: `position Y = 0`;
+    
+Com essa animação, a plataforma cai rapidamente e sobe lentamente.
+
+![Animação de queda e subida da plataforma](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/animation_falling_bonus.png)
+
+### Vamos ao código:
+
+```gd
+extends RigidBody2D
+
+@onready var respawn_position = self.global_position
+@onready var anim = $anim
+@onready var collision = $collision
+@onready var collision_detector = $body_detector/collision_detector
+```
+Aqui temos as referências aos nós necessários como `AnimationPlayer`, `CollisionShape2D` e posição inicial da plataforma.
+```gd
+func _on_body_detector_body_entered(body):
+    if body.name == "player":
+        anim.play("alert")
+        await get_tree().create_timer(1).timeout
+        collision.disabled = true
+        collision_detector.disabled = true
+        anim.play("falling")
+        await get_tree().create_timer(3).timeout
+        collision.disabled = false
+        collision_detector.disabled = false
+```
+Nesta função, executamos ações quando o detector de colisão detecta a entrada de um corpo:
+
+- Se o corpo é o jogador (body.name == "player"):
+- Toca a animação "alert".
+- Espera 1 segundo.
+- Desabilita a colisão e o detector de colisão.
+- Toca a animação "falling".
+- Espera 3 segundos.
+- Reabilita a colisão e o detector de colisão.
+
+É importante desabilitar temporariamente os colisores no momento em que a plataforma esteja em queda ou subindo para evitar que o jogador ainda possa colidir naquelas posições como se estivesse andando sobre a água.
+
+---
+
+Acompanhe o [projeto atual](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/2D_Platformer).    
+Veja [outros](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step)  passo a passos desse projeto.
+
+### É isso aí!  
+### Bons estudos :sunglasses:
