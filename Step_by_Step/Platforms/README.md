@@ -88,7 +88,7 @@ A imagem abaixo exemplifica a linha do tempo da animação e as propriedades cit
 
 ![Propriedades para animação](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/configurações_anim_plataforma_queda.png)
 
-### Agora vamos criar o Spript da cena e Sinais necessários:
+### Agora vamos criar o Script da cena e Sinais necessários:
 
 No nó `fall_platform_respawn` crie um novo script e adicione a ele dois sinais:
 - Adicione ao script o sinal `body_entered(body: Node2D)` do nó `body_detector`;
