@@ -318,16 +318,18 @@ func _on_body_detector_body_entered(body):
         await get_tree().create_timer(3).timeout
         collision.disabled = false
         collision_detector.disabled = false
+        anim.play("float")
 ```
 Nesta função, executamos ações quando o detector de colisão detecta a entrada de um corpo:
 
 - Se o corpo é o jogador `(body.name == "player")`:
-- Toca a animação "alert".
-- Espera 1 segundo.
-- Desabilita a colisão e o detector de colisão.
-- Toca a animação "falling".
-- Espera 3 segundos.
-- Reabilita a colisão e o detector de colisão.
+- Toca a animação "alert";
+- Espera 1 segundo;
+- Desabilita a colisão e o detector de colisão;
+- Toca a animação "falling";
+- Espera 3 segundos;
+- Reabilita a colisão e o detector de colisão;
+- Toca a animação "float".
 
 É importante desabilitar temporariamente os colisores no momento em que a plataforma esteja em queda ou subindo para evitar que o jogador ainda possa colidir naquelas posições como se estivesse andando sobre a água.
 
