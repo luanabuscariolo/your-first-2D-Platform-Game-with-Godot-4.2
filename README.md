@@ -15,6 +15,9 @@
 ### [Coletáveis - Moedas e chave que abre um baú](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step/Collectible_items)
 ![Coletáveis](/../main/images/collectables.gif)
 
+### [Plataformas fixas, móveis e que caem](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step/Platforms)
+![Exemplo de player passando pelos tipos de plataforma](Step_by_Step/Platforms/images/platforms.gif)
+
 #### É necessário [baixar](https://godotengine.org/download/windows/) a Godot 4.2. Se já baixou então é só importar o projeto.
 
 ### Enquanto estudo e aprendo, passo adiante o conhecimento adquirido da melhor forma que eu puder escrever!
