@@ -172,5 +172,55 @@ Após renomeá-los, a árvore ficou assim:
 Agora que criamos uma cena para a plataforma, vamos instanciá-la :link: (Atalho: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>)  em nossa cena principal e adicionar um novo nó filho do tipo `AnimationPlayer` a essa plataforma, como exemplifica a imagem a seguir:
 
 ![Árvore de nós da cena principal](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/arvore_cena_move_platform.png)
+
  > [!WARNING]
- > O nó AnimationPlayer deve ser filho do nó move_platform. Se o nó for posto como filho do nó raiz World-01 a animação da plataforma terá erros.
+ > O nó "anim" (AnimationPLayer) deve ser filho do nó "move_platform". Se o nó for posto como filho do nó raiz "World-01" a animação da plataforma terá erros. Verifique o exemplo na imagem acima.
+
+
+### Animação da plataforma:
+
+A plataforma terá duas animações: deslocamento no eixo X (horizontal) e outra no eixo Y (vertical). Para fazermos essas animações no nó filho `anim` (AnimationPLayer) utilizaremos somente a propriedade `Position`.  
+Vou citar duas maneiras de se fazer essa animação: 
+- Você pode utilizar a chave :key: ao lado da propriedade `Position` para cada posição que você desejar salvar na linha do tempo da animação, como fizemos em exemplos anteriores;
+- Pode utilizar um botão `rec`para inserir chaves nos instantes de tempo selecionados na animação. Com o `Auo insert keys` selecionado como na imagem abaixo mostra, escolha o instante de tempo, por exemplo em 0.5 segundos e mova a plataforma até a posição desejada na cena e solte o botão do mouse. Você notará que uma chave será criada na linha do tempo da animação com a posição em X e/ou Y alterada conforme posicionado.
+- Para essa simples animação determine o tempo em 1 segundo e deixe selecionado o `Animation Looping`. No instante 0 indique a posição inicial da plataforma, no instante de tempo 0.5 mova a plataforma na horizontal ou vertical e o instante de tempo 1 retorne à posição inicial da plataforma. Com isso a animação de ida e vinda estará feita.
+- Faça esse processo para a animação de movimento da horizontal `move_horizontal` e movimento na vertical `move_vertical`. Deixei minha animação `move_vertical` com o `Autoplay on Load` habilitado, pois será a animação que utilizarei.
+ 
+ ![Configurações de animação da plataforma de movimento](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/animation_move_platform.png)
+ 
+ 
+ 
+ 
+ 
+ 
+
+### Vamos ao código:
+
+No script do nó `move_platform` adicione o script a seguir:
+
+```gd
+extends AnimatableBody2D
+
+@onready var anim = $anim
+
+@export_enum("move_horizontal", "move_vertical") var move_direction = 0
+
+func _ready():
+    pass
+    anim.assigned_animation = "move_horizontal" if move_direction == 0 else "move_vertical"
+```
+
+#### Explicação resumida do script:
+
+1. **Extensão de** `AnimatableBody2D`:  
+    - A classe atual herda funcionalidades de `AnimatableBody2D`, um nó usado para corpos animáveis em 2D.
+
+2. **Inicialização de** `anim`:
+    - Utilizar `@onready` assegura que a variável `anim` seja inicializada apenas quando o nó estiver pronto. O `$anim` é um atalho para `get_node("anim")`, ou seja, ele está buscando um nó filho chamado `anim`. Isso geralmente é utilizado para acessar nós definidos na cena associada a este script.
+
+3. **Exportar Direção de Movimento**:
+    - Aqui, `@export_enum` cria uma propriedade exportada que pode ser editada diretamente no editor da Godot, sem necessidade de retornar ao código para alterar o eixo de direção da plataforma. Os valores possíveis definidos na animação feita anteriormente são `move_horizontal` e `move_vertical`, e `move_direction` será um inteiro que pode ser 0 ou 1, correspondendo a essas direções. `var move_direction = 0` define o valor padrão para `move_direction` como 0 (que representa `move_horizontal`).
+
+4. **Função** `_ready()`:
+    - Quando o nó e seus filhos estão prontos, a função `_ready()` configura a animação do `anim` baseado no valor de `move_direction`: se for 0, a animação é `move_horizontal`; caso contrário, é `move_vertical`.
+
