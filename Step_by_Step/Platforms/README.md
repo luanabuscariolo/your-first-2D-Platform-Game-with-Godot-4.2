@@ -321,7 +321,7 @@ func _on_body_detector_body_entered(body):
 ```
 Nesta função, executamos ações quando o detector de colisão detecta a entrada de um corpo:
 
-- Se o corpo é o jogador (body.name == "player"):
+- Se o corpo é o jogador `(body.name == "player")`:
 - Toca a animação "alert".
 - Espera 1 segundo.
 - Desabilita a colisão e o detector de colisão.
