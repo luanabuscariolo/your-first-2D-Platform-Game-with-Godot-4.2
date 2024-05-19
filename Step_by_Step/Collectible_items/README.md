@@ -270,6 +270,8 @@ func _on_body_exited(body):
 > [!NOTE]
 > Pode-se observar que alguns nós referenciados no script iniciam com `$` ou `%`. A diferença é que os nós que iniciam nom `%` são nós exclusivos da cena. Para ativar essa mesma configuração basta clicar com o botão direito em cima do nó desejado e escolher a opção `Access as Unique Name`. Dessa maneira, mesmo que o caminho do nó seja alterado, não será necessário atualizar isso no script em que aquele nó é instanciado.
 
+---
+
 Acompanhe o [projeto atual](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/2D_Platformer).    
 Veja [outros](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step)  passo a passos desse projeto.
 
