@@ -163,9 +163,13 @@ Após renomeá-los, a árvore ficou assim:
 
 ![Árvore de nós da cena plataforma móvel](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/arvore_nos_move_platform_renomeados.png)
 
-Próximos passos:
+#### Próximos passos:
 - Escolha sua sprite de plataforma;
 - Defina a forma do colisor mais ideal para a sua plataforma;
 - Não esqueça de ativar `One Way Collision` nas propriedades do nó `CollisionShape2D` caso você deseje que o personagem não sofra colisão ao pular na plataforma de baixo para cima;
-- Crie uma script para o nó `AnimatableBody2D`.
+- Crie um script para o nó `AnimatableBody2D`.
+
+Agora que criamos uma cena para a plataforma, vamos instanciá-la  `(Atalho: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>)` :link: em nossa cena principal e adicionar um novo nó filho a essa plataforma, como exemplifica a imagem a seguir:
+
+![Árvore de nós da cena principal](https://raw.githubusercontent.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/main/Step_by_Step/Platforms/images/arvore_cena_move_platform.png)
 
