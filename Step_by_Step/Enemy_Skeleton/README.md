@@ -258,6 +258,10 @@ func _on_hitbox_body_entered(body):
 
 Essa estrutura de script controla o comportamento do inimigo esqueleto, permitindo que ele patrulhe, ataque, seja ferido, morra e reviva, fornecendo uma interação dinâmica com o jogador no jogo.
 
+---
+
 Acompanhe o [projeto atual](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/2D_Platformer).    
 Veja [outros](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step)  passo a passos desse projeto.
 
+### É isso aí!  
+### Bons estudos :sunglasses:
