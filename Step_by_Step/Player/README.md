@@ -268,3 +268,11 @@ func _on_body_entered(body):
 ***Função _ready()***: Aqui, o tamanho da forma de colisão (collision.shape.size) é definido para ser o mesmo tamanho que a sprite de espinhos (spikes). Isso garante que a área de colisão corresponda visualmente aos espinhos.   
 
 ***Função  _on_body_entered(body)***: Esta função é chamada quando outro corpo (como o jogador) entra na área deste nó de espinho. Ele verifica se o nome do corpo é "player" e se o corpo tem um método chamado "take_damage". Se essas condições forem verdadeiras, o jogador é atingido por um dano de 250, com um vetor de direção de (0, -250), presumivelmente para empurrar o jogador para cima, como se estivesse sendo empurrado pelos espinhos.
+
+---
+
+Acompanhe o [projeto atual](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/2D_Platformer).    
+Veja [outros](https://github.com/luanabuscariolo/your-first-2D-Platform-Game-with-Godot-4.2/tree/main/Step_by_Step)  passo a passos desse projeto.
+
+### É isso aí!  
+### Bons estudos :sunglasses:
