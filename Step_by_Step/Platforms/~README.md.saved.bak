@@ -167,5 +167,9 @@ Próximos passos:
 - Escolha sua sprite de plataforma;
 - Defina a forma do colisor mais ideal para a sua plataforma;
 - Não esqueça de ativar `One Way Collision` nas propriedades do nó `CollisionShape2D` caso você deseje que o personagem não sofra colisão ao pular na plataforma de baixo para cima;
-- Crie uma script para o nó `AnimatableBody2D`.
+- Crie um script para o nó `AnimatableBody2D`.
+
+Agora que criamos uma cena para a plataforma, vamos instanciá-la em nossa cena principal e adicionar um novo nó filho, como exemplifica a imagem a seguir:
+
+
 

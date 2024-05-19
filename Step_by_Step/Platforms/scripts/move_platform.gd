@@ -1,6 +1,6 @@
 extends AnimatableBody2D
 
-@onready var anim = %anim
+@onready var anim = $anim
 
 @export_enum("move_horizontal", "move_vertical") var move_direction = 0
 

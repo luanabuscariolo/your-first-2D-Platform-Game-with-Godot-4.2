@@ -23034,6 +23034,21 @@ pattern_1 = SubResource("TileMapPattern_2cpgo")
 pattern_2 = SubResource("TileMapPattern_0014s")
 pattern_3 = SubResource("TileMapPattern_518ja")
 
+[sub_resource type="Animation" id="Animation_rc5pf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(982.363, 230.929)]
+}
+
 [sub_resource type="Animation" id="Animation_c7k27"]
 resource_name = "move_horizontal"
 loop_mode = 2
@@ -23048,21 +23063,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(982.363, 230.929), Vector2(1122.36, 230.929), Vector2(994.363, 230.929)]
-}
-
-[sub_resource type="Animation" id="Animation_rc5pf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(982.363, 230.929)]
 }
 
 [sub_resource type="Animation" id="Animation_5ty4h"]
@@ -23199,7 +23199,6 @@ position = Vector2(982.363, 230.929)
 move_direction = 1
 
 [node name="anim" type="AnimationPlayer" parent="move_platform"]
-unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_i4rmn")
 }
