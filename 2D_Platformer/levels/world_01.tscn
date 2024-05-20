@@ -23194,7 +23194,7 @@ layer_12/tile_data = PackedInt32Array(2097205, 524292, 6, 2162741, 524292, 7, 20
 
 [node name="camera" type="Camera2D" parent="."]
 visible = false
-position = Vector2(1074.7, 120)
+position = Vector2(320, 180)
 limit_left = 0
 limit_top = 0
 limit_bottom = 300
@@ -23347,7 +23347,7 @@ region_rect = Rect2(32, 48, 16, 16)
 
 [node name="PlayerPhantomCamera2D" type="Node2D" parent="player2" node_paths=PackedStringArray("follow_target")]
 visible = false
-position = Vector2(1074.7, 120)
+position = Vector2(320, 180)
 script = ExtResource("20_nubmc")
 priority = 5
 follow_mode = 2

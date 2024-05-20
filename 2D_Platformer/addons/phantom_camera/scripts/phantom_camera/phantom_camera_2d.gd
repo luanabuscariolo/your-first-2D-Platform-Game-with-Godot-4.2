@@ -631,7 +631,10 @@ func _on_tile_map_changed() -> void:
 
 
 func _target_position_with_offset() -> Vector2:
-	return follow_target.global_position + follow_offset
+	if follow_target and is_instance_valid(follow_target):
+		return follow_target.global_position + follow_offset
+	else:
+		return Vector2.ZERO
 
 
 func _on_dead_zone_changed() -> void:
