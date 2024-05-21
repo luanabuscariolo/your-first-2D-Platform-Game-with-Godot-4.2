@@ -37,7 +37,7 @@ Sprites:
  - [GrafxKid - Sprite Pack 6](https://grafxkid.itch.io/sprite-pack-6)
  - [GrafxKid - Mini FX, Items & UI](https://grafxkid.itch.io/mini-fx-items-ui)  
  - [Rentro_Ghost - Bat Sprites](https://rentro-ghost.itch.io/bat-sprites)
- - [Fonte 04b30 - Yuji Oshimoto](http://www.04.jp.org/)
+ - [Fonte 04B-30 - Yuji Oshimoto](http://www.04.jp.org/)
 
 ### Recomendação:
 ---
