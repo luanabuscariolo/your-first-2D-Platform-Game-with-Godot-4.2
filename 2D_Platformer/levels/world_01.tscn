@@ -23194,7 +23194,7 @@ layer_12/tile_data = PackedInt32Array(2097205, 524292, 6, 2162741, 524292, 7, 20
 
 [node name="camera" type="Camera2D" parent="."]
 visible = false
-position = Vector2(320, 180)
+position = Vector2(1070.2, 120)
 limit_left = 0
 limit_top = 0
 limit_bottom = 300
@@ -23274,7 +23274,7 @@ position = Vector2(2135.1, 334)
 position = Vector2(2217.81, 282.315)
 
 [node name="crate" parent="." instance=ExtResource("15_bvaj8")]
-position = Vector2(1045.66, 169.624)
+position = Vector2(1110.09, 252.031)
 
 [node name="skeleton" parent="." node_paths=PackedStringArray("target") instance=ExtResource("16_3pviu")]
 position = Vector2(2459.21, 322.544)
@@ -23334,7 +23334,7 @@ limit_top = 0
 
 [node name="player" parent="player2" instance=ExtResource("7_tgcif")]
 unique_name_in_owner = true
-position = Vector2(1074.7, 223.599)
+position = Vector2(1070.2, 265.206)
 collision_mask = 13
 
 [node name="alert" type="Sprite2D" parent="player2/player"]
@@ -23347,7 +23347,7 @@ region_rect = Rect2(32, 48, 16, 16)
 
 [node name="PlayerPhantomCamera2D" type="Node2D" parent="player2" node_paths=PackedStringArray("follow_target")]
 visible = false
-position = Vector2(320, 180)
+position = Vector2(1070.2, 120)
 script = ExtResource("20_nubmc")
 priority = 5
 follow_mode = 2

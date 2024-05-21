@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Pushables
 
-const PUSH_SPEED = 300.0
+const PUSH_SPEED = 20.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
