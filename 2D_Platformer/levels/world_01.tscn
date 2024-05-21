@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://err4w3svls65"]
+[gd_scene load_steps=56 format=3 uid="uid://err4w3svls65"]
 
 [ext_resource type="Texture2D" uid="uid://chdw26e1xv7pl" path="res://sprites/Background/Background.png" id="1_33noj"]
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_dj7cu"]
@@ -23,6 +23,12 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="20_nubmc"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="21_umwmh"]
 [ext_resource type="Texture2D" uid="uid://b7dj13cam2bf1" path="res://sprites/Keyboard Letters and Symbols.png" id="23_f2vrs"]
+[ext_resource type="Texture2D" uid="uid://bng81soiac6qs" path="res://sprites/Assets/00_Coin-Sprites.png" id="24_gf24f"]
+[ext_resource type="Texture2D" uid="uid://dnh3txm1twkhd" path="res://sprites/Assets/01_Coin-Sprites.png" id="25_crsca"]
+[ext_resource type="Texture2D" uid="uid://du5kkpk7halq5" path="res://sprites/Assets/02_Coin-Sprites.png" id="26_1r2t5"]
+[ext_resource type="Texture2D" uid="uid://vak66cwuuc3q" path="res://sprites/Assets/03_Coin-Sprites.png" id="27_2t75w"]
+[ext_resource type="FontFile" uid="uid://dxey55nghkbjc" path="res://04B_30__.TTF" id="28_3jrt1"]
+[ext_resource type="Texture2D" uid="uid://djeks4txfv2rv" path="res://sprites/Orange/life_orange.png" id="29_t654q"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ybpwa"]
 tile_data = PackedInt32Array(0, 327686, 1, 65536, 327686, 2)
@@ -23147,10 +23153,22 @@ duration = 1.0
 transition = 0
 ease = 2
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_kq034"]
+frames = 4
+speed_scale = 4.0
+frame_0/texture = ExtResource("24_gf24f")
+frame_1/texture = ExtResource("25_crsca")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("26_1r2t5")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("27_2t75w")
+frame_3/duration = 1.0
+
 [node name="World-01" type="Node2D"]
 script = ExtResource("1_dj7cu")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="parallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.3, 1)
@@ -23357,6 +23375,84 @@ tween_on_load = false
 limit_left = 0
 limit_top = 0
 limit_bottom = 300
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="container" type="MarginContainer" parent="HUD/control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="coins_container" type="HBoxContainer" parent="HUD/control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="coins_icon" type="TextureRect" parent="HUD/control/container/coins_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = SubResource("AnimatedTexture_kq034")
+expand_mode = 2
+
+[node name="coins_counter" type="Label" parent="HUD/control/container/coins_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("28_3jrt1")
+theme_override_font_sizes/font_size = 14
+text = "0000"
+vertical_alignment = 1
+
+[node name="score_container" type="HBoxContainer" parent="HUD/control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="score_label" type="Label" parent="HUD/control/container/score_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("28_3jrt1")
+text = "score:"
+vertical_alignment = 1
+
+[node name="score_counter" type="Label" parent="HUD/control/container/score_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("28_3jrt1")
+text = "000000"
+vertical_alignment = 1
+
+[node name="life_container" type="HBoxContainer" parent="HUD/control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="life_icon" type="TextureRect" parent="HUD/control/container/life_container"]
+layout_mode = 2
+texture = ExtResource("29_t654q")
+
+[node name="life_separator" type="Label" parent="HUD/control/container/life_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("28_3jrt1")
+text = "X"
+
+[node name="life_counter" type="Label" parent="HUD/control/container/life_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("28_3jrt1")
+text = "00"
 
 [connection signal="body_entered" from="chest" to="chest" method="_on_body_entered"]
 [connection signal="body_exited" from="chest" to="chest" method="_on_body_exited"]
