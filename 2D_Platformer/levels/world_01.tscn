@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://err4w3svls65"]
+[gd_scene load_steps=57 format=3 uid="uid://err4w3svls65"]
 
 [ext_resource type="Texture2D" uid="uid://chdw26e1xv7pl" path="res://sprites/Background/Background.png" id="1_33noj"]
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_dj7cu"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="20_nubmc"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="21_umwmh"]
 [ext_resource type="Texture2D" uid="uid://b7dj13cam2bf1" path="res://sprites/Keyboard Letters and Symbols.png" id="23_f2vrs"]
+[ext_resource type="Script" path="res://scripts/control.gd" id="24_5o1ls"]
 [ext_resource type="Texture2D" uid="uid://bng81soiac6qs" path="res://sprites/Assets/00_Coin-Sprites.png" id="24_gf24f"]
 [ext_resource type="Texture2D" uid="uid://dnh3txm1twkhd" path="res://sprites/Assets/01_Coin-Sprites.png" id="25_crsca"]
 [ext_resource type="Texture2D" uid="uid://du5kkpk7halq5" path="res://sprites/Assets/02_Coin-Sprites.png" id="26_1r2t5"]
@@ -23212,7 +23213,7 @@ layer_12/tile_data = PackedInt32Array(2097205, 524292, 6, 2162741, 524292, 7, 20
 
 [node name="camera" type="Camera2D" parent="."]
 visible = false
-position = Vector2(1070.2, 120)
+position = Vector2(320, 120)
 limit_left = 0
 limit_top = 0
 limit_bottom = 300
@@ -23232,6 +23233,18 @@ position = Vector2(204, 269)
 
 [node name="coin3" parent="coins" instance=ExtResource("12_3ypnj")]
 position = Vector2(222, 270)
+
+[node name="coin4" parent="coins" instance=ExtResource("12_3ypnj")]
+position = Vector2(139.499, 268.316)
+
+[node name="coin5" parent="coins" instance=ExtResource("12_3ypnj")]
+position = Vector2(262.409, 267.755)
+
+[node name="coin6" parent="coins" instance=ExtResource("12_3ypnj")]
+position = Vector2(325.267, 267.755)
+
+[node name="coin7" parent="coins" instance=ExtResource("12_3ypnj")]
+position = Vector2(367.359, 266.633)
 
 [node name="move_platform" parent="." instance=ExtResource("15_261ih")]
 position = Vector2(1384, 52)
@@ -23352,7 +23365,7 @@ limit_top = 0
 
 [node name="player" parent="player2" instance=ExtResource("7_tgcif")]
 unique_name_in_owner = true
-position = Vector2(1070.2, 265.206)
+position = Vector2(289.198, 262.031)
 collision_mask = 13
 
 [node name="alert" type="Sprite2D" parent="player2/player"]
@@ -23365,7 +23378,7 @@ region_rect = Rect2(32, 48, 16, 16)
 
 [node name="PlayerPhantomCamera2D" type="Node2D" parent="player2" node_paths=PackedStringArray("follow_target")]
 visible = false
-position = Vector2(1070.2, 120)
+position = Vector2(320, 120)
 script = ExtResource("20_nubmc")
 priority = 5
 follow_mode = 2
@@ -23385,6 +23398,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("24_5o1ls")
 
 [node name="container" type="MarginContainer" parent="HUD/control"]
 layout_mode = 1
