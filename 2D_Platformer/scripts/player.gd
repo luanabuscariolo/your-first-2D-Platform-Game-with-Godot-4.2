@@ -30,7 +30,6 @@ var has_key := false
 signal player_has_died()
 
 func _ready():
-	
 	key.body_entered.connect(zoom_to_chest)
 	key.body_exited.connect(return_to_player_cam)
 	#chest.body_entered.connect(zoom_to_key)
