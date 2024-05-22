@@ -113,7 +113,7 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 		is_hurted = false
 	else:
 		#para evitar manipulações de cena durante a sinalização:
-		call_deferred("queue_free")
+		#call_deferred("queue_free")
 		emit_signal("player_has_died")
 
 func apply_push_force():
