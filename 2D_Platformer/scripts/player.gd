@@ -30,12 +30,12 @@ var has_key := false
 signal player_has_died()
 
 func _ready():
+	
 	key.body_entered.connect(zoom_to_chest)
 	key.body_exited.connect(return_to_player_cam)
 	#chest.body_entered.connect(zoom_to_key)
 	chest.body_exited.connect(return_to_player_cam)
 	
-	Globals.player_life = 3
 	jump_velocity = (jump_height * 2) / max_time_to_peak
 	gravity = (jump_height * 2) / pow(max_time_to_peak, 2)
 	fall_gravity = gravity * 2

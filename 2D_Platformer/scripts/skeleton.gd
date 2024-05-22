@@ -14,8 +14,9 @@ var health_points := 3
 
 enum EnemyState {PATROL, ATTACK, HURT}
 var current_state = EnemyState.PATROL
-@export var target := CharacterBody2D
 
+@export var target := CharacterBody2D
+@export var enemy_score := 100
 func _physics_process(delta):
 	match (current_state):
 		EnemyState.PATROL : patrol_state()
@@ -53,6 +54,7 @@ func hurt_state():
 
 func dead_state():
 	anim.play("dead")
+	Globals.score += enemy_score
 	$collision.disabled = true
 	$hitbox/collision.disabled = true
 	await  anim.animation_finished

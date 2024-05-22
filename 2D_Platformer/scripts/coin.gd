@@ -9,7 +9,7 @@ func _on_body_entered(body):
 	if body.name == "player":
 		animation.play("collect_position")
 		#anim.play("collected")
-		queue_free()
+		await $collision.call_deferred("queue_free")
 		Globals.coins += coins
 		print(Globals.coins)
 
