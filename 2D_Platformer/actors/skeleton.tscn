@@ -296,6 +296,7 @@ texture = ExtResource("3_7xs3f")
 hframes = 2
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -11.2753)
 shape = SubResource("CapsuleShape2D_m34jl")
 
@@ -305,20 +306,24 @@ libraries = {
 }
 
 [node name="ground_detector" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, -4)
 target_position = Vector2(0, 10)
 
 [node name="player_detector" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0, -4)
 target_position = Vector2(50, 0)
 collision_mask = 2
 
 [node name="bone_spawn_point" type="Marker2D" parent="."]
+visible = false
 position = Vector2(12, -12)
 
 [node name="hitbox" parent="." instance=ExtResource("5_vwgq3")]
 
 [node name="collision" type="CollisionShape2D" parent="hitbox"]
+visible = false
 position = Vector2(0.731987, -21.1435)
 shape = SubResource("RectangleShape2D_rvd3i")
 debug_color = Color(0.992157, 0, 0.25098, 0.419608)

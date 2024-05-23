@@ -185,10 +185,12 @@ animation = &"initial"
 autoplay = "initial"
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1.32287, 5.30276)
 shape = SubResource("RectangleShape2D_l0h6o")
 
 [node name="Marker2D" type="Marker2D" parent="."]
+visible = false
 position = Vector2(0, -72.1248)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

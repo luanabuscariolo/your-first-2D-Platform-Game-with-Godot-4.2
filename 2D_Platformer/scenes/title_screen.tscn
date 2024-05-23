@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4ghyu6866s4i"]
+
+[ext_resource type="Texture2D" uid="uid://crekub1ssr3ff" path="res://sprites/capa.png" id="1_xdcfh"]
+[ext_resource type="Theme" uid="uid://cn053mqx7vfrd" path="res://theme_title_screen.tres" id="2_d4cy8"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xdcfh")
+
+[node name="start" type="Button" parent="."]
+layout_mode = 2
+offset_left = 57.7767
+offset_top = 213.296
+offset_right = 185.777
+offset_bottom = 244.296
+theme = ExtResource("2_d4cy8")
+text = " START "
+
+[node name="credits" type="Button" parent="."]
+layout_mode = 2
+offset_left = 216.072
+offset_top = 213.072
+offset_right = 373.072
+offset_bottom = 244.072
+theme = ExtResource("2_d4cy8")
+text = " CREDITS "
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 2
+offset_left = 401.695
+offset_top = 212.847
+offset_right = 502.695
+offset_bottom = 243.847
+theme = ExtResource("2_d4cy8")
+text = " QUIT "
