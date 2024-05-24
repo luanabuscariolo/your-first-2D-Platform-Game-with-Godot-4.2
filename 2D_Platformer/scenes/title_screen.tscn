@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_3yisk"]
 [ext_resource type="Texture2D" uid="uid://crekub1ssr3ff" path="res://sprites/capa.png" id="1_xdcfh"]
-[ext_resource type="Theme" uid="uid://cn053mqx7vfrd" path="res://theme_title_screen.tres" id="2_d4cy8"]
+[ext_resource type="Theme" uid="uid://dofvsydrcchbp" path="res://theme_title.tres" id="3_wl48o"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -23,7 +23,7 @@ offset_left = 57.7767
 offset_top = 213.296
 offset_right = 185.777
 offset_bottom = 244.296
-theme = ExtResource("2_d4cy8")
+theme = ExtResource("3_wl48o")
 text = " START "
 
 [node name="credits" type="Button" parent="."]
@@ -32,7 +32,7 @@ offset_left = 216.072
 offset_top = 213.072
 offset_right = 373.072
 offset_bottom = 244.072
-theme = ExtResource("2_d4cy8")
+theme = ExtResource("3_wl48o")
 text = " CREDITS "
 
 [node name="quit" type="Button" parent="."]
@@ -41,7 +41,7 @@ offset_left = 401.695
 offset_top = 212.847
 offset_right = 502.695
 offset_bottom = 243.847
-theme = ExtResource("2_d4cy8")
+theme = ExtResource("3_wl48o")
 text = " QUIT "
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]

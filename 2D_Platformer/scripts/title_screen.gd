@@ -1,7 +1,11 @@
 extends Control
+@onready var start = $start
 
 func _ready():
-	pass # Replace with function body.
+	start.grab_focus()
+
+#func _input(event):
+	#start.grab_focus()
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://levels/world_01.tscn")

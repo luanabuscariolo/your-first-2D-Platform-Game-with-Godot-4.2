@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_1eemp"]
 [ext_resource type="Texture2D" uid="uid://djeks4txfv2rv" path="res://sprites/Orange/life_orange.png" id="2_j1mjy"]
-[ext_resource type="Theme" uid="uid://cn053mqx7vfrd" path="res://theme_title_screen.tres" id="3_2ejgo"]
+[ext_resource type="Theme" uid="uid://dofvsydrcchbp" path="res://theme_title.tres" id="3_euxat"]
 
 [node name="pause_menu" type="CanvasLayer"]
 process_mode = 3
@@ -34,14 +34,14 @@ stretch_mode = 3
 [node name="resume" type="Button" parent="menu"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("3_2ejgo")
+theme = ExtResource("3_euxat")
 text = " RESUME "
 
 [node name="quit" type="Button" parent="menu"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("3_2ejgo")
-text = " QUIT "
+theme = ExtResource("3_euxat")
+text = " HOME "
 
 [connection signal="pressed" from="menu/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="menu/quit" to="." method="_on_quit_pressed"]
