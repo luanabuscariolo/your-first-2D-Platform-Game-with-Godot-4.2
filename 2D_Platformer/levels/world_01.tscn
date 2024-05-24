@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://err4w3svls65"]
+[gd_scene load_steps=59 format=3 uid="uid://err4w3svls65"]
 
 [ext_resource type="Texture2D" uid="uid://chdw26e1xv7pl" path="res://sprites/Background/Background.png" id="1_33noj"]
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_dj7cu"]
@@ -31,6 +31,7 @@
 [ext_resource type="FontFile" uid="uid://dxey55nghkbjc" path="res://04B_30__.TTF" id="28_3jrt1"]
 [ext_resource type="Texture2D" uid="uid://djeks4txfv2rv" path="res://sprites/Orange/life_orange.png" id="29_t654q"]
 [ext_resource type="PackedScene" uid="uid://b4n42etrxta80" path="res://prefabs/checkpoint.tscn" id="31_50jwf"]
+[ext_resource type="PackedScene" uid="uid://nhxj8orjmbbm" path="res://scenes/pause_menu.tscn" id="32_g2jfg"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ybpwa"]
 tile_data = PackedInt32Array(0, 327686, 1, 65536, 327686, 2)
@@ -23388,7 +23389,6 @@ limit_top = 0
 limit_bottom = 300
 
 [node name="HUD" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="control" type="Control" parent="HUD"]
 layout_mode = 3
@@ -23425,7 +23425,7 @@ expand_mode = 2
 [node name="coins_counter" type="Label" parent="HUD/control/container/coins_container"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("28_3jrt1")
 theme_override_font_sizes/font_size = 14
 text = "0000"
@@ -23438,12 +23438,16 @@ size_flags_vertical = 0
 
 [node name="score_label" type="Label" parent="HUD/control/container/score_container"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("28_3jrt1")
 text = "score:"
 vertical_alignment = 1
 
 [node name="score_counter" type="Label" parent="HUD/control/container/score_container"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("28_3jrt1")
 text = "000000"
 vertical_alignment = 1
@@ -23459,11 +23463,15 @@ texture = ExtResource("29_t654q")
 
 [node name="life_separator" type="Label" parent="HUD/control/container/life_container"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("28_3jrt1")
 text = "X"
 
 [node name="life_counter" type="Label" parent="HUD/control/container/life_container"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("28_3jrt1")
 text = "03"
 
@@ -23473,6 +23481,8 @@ position = Vector2(168.279, 205.638)
 
 [node name="checkpoint" parent="." instance=ExtResource("31_50jwf")]
 position = Vector2(1996.95, 274.601)
+
+[node name="pause_menu" parent="." instance=ExtResource("32_g2jfg")]
 
 [connection signal="body_entered" from="chest" to="chest" method="_on_body_entered"]
 [connection signal="body_exited" from="chest" to="chest" method="_on_body_exited"]

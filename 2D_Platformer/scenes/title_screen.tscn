@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4ghyu6866s4i"]
+[gd_scene load_steps=4 format=3 uid="uid://b4ghyu6866s4i"]
 
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_3yisk"]
 [ext_resource type="Texture2D" uid="uid://crekub1ssr3ff" path="res://sprites/capa.png" id="1_xdcfh"]
 [ext_resource type="Theme" uid="uid://cn053mqx7vfrd" path="res://theme_title_screen.tres" id="2_d4cy8"]
 
@@ -8,8 +9,9 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
+script = ExtResource("1_3yisk")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -41,3 +43,7 @@ offset_right = 502.695
 offset_bottom = 243.847
 theme = ExtResource("2_d4cy8")
 text = " QUIT "
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
