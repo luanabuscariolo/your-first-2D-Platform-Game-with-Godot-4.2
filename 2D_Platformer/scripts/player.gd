@@ -6,6 +6,9 @@ const AIR_FRICTION := 0.5
 var is_jumping := false
 var direction
 var is_hurted := false
+var rolling := false
+var roll_start := false
+var finished_level := false
 var knockback_vector := Vector2.ZERO
 var knockback_power := 20
 
@@ -29,27 +32,31 @@ func _ready():
 	fall_gravity = gravity * 2
 
 func _physics_process(delta):
-	if not is_on_floor():
-		velocity.x = 0
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = -jump_velocity
-		is_jumping = true
-	elif is_on_floor():
-		is_jumping = false
-	if velocity.y > 0 or not Input.is_action_pressed("ui_accept"):
-		velocity.y += fall_gravity * delta
+	if !finished_level:
+		if not is_on_floor():
+			velocity.x = 0
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = -jump_velocity
+			is_jumping = true
+		elif is_on_floor():
+			is_jumping = false
+		if velocity.y > 0 or not Input.is_action_pressed("ui_accept"):
+			velocity.y += fall_gravity * delta
+		else:
+			velocity.y += gravity * delta
+		
+		direction = Input.get_axis("ui_left", "ui_right")
+		if direction:
+			velocity.x = lerp(velocity.x, direction * SPEED, AIR_FRICTION)
+			anim.scale.x = direction
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+		if knockback_vector != Vector2.ZERO:
+			velocity = knockback_vector
 	else:
-		velocity.y += gravity * delta
-	
-	direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = lerp(velocity.x, direction * SPEED, AIR_FRICTION)
-		anim.scale.x = direction
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	if knockback_vector != Vector2.ZERO:
-		velocity = knockback_vector
+		velocity.x = SPEED
+		velocity.y = 0
 	
 	_set_state()
 	move_and_slide()
@@ -69,6 +76,12 @@ func _set_state():
 	
 	if is_hurted:
 		state = "hurt"
+		
+	if roll_start:
+		state = "roll_start"
+	
+	if rolling:
+		state = "rolling"
 	
 	if anim.name != state:
 		anim.play(state)
@@ -111,6 +124,11 @@ func apply_push_force():
 		if collision.get_collider() is Pushables:
 			collision.get_collider().slide_object(-collision.get_normal())
 
+func next_level():
+	finished_level = true
+	#roll_start = true
+	#await  anim.animation_finished
+	rolling = true
 
 
 

@@ -204,7 +204,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"rolling",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -251,7 +251,8 @@ position = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rnwm8")
 animation = &"rolling"
 autoplay = "idle"
-frame_progress = 0.800083
+frame = 3
+frame_progress = 0.749512
 
 [node name="collision" type="CollisionShape2D" parent="."]
 visible = false

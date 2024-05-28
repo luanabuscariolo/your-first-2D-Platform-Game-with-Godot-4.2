@@ -18965,9 +18965,11 @@ texture = ExtResource("1_txqw1")
 20:21/0 = 0
 20:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:21/0/physics_layer_0/angular_velocity = 0.0
+20:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 21:21/0 = 0
 21:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 21:21/0/physics_layer_0/angular_velocity = 0.0
+21:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 22:21/0 = 0
 22:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 22:21/0/physics_layer_0/angular_velocity = 0.0
@@ -18975,9 +18977,11 @@ texture = ExtResource("1_txqw1")
 23:21/0 = 0
 23:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 23:21/0/physics_layer_0/angular_velocity = 0.0
+23:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 24:21/0 = 0
 24:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 24:21/0/physics_layer_0/angular_velocity = 0.0
+24:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 17:22/0 = 0
 17:22/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 17:22/0/physics_layer_0/angular_velocity = 0.0
@@ -23505,7 +23509,7 @@ position = Vector2(1996.95, 274.601)
 visible = false
 
 [node name="next_level" type="Area2D" parent="."]
-position = Vector2(2780.49, 297.338)
+position = Vector2(2710.49, 295.924)
 collision_mask = 2
 script = ExtResource("33_j3j8s")
 
