@@ -21,6 +21,9 @@ var jump_velocity_knockback := -340
 @export var jump_height := 64
 @export var max_time_to_peak := 0.5
 
+@export var move_distance := 200.0 # A distância que o jogador deve percorrer após terminar a fase
+var distance_moved := 0.0 # Distância percorrida até agora
+
 @onready var remote = $remote as RemoteTransform2D
 @onready var anim = $anim
 
@@ -55,8 +58,12 @@ func _physics_process(delta):
 		if knockback_vector != Vector2.ZERO:
 			velocity = knockback_vector
 	else:
-		velocity.x = SPEED
-		velocity.y = 0
+		if distance_moved < move_distance:
+			var move_step = SPEED * delta
+			velocity.x = SPEED
+			distance_moved += move_step
+		else:
+			velocity.x = 0
 	
 	_set_state()
 	move_and_slide()
@@ -126,6 +133,7 @@ func apply_push_force():
 
 func next_level():
 	finished_level = true
+	distance_moved = 0.0 # Resetar a distância percorrida
 	#roll_start = true
 	#await  anim.animation_finished
 	rolling = true
