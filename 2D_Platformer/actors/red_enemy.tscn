@@ -1,81 +1,172 @@
-[gd_scene load_steps=12 format=3 uid="uid://gvtl58kwwk"]
+[gd_scene load_steps=11 format=3 uid="uid://gvtl58kwwk"]
 
 [ext_resource type="Texture2D" uid="uid://ch1qmo5ceoiv0" path="res://sprites/5 - Devo the Devil/Hurt (16 x 16).png" id="1_oi20j"]
 [ext_resource type="Script" path="res://scripts/red_enemy.gd" id="1_yh4td"]
 [ext_resource type="Texture2D" uid="uid://ysrx0yd7552m" path="res://sprites/5 - Devo the Devil/Running (16 x 16).png" id="2_7lis5"]
 [ext_resource type="PackedScene" uid="uid://dj5q0fcblxbck" path="res://scenes/hitbox.tscn" id="3_bd8gf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cq7ye"]
-atlas = ExtResource("2_7lis5")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_opttm"]
-atlas = ExtResource("2_7lis5")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rhm48"]
-atlas = ExtResource("2_7lis5")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cdbx2"]
-atlas = ExtResource("2_7lis5")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mpeyv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_oi20j")
-}],
-"loop": false,
-"name": &"hurt",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cq7ye")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_opttm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rhm48")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cdbx2")
-}],
-"loop": true,
-"name": &"running",
-"speed": 5.0
-}]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rc51l"]
 radius = 4.87009
 height = 13.9494
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_40pi4"]
-size = Vector2(11.9262, 3.22708)
+[sub_resource type="Animation" id="Animation_lpumy"]
+resource_name = "running"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7lis5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_c7xga"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7lis5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_u0m1c"]
+resource_name = "hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_oi20j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0okpt"]
+_data = {
+"RESET": SubResource("Animation_c7xga"),
+"hurt": SubResource("Animation_u0m1c"),
+"running": SubResource("Animation_lpumy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uully"]
+size = Vector2(13.4695, 3.22708)
 
 [node name="red_enemy" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(0, -7.296)
+collision_layer = 8
 script = ExtResource("1_yh4td")
 
-[node name="anim" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_mpeyv")
-animation = &"running"
-autoplay = "running"
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_7lis5")
+hframes = 4
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.420925, 3.08677)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_rc51l")
 
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0okpt")
+}
+autoplay = "running"
+
 [node name="wall_detector" type="RayCast2D" parent="."]
-target_position = Vector2(-10, 0)
+target_position = Vector2(-15, 0)
 
-[node name="hitbox" parent="wall_detector" instance=ExtResource("3_bd8gf")]
+[node name="hitbox" parent="." instance=ExtResource("3_bd8gf")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_detector/hitbox"]
-position = Vector2(0.0140095, -4.03945)
-shape = SubResource("RectangleShape2D_40pi4")
-debug_color = Color(0.976471, 0, 0.403922, 0.419608)
+[node name="collision" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-0.0561428, -5.16191)
+shape = SubResource("RectangleShape2D_uully")
+debug_color = Color(0.988235, 0, 0.290196, 0.419608)
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
