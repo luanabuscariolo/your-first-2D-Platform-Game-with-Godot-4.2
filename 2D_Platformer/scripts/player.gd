@@ -16,7 +16,7 @@ var jump_velocity
 var gravity
 var fall_gravity
 var jump_velocity_knockback := -340
-
+var attack = false
 
 @export var jump_height := 64
 @export var max_time_to_peak := 0.5
@@ -69,6 +69,9 @@ func _physics_process(delta):
 	move_and_slide()
 	drop_platform()
 	apply_push_force()
+	attacking()
+
+
 
 func follow_camera(camera):
 	var camera_path = camera.get_path()
@@ -90,8 +93,17 @@ func _set_state():
 	if rolling:
 		state = "rolling"
 	
+	if attack:
+		state = "attack"
+	
 	if anim.name != state:
 		anim.play(state)
+
+func attacking():
+	if Input.is_action_pressed("attack"):
+			attack = true
+			await anim.animation_finished
+			attack = false
 
 func _on_hurtbox_body_entered(body):
 	var knockback = Vector2((global_position.x - body.global_position.x) * knockback_power, -200)
