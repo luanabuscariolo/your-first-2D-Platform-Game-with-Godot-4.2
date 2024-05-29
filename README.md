@@ -33,7 +33,8 @@ O projeto ainda está em desenvolvimento, portanto contém bugs e ainda há muit
 ---
 Sprites: 
  - [Anokolisa - Legacy Fantasy Bundle](https://anokolisa.itch.io/sidescroller-pixelart-sprites-asset-pack-forest-16x16)  
- - [Dream Mix - Pixel Keyboard Keys - for UI](https://dreammix.itch.io/keyboard-keys-for-ui)  
+ - [Dream Mix - Pixel Keyboard Keys - for UI](https://dreammix.itch.io/keyboard-keys-for-ui)
+ - [GrafxKid - Sprite Pack 1](https://grafxkid.itch.io/sprite-pack-1) 
  - [GrafxKid - Sprite Pack 6](https://grafxkid.itch.io/sprite-pack-6)
  - [GrafxKid - Mini FX, Items & UI](https://grafxkid.itch.io/mini-fx-items-ui)  
  - [Rentro_Ghost - Bat Sprites](https://rentro-ghost.itch.io/bat-sprites)
