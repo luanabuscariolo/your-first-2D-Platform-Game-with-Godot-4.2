@@ -16,7 +16,8 @@ Se você tiver correções, melhorias e sugestões, fique a vontade para compart
 ### Créditos:
 Sprites: 
  - [Anokolisa - Legacy Fantasy Bundle](https://anokolisa.itch.io/sidescroller-pixelart-sprites-asset-pack-forest-16x16)  
- - [Dream Mix - Pixel Keyboard Keys - for UI](https://dreammix.itch.io/keyboard-keys-for-ui)  
+ - [Dream Mix - Pixel Keyboard Keys - for UI](https://dreammix.itch.io/keyboard-keys-for-ui)
+ - [GrafxKid - Sprite Pack 1](https://grafxkid.itch.io/sprite-pack-1)
  - [GrafxKid - Sprite Pack 6](https://grafxkid.itch.io/sprite-pack-6)  
  - [Rentro_Ghost - Bat Sprites](https://rentro-ghost.itch.io/bat-sprites)  
 
