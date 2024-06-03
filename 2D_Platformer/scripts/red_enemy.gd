@@ -12,9 +12,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export var enemy_score := 100
 
-func _ready():
-	pass
-
 func _physics_process(delta):
 	_apply_gravity(delta)
 	movement(delta)
