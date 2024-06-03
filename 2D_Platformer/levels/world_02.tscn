@@ -5688,10 +5688,10 @@ position = Vector2(478.654, 224.236)
 visible = false
 
 [node name="red_enemy" parent="." instance=ExtResource("22_x8gqm")]
-position = Vector2(552.554, 270.523)
+position = Vector2(386.065, 241.982)
 
 [node name="red_enemy2" parent="." instance=ExtResource("22_x8gqm")]
-position = Vector2(621.61, 265.739)
+position = Vector2(250.577, 244.333)
 
 [node name="red_enemy3" parent="." instance=ExtResource("22_x8gqm")]
 position = Vector2(467.955, 252.442)

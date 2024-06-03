@@ -180,6 +180,7 @@ shape = SubResource("RectangleShape2D_uully")
 debug_color = Color(0.988235, 0, 0.290196, 0.419608)
 
 [node name="hitbox_body" type="Area2D" parent="."]
+collision_mask = 2
 script = ExtResource("5_kiasq")
 
 [node name="collision" type="CollisionShape2D" parent="hitbox_body"]

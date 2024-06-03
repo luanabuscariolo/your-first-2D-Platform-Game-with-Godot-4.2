@@ -2,7 +2,7 @@ extends Node
 
 var coins := 0
 var score := 0
-var player_life := 3
+var player_life := 3000
  
 var player = null
 var player_start_position = null
