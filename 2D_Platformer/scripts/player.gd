@@ -18,6 +18,8 @@ var fall_gravity
 var jump_velocity_knockback := -340
 var attack = false
 
+var has_key := false
+
 @export var jump_height := 64
 @export var max_time_to_peak := 0.5
 
@@ -27,9 +29,18 @@ var distance_moved := 0.0 # Distância percorrida até agora
 @onready var remote = $remote as RemoteTransform2D
 @onready var anim = $anim
 
+@onready var chest = %chest
+@onready var chest_pcam = $"../../chest/ChestPhantomCamera2D"
+@onready var key = %key
+@onready var key_pcam = $"../../key/KeyPhantomCamera2D"
+
 signal player_has_died()
 
 func _ready():
+	key.body_entered.connect(zoom_to_chest)
+	key.body_exited.connect(return_to_player_cam)
+	chest.body_exited.connect(return_to_player_cam)
+	
 	jump_velocity = (jump_height * 2) / max_time_to_peak
 	gravity = (jump_height * 2) / pow(max_time_to_peak, 2)
 	fall_gravity = gravity * 2
@@ -150,6 +161,20 @@ func next_level():
 	#await  anim.animation_finished
 	rolling = true
 
+func zoom_to_chest(body):
+	set_physics_process(false)
+	chest_pcam.set_priority(10)
+	await  chest_pcam.tween_completed
+	await  get_tree().create_timer(0.5).timeout
+	chest_pcam.set_priority(0)
+	set_physics_process(true)
+	has_key = true
+	key.body_entered.disconnect(zoom_to_chest)
+	key.queue_free()
 
+func return_to_player_cam(body):
+	if key_pcam != null:
+		key_pcam.set_priority(0)
+	chest_pcam.set_priority(0)
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://err4w3svls65"]
+[gd_scene load_steps=66 format=3 uid="uid://err4w3svls65"]
 
 [ext_resource type="Texture2D" uid="uid://chdw26e1xv7pl" path="res://sprites/Background/Background.png" id="1_33noj"]
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_dj7cu"]
@@ -23124,6 +23124,90 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfs8t"]
 size = Vector2(32.0917, 31.1479)
 
+[sub_resource type="Animation" id="Animation_82y5d"]
+resource_name = "extra_life"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("extra_life:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_ujqvr"), ExtResource("3_ujqvr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("extra_life:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.791992, -6.44701), Vector2(-0.208, -48.447)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("extra_life:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_epd5j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("extra_life:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ujqvr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("extra_life:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.791992, 1.55299)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("extra_life:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1q5g7"]
+_data = {
+"RESET": SubResource("Animation_epd5j"),
+"extra_life": SubResource("Animation_82y5d")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4180"]
 atlas = ExtResource("3_ujqvr")
 region = Rect2(288, 272, 32, 34)
@@ -24328,7 +24412,7 @@ layer_10/tile_data = PackedInt32Array(2097205, 524292, 6, 2162741, 524292, 7, 20
 
 [node name="camera" type="Camera2D" parent="."]
 visible = false
-position = Vector2(2512, 120)
+position = Vector2(708, 120)
 limit_left = 0
 limit_top = 0
 limit_right = 2859
@@ -24418,7 +24502,7 @@ position = Vector2(2123.81, 318.251)
 position = Vector2(2140.14, 318.251)
 
 [node name="crate" parent="." instance=ExtResource("15_bvaj8")]
-position = Vector2(1110.09, 252.031)
+position = Vector2(1352, 284)
 
 [node name="skeleton" parent="." node_paths=PackedStringArray("target") instance=ExtResource("16_3pviu")]
 position = Vector2(2378.83, 323.651)
@@ -24439,10 +24523,21 @@ visible = false
 position = Vector2(-0.266418, -2.11876)
 shape = SubResource("RectangleShape2D_sfs8t")
 
+[node name="animation" type="AnimationPlayer" parent="chest"]
+libraries = {
+"": SubResource("AnimationLibrary_1q5g7")
+}
+
 [node name="anim" type="AnimatedSprite2D" parent="chest"]
-position = Vector2(0.665588, -2.53024)
+position = Vector2(0.791992, -3.447)
 sprite_frames = SubResource("SpriteFrames_nie1y")
-frame_progress = 0.688798
+
+[node name="extra_life" type="Sprite2D" parent="chest"]
+visible = false
+position = Vector2(0.791992, 1.55299)
+texture = ExtResource("3_ujqvr")
+region_enabled = true
+region_rect = Rect2(240, 352, 16, 16)
 
 [node name="ChestPhantomCamera2D" type="Node2D" parent="chest"]
 visible = false
@@ -24452,7 +24547,7 @@ tween_resource = SubResource("Resource_5poe2")
 
 [node name="key" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1471.69, 72.884)
+position = Vector2(1476, 68)
 collision_layer = 4
 collision_mask = 2
 
@@ -24467,6 +24562,7 @@ region_enabled = true
 region_rect = Rect2(240, 320, 16, 16)
 
 [node name="KeyPhantomCamera2D" type="Node2D" parent="key"]
+visible = false
 position = Vector2(0, 65.116)
 script = ExtResource("20_nubmc")
 zoom = Vector2(2, 2)
@@ -24478,7 +24574,7 @@ limit_top = 0
 
 [node name="player" parent="player2" instance=ExtResource("7_tgcif")]
 unique_name_in_owner = true
-position = Vector2(2512, 238)
+position = Vector2(708, 253)
 collision_mask = 13
 
 [node name="alert" type="Sprite2D" parent="player2/player"]
@@ -24491,7 +24587,7 @@ region_rect = Rect2(32, 48, 16, 16)
 
 [node name="PlayerPhantomCamera2D" type="Node2D" parent="player2" node_paths=PackedStringArray("follow_target")]
 visible = false
-position = Vector2(2512, 120)
+position = Vector2(708, 120)
 script = ExtResource("20_nubmc")
 priority = 5
 follow_mode = 2
