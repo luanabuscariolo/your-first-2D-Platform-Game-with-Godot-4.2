@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvjui1i4p58rv"]
+
+[ext_resource type="PackedScene" uid="uid://4ls4cd1vptsa" path="res://prefabs/coin.tscn" id="1_m1wcd"]
+[ext_resource type="Script" path="res://scripts/coin_rigid.gd" id="1_xs2wf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_njnwg"]
+radius = 5.15065
+
+[node name="coin_rigid" type="RigidBody2D"]
+script = ExtResource("1_xs2wf")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.44194, -4.15425)
+shape = SubResource("CircleShape2D_njnwg")
+
+[node name="coin" parent="." instance=ExtResource("1_m1wcd")]
+position = Vector2(-0.426777, -8.21339)
+
+[connection signal="tree_exited" from="coin" to="." method="_on_coin_tree_exited"]

@@ -202,12 +202,12 @@ position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_v7c08")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_751xe")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="sprite" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_rvmsf")
 hframes = 4
 

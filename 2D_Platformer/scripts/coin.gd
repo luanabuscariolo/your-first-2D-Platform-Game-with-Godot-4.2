@@ -7,12 +7,11 @@ var coins := 1
 
 func _on_body_entered(body):
 	if body.name == "player":
-		animation.play("collect_position")
-		#anim.play("collected")
+		#animation.play("collect_position")
+		anim.play("collected")
 		await $collision.call_deferred("queue_free")
 		Globals.coins += coins
 		print(Globals.coins)
 
 func _on_anim_animation_finished():
-	#queue_free()
-	pass
+	queue_free()
