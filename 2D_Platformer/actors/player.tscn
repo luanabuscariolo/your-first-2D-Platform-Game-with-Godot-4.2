@@ -1,6 +1,6 @@
-[gd_scene load_steps=39 format=3 uid="uid://bc3w3f4cqskps"]
+[gd_scene load_steps=40 format=3 uid="uid://bc3w3f4cqskps"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_j1dxv"]
+[ext_resource type="Script" path="res://scripts/player2.gd" id="1_72qx2"]
 [ext_resource type="Texture2D" uid="uid://4rja86jkelj4" path="res://sprites/Orange/Kick_Attack (32 x 32).png" id="2_4fb12"]
 [ext_resource type="Texture2D" uid="uid://jquad10a0lcx" path="res://sprites/Orange/Hurt (32 x 32).png" id="2_od0cr"]
 [ext_resource type="Texture2D" uid="uid://byayl3hahcutw" path="res://sprites/Orange/Idle (32 x 32).png" id="2_qiavj"]
@@ -237,11 +237,14 @@ height = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ltw"]
 size = Vector2(10, 18)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owmoy"]
+size = Vector2(14, 5)
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(-2, -13)
 collision_layer = 2
-collision_mask = 29
-script = ExtResource("1_j1dxv")
+collision_mask = 61
+script = ExtResource("1_72qx2")
 
 [node name="remote" type="RemoteTransform2D" parent="."]
 position = Vector2(1, 1)
@@ -267,5 +270,16 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_f1ltw")
 debug_color = Color(0.988235, 0, 0.309804, 0.419608)
 
+[node name="head_collider" type="Area2D" parent="."]
+position = Vector2(2, 4)
+collision_layer = 0
+collision_mask = 32
+
+[node name="head_collision" type="CollisionShape2D" parent="head_collider"]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_owmoy")
+debug_color = Color(0.141176, 0.647059, 0, 0.419608)
+
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="head_collider" to="." method="_on_head_collider_body_entered"]

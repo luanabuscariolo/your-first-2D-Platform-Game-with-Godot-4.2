@@ -177,4 +177,14 @@ func next_level():
 		#key_pcam.set_priority(0)
 	#chest_pcam.set_priority(0)
 
+func _on_head_collider_body_entered(body):
+	print("colidiu")
+	if body.has_method("break_sprite"):
+		body.hitpoints -= 1
+		if body.hitpoints < 0:
+			body.break_sprite()
+		else:
+			body.anim.play("hit")
+			body.create_coin()
+
 

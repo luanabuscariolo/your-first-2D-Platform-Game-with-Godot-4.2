@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bw3o62s6ka5dm" path="res://sprites/Assets/Props-Rocks.png" id="7_rh6vs"]
 [ext_resource type="Texture2D" uid="uid://p4lvvnaquq1q" path="res://sprites/Assets/Tiles.png" id="8_rc67d"]
 [ext_resource type="Texture2D" uid="uid://00swndakpcrf" path="res://sprites/Assets/Tree-Assets.png" id="9_bmlf3"]
-[ext_resource type="Script" path="res://scripts/player2.gd" id="10_q3s8p"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="11_w8mth"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="20_1wf7x"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="21_unkbf"]
 [ext_resource type="PackedScene" uid="uid://bc3w3f4cqskps" path="res://actors/player.tscn" id="22_rlkr1"]
 [ext_resource type="PackedScene" uid="uid://gvtl58kwwk" path="res://actors/red_enemy.tscn" id="22_x8gqm"]
 [ext_resource type="Texture2D" uid="uid://b7dj13cam2bf1" path="res://sprites/Keyboard Letters and Symbols.png" id="23_auxdh"]
+[ext_resource type="PackedScene" uid="uid://dexxwrwcj7ogf" path="res://prefabs/break_box.tscn" id="24_mxtjk"]
 [ext_resource type="Script" path="res://scripts/control.gd" id="24_o0ch0"]
 [ext_resource type="Texture2D" uid="uid://bng81soiac6qs" path="res://sprites/Assets/00_Coin-Sprites.png" id="25_wfel4"]
 [ext_resource type="Texture2D" uid="uid://dnh3txm1twkhd" path="res://sprites/Assets/01_Coin-Sprites.png" id="26_6ok7t"]
@@ -5571,8 +5571,6 @@ script = ExtResource("11_w8mth")
 [node name="player" parent="player2" instance=ExtResource("22_rlkr1")]
 unique_name_in_owner = true
 position = Vector2(32.411, 1.112)
-collision_mask = 13
-script = ExtResource("10_q3s8p")
 
 [node name="alert" type="Sprite2D" parent="player2/player"]
 unique_name_in_owner = true
@@ -5702,3 +5700,14 @@ position = Vector2(250.577, 244.333)
 
 [node name="red_enemy3" parent="." instance=ExtResource("22_x8gqm")]
 position = Vector2(590.303, 277.136)
+
+[node name="break_box" parent="." instance=ExtResource("24_mxtjk")]
+position = Vector2(104.879, 225.765)
+
+[node name="break_box2" parent="." instance=ExtResource("24_mxtjk")]
+position = Vector2(824.349, 232.9)
+hitpoints = 5
+
+[node name="break_box3" parent="." instance=ExtResource("24_mxtjk")]
+position = Vector2(473.533, 226.954)
+hitpoints = 7

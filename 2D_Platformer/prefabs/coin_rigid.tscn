@@ -7,6 +7,7 @@
 radius = 5.15065
 
 [node name="coin_rigid" type="RigidBody2D"]
+collision_layer = 0
 script = ExtResource("1_xs2wf")
 
 [node name="collision" type="CollisionShape2D" parent="."]
