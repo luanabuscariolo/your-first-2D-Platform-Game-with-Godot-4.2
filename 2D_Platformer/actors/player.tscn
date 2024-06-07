@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bc3w3f4cqskps"]
+[gd_scene load_steps=47 format=3 uid="uid://bc3w3f4cqskps"]
 
 [ext_resource type="Script" path="res://scripts/player2.gd" id="1_72qx2"]
 [ext_resource type="Texture2D" uid="uid://4rja86jkelj4" path="res://sprites/Orange/Kick_Attack (32 x 32).png" id="2_4fb12"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ml1vdanwo17c" path="res://sprites/Orange/Roll_Start (32 x 32).png" id="6_p6a6k"]
 [ext_resource type="PackedScene" uid="uid://cehx3foyfxkqk" path="res://scenes/hurtbox.tscn" id="7_lg2o3"]
 [ext_resource type="Texture2D" uid="uid://bv004o3mnku1v" path="res://sprites/Orange/Rolling (32 x 32).png" id="7_orvke"]
+[ext_resource type="Texture2D" uid="uid://dd8sewyu4kdj" path="res://sprites/Premium_TreesUpdated_No_Outline.png" id="8_wxl3y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0ich"]
 atlas = ExtResource("2_4fb12")
@@ -89,6 +90,30 @@ region = Rect2(128, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hop3"]
 atlas = ExtResource("7_orvke")
 region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc21y"]
+atlas = ExtResource("8_wxl3y")
+region = Rect2(256, 185, 32, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcedc"]
+atlas = ExtResource("8_wxl3y")
+region = Rect2(288, 185, 32, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwivu"]
+atlas = ExtResource("8_wxl3y")
+region = Rect2(320, 185, 32, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhy42"]
+atlas = ExtResource("8_wxl3y")
+region = Rect2(352, 168, 32, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2ru1"]
+atlas = ExtResource("8_wxl3y")
+region = Rect2(384, 112, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enlxy"]
+atlas = ExtResource("8_wxl3y")
+region = Rect2(448, 112, 64, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gtvs4"]
 atlas = ExtResource("5_4s6sg")
@@ -208,6 +233,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yc21y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcedc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwivu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhy42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2ru1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enlxy")
+}],
+"loop": false,
+"name": &"tree",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gtvs4")
 }, {
 "duration": 1.0,
@@ -252,10 +300,12 @@ position = Vector2(1, 1)
 [node name="anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rnwm8")
-animation = &"attack"
+animation = &"tree"
 autoplay = "idle"
+frame_progress = 0.683363
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 11)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_x77h6")
@@ -265,12 +315,14 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+visible = false
 position = Vector2(2.00001, 9)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_f1ltw")
 debug_color = Color(0.988235, 0, 0.309804, 0.419608)
 
 [node name="head_collider" type="Area2D" parent="."]
+visible = false
 position = Vector2(2, 4)
 collision_layer = 0
 collision_mask = 32
