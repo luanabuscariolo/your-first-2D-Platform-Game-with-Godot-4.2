@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bc3w3f4cqskps"]
+[gd_scene load_steps=46 format=3 uid="uid://bc3w3f4cqskps"]
 
 [ext_resource type="Script" path="res://scripts/player2.gd" id="1_72qx2"]
 [ext_resource type="Texture2D" uid="uid://4rja86jkelj4" path="res://sprites/Orange/Kick_Attack (32 x 32).png" id="2_4fb12"]
@@ -9,7 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://ml1vdanwo17c" path="res://sprites/Orange/Roll_Start (32 x 32).png" id="6_p6a6k"]
 [ext_resource type="PackedScene" uid="uid://cehx3foyfxkqk" path="res://scenes/hurtbox.tscn" id="7_lg2o3"]
 [ext_resource type="Texture2D" uid="uid://bv004o3mnku1v" path="res://sprites/Orange/Rolling (32 x 32).png" id="7_orvke"]
-[ext_resource type="Texture2D" uid="uid://dd8sewyu4kdj" path="res://sprites/Premium_TreesUpdated_No_Outline.png" id="8_wxl3y"]
+[ext_resource type="Texture2D" uid="uid://dewhyrilhivsm" path="res://sprites/tree/tree1.png" id="8_g4rw0"]
+[ext_resource type="Texture2D" uid="uid://wjlgqi11h24h" path="res://sprites/tree/tree2.png" id="9_xgp2r"]
+[ext_resource type="Texture2D" uid="uid://duthnur2ot5dk" path="res://sprites/tree/tree3.png" id="10_qoma5"]
+[ext_resource type="Texture2D" uid="uid://c6wgcoetq2puw" path="res://sprites/tree/tree4.png" id="11_dke5b"]
+[ext_resource type="Texture2D" uid="uid://crm5qmjsumqqa" path="res://sprites/tree/tree5.png" id="12_ymp5g"]
+[ext_resource type="Texture2D" uid="uid://dsvokw0plr7l3" path="res://sprites/tree/tree6.png" id="13_8c6e2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0ich"]
 atlas = ExtResource("2_4fb12")
@@ -91,30 +96,6 @@ region = Rect2(128, 0, 32, 32)
 atlas = ExtResource("7_orvke")
 region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yc21y"]
-atlas = ExtResource("8_wxl3y")
-region = Rect2(256, 185, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mcedc"]
-atlas = ExtResource("8_wxl3y")
-region = Rect2(288, 185, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwivu"]
-atlas = ExtResource("8_wxl3y")
-region = Rect2(320, 185, 32, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lhy42"]
-atlas = ExtResource("8_wxl3y")
-region = Rect2(352, 168, 32, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2ru1"]
-atlas = ExtResource("8_wxl3y")
-region = Rect2(384, 112, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_enlxy"]
-atlas = ExtResource("8_wxl3y")
-region = Rect2(448, 112, 64, 112)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gtvs4"]
 atlas = ExtResource("5_4s6sg")
 region = Rect2(0, 0, 32, 32)
@@ -156,6 +137,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_8c6e2")
+}],
+"loop": false,
+"name": &"big-tree",
 "speed": 5.0
 }, {
 "frames": [{
@@ -233,26 +222,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yc21y")
+"texture": ExtResource("8_g4rw0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mcedc")
+"texture": ExtResource("9_xgp2r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dwivu")
+"texture": ExtResource("10_qoma5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lhy42")
+"texture": ExtResource("11_dke5b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d2ru1")
+"texture": ExtResource("12_ymp5g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_enlxy")
+"texture": ExtResource("13_8c6e2")
 }],
 "loop": false,
-"name": &"tree",
-"speed": 1.0
+"name": &"tree-growing",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -291,18 +280,16 @@ size = Vector2(14, 5)
 [node name="player" type="CharacterBody2D"]
 position = Vector2(-2, -13)
 collision_layer = 2
-collision_mask = 61
+collision_mask = 125
 script = ExtResource("1_72qx2")
 
 [node name="remote" type="RemoteTransform2D" parent="."]
 position = Vector2(1, 1)
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rnwm8")
-animation = &"tree"
+animation = &"tree-growing"
 autoplay = "idle"
-frame_progress = 0.683363
 
 [node name="collision" type="CollisionShape2D" parent="."]
 visible = false

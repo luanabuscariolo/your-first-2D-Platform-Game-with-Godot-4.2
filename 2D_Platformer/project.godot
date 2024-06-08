@@ -67,6 +67,7 @@ attack={
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="hitbox"
 2d_physics/layer_6="box"
+2d_physics/layer_7="end"
 
 [rendering]
 

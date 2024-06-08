@@ -3,10 +3,13 @@ extends CharacterBody2D
 const SPEED = 150.0
 const AIR_FRICTION := 0.5
 
+var attack = false
 var is_jumping := false
 var direction
 var is_hurted := false
 var rolling := false
+var tree_growing := false
+var big_tree := false
 var roll_start := false
 var finished_level := false
 var knockback_vector := Vector2.ZERO
@@ -16,7 +19,6 @@ var jump_velocity
 var gravity
 var fall_gravity
 var jump_velocity_knockback := -340
-var attack = false
 
 #var has_key := false
 
@@ -107,6 +109,12 @@ func _set_state():
 	if attack:
 		state = "attack"
 	
+	if tree_growing:
+		state = "tree-growing"
+	
+	if big_tree:
+		state = "big-tree"
+	
 	if anim.name != state:
 		anim.play(state)
 
@@ -186,5 +194,25 @@ func _on_head_collider_body_entered(body):
 		else:
 			body.anim.play("hit")
 			body.create_coin()
+
+func deadth_to_life():
+	tree_growing = true
+	finished_level = true
+	move_distance = 0
+	anim.centered = false
+	anim.offset.x = -34
+	anim.offset.y = -75
+	await anim.animation_finished
+	#anim.centered = true
+	#anim.offset.x = 0
+	#anim.offset.y = 0
+	tree_growing = false
+	big_tree = true
+
+
+
+
+
+
 
 
