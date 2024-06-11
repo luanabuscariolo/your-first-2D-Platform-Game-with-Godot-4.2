@@ -288,7 +288,7 @@ position = Vector2(1, 1)
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rnwm8")
-animation = &"tree-growing"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="."]
