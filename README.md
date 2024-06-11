@@ -40,6 +40,7 @@ Sprites:
  - [Rentro_Ghost - Bat Sprites](https://rentro-ghost.itch.io/bat-sprites)
  - [Fonte 04B-30 - Yuji Oshimoto](http://www.04.jp.org/)
  - [GrafxKid - Seasonal Tilesets](https://grafxkid.itch.io/seasonal-tilesets)
+ - [Admurin - nature-trees](https://admurin.itch.io/)
 
 ### Recomendação:
 ---
