@@ -17,9 +17,12 @@ Se você tiver correções, melhorias e sugestões, fique a vontade para compart
 Sprites: 
  - [Anokolisa - Legacy Fantasy Bundle](https://anokolisa.itch.io/sidescroller-pixelart-sprites-asset-pack-forest-16x16)  
  - [Dream Mix - Pixel Keyboard Keys - for UI](https://dreammix.itch.io/keyboard-keys-for-ui)
- - [GrafxKid - Sprite Pack 1](https://grafxkid.itch.io/sprite-pack-1)
- - [GrafxKid - Sprite Pack 6](https://grafxkid.itch.io/sprite-pack-6)  
- - [Rentro_Ghost - Bat Sprites](https://rentro-ghost.itch.io/bat-sprites)  
+ - [GrafxKid - Sprite Pack 1](https://grafxkid.itch.io/sprite-pack-1) 
+ - [GrafxKid - Sprite Pack 6](https://grafxkid.itch.io/sprite-pack-6)
+ - [GrafxKid - Mini FX, Items & UI](https://grafxkid.itch.io/mini-fx-items-ui)  
+ - [Rentro_Ghost - Bat Sprites](https://rentro-ghost.itch.io/bat-sprites)
+ - [Fonte 04B-30 - Yuji Oshimoto](http://www.04.jp.org/)
+ - [GrafxKid - Seasonal Tilesets](https://grafxkid.itch.io/seasonal-tilesets)
 
 Recomendação:  
  - Canal do YouTube para aprender muito sobre a Godot: [Clécio Espindola GameDev](https://www.youtube.com/@clecioespindolagamedev) 
