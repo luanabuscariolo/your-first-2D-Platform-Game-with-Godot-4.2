@@ -5742,6 +5742,7 @@ shape = SubResource("RectangleShape2D_r27hb")
 debug_color = Color(0.556863, 0.4, 1, 0.419608)
 
 [node name="warning_sign" type="Node2D" parent="."]
+visible = false
 position = Vector2(2216, 272.71)
 script = ExtResource("25_1gx3v")
 
