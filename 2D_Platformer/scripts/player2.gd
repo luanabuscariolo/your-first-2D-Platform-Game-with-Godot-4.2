@@ -36,6 +36,9 @@ var distance_moved := 0.0 # Distância percorrida até agora
 @onready var key = %key
 @onready var key_pcam = $"../../key/KeyPhantomCamera2D"
 
+@onready var interaction_area = $interaction_area
+@onready var sign = %sign
+
 signal player_has_died()
 
 func _ready():
@@ -46,6 +49,13 @@ func _ready():
 	jump_velocity = (jump_height * 2) / max_time_to_peak
 	gravity = (jump_height * 2) / pow(max_time_to_peak, 2)
 	fall_gravity = gravity * 2
+
+func _process(delta):
+	if Input.is_action_just_pressed("interact"):
+		var signs_in_range = interaction_area.get_overlapping_areas()
+		for sign in signs_in_range:
+			if sign.is_in_group("signs"):
+				sign._on_player_interaction()
 
 func _physics_process(delta):
 	if !finished_level:
@@ -83,8 +93,6 @@ func _physics_process(delta):
 	drop_platform()
 	apply_push_force()
 	attacking()
-
-
 
 func follow_camera(camera):
 	var camera_path = camera.get_path()
@@ -208,11 +216,5 @@ func deadth_to_life():
 	#anim.offset.y = 0
 	tree_growing = false
 	big_tree = true
-
-
-
-
-
-
 
 

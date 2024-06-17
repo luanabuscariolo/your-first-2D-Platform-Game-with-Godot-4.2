@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c05lwii8vx45h"]
+[gd_scene load_steps=40 format=3 uid="uid://c05lwii8vx45h"]
 
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_h4k5t"]
 [ext_resource type="Texture2D" uid="uid://bluib3dftrlk4" path="res://sprites/Assets/Interior-01.png" id="5_bayr8"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dnh3txm1twkhd" path="res://sprites/Assets/01_Coin-Sprites.png" id="26_6ok7t"]
 [ext_resource type="Texture2D" uid="uid://ftjx8yic2nyn" path="res://sprites/Keyboard Extras.png" id="26_yvp0s"]
 [ext_resource type="Texture2D" uid="uid://du5kkpk7halq5" path="res://sprites/Assets/02_Coin-Sprites.png" id="27_4jcw6"]
+[ext_resource type="Script" path="res://scripts/sign.gd" id="27_yxdml"]
 [ext_resource type="Texture2D" uid="uid://vak66cwuuc3q" path="res://sprites/Assets/03_Coin-Sprites.png" id="28_bvyy7"]
 [ext_resource type="FontFile" uid="uid://dxey55nghkbjc" path="res://04B_30__.TTF" id="29_1ayq0"]
 [ext_resource type="Texture2D" uid="uid://djeks4txfv2rv" path="res://sprites/Orange/life_orange.png" id="30_ekrlg"]
@@ -5550,6 +5551,9 @@ size = Vector2(31.9541, 18.2381)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr85v"]
 size = Vector2(78.2195, 50.0639)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4bcx"]
+size = Vector2(56.1229, 71.7354)
+
 [node name="World-01" type="Node2D"]
 script = ExtResource("1_h4k5t")
 
@@ -5760,5 +5764,36 @@ collision_mask = 2
 position = Vector2(-1.18359, 7.82208)
 shape = SubResource("RectangleShape2D_xr85v")
 debug_color = Color(0.772549, 0.282353, 0.85098, 0.419608)
+
+[node name="sign" type="Area2D" parent="." groups=["signs"]]
+unique_name_in_owner = true
+position = Vector2(2205.16, 247.144)
+script = ExtResource("27_yxdml")
+messages = Array[String](["Aperte E para interagir", "Parabéns! Você chegou até aqui com sucesso!", "Agora finalmente você pode descansar."])
+
+[node name="collision" type="CollisionShape2D" parent="sign"]
+position = Vector2(20.2043, 25.8677)
+shape = SubResource("RectangleShape2D_e4bcx")
+debug_color = Color(0.788235, 0.431373, 0, 0.419608)
+
+[node name="Panel" type="Panel" parent="sign"]
+offset_left = -104.389
+offset_top = -57.2456
+offset_right = 135.611
+offset_bottom = 6.75443
+
+[node name="MessageLabel" type="Label" parent="sign/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "Texto de exemplo para teste blablabla"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="body_entered" from="area_of_death" to="area_of_death" method="_on_body_entered"]

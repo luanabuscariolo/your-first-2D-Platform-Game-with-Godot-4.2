@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bc3w3f4cqskps"]
+[gd_scene load_steps=47 format=3 uid="uid://bc3w3f4cqskps"]
 
 [ext_resource type="Script" path="res://scripts/player2.gd" id="1_72qx2"]
 [ext_resource type="Texture2D" uid="uid://4rja86jkelj4" path="res://sprites/Orange/Kick_Attack (32 x 32).png" id="2_4fb12"]
@@ -277,6 +277,8 @@ size = Vector2(10, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owmoy"]
 size = Vector2(14, 5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpnkk"]
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(-2, -13)
 collision_layer = 2
@@ -288,7 +290,7 @@ position = Vector2(1, 1)
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rnwm8")
-animation = &"attack"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="."]
@@ -318,6 +320,13 @@ collision_mask = 32
 position = Vector2(-1, -1.5)
 shape = SubResource("RectangleShape2D_owmoy")
 debug_color = Color(0.141176, 0.647059, 0, 0.419608)
+
+[node name="interaction_area" type="Area2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="collision" type="CollisionShape2D" parent="interaction_area"]
+shape = SubResource("CircleShape2D_vpnkk")
+debug_color = Color(0.0862745, 0.407843, 0, 0.419608)
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
