@@ -5767,7 +5767,6 @@ debug_color = Color(0.772549, 0.282353, 0.85098, 0.419608)
 
 [node name="sign" type="Area2D" parent="." groups=["signs"]]
 unique_name_in_owner = true
-visible = false
 position = Vector2(2205.16, 247.144)
 script = ExtResource("27_yxdml")
 messages = Array[String](["Aperte E para interagir", "Parabéns! Você chegou até aqui com sucesso!", "Agora finalmente você pode descansar."])
