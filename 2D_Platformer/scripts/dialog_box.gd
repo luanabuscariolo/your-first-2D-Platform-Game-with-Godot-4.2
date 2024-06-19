@@ -26,18 +26,18 @@ func display_text(text_to_display: String):
 	display_letter()
  
 func display_letter():
-	text_label.text += text[letter_index]
-	letter_index += 1
-	if letter_index >= text.length():
-		text_display_finished.emit()
-		return
-	match text[letter_index]:
-		"!", "?", ",", ".":
-			letter_timer_display.start(punctuaction_display_timer)
-		" ":
-			letter_timer_display.start(space_display_timer)
-		_:
-			letter_timer_display.start(letter_display_timer)
+		text_label.text += text[letter_index]
+		letter_index += 1
+		if letter_index >= text.length():
+			text_display_finished.emit()
+			return
+		match text[letter_index]:
+			"!", "?", ",", ".":
+				letter_timer_display.start(punctuaction_display_timer)
+			" ":
+				letter_timer_display.start(space_display_timer)
+			_:
+				letter_timer_display.start(letter_display_timer)
 
 func _on_letter_timer_display_timeout():
 	display_letter()

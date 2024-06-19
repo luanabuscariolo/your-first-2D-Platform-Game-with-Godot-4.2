@@ -13,7 +13,6 @@ var can_advance_message := false
 func start_message(position: Vector2, lines: Array[String]):
 	if is_message_active:
 		return
-		
 	current_line = 0; # sempre que a caixa de dialogo aparecer, voltar à linha na posição 0
 	message_lines = lines
 	dialog_box_position = position
@@ -41,16 +40,4 @@ func _unhandled_input(event):
 			return
 		show_text()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
