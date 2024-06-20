@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0kvyjci5xoab"
-path="res://.godot/imported/Looking_Off (16 x 16).png-9119b836d334783f9c42a09c76f0215a.ctex"
+uid="uid://47yoo3qswjco"
+path="res://.godot/imported/BatVampire_Sheet.png-3fed460fe88e49b27519e533c95a64dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Penguin/Looking_Off (16 x 16).png"
-dest_files=["res://.godot/imported/Looking_Off (16 x 16).png-9119b836d334783f9c42a09c76f0215a.ctex"]
+source_file="res://sprites/Vampire/BatVampire_Sheet.png"
+dest_files=["res://.godot/imported/BatVampire_Sheet.png-3fed460fe88e49b27519e533c95a64dd.ctex"]
 
 [params]
 

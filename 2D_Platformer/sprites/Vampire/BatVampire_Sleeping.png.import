@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2g6lkd1tpnl5"
-path="res://.godot/imported/Falling (16 x 16).png-c3ab8589412de60b79f43f1089befe52.ctex"
+uid="uid://41namsclxtra"
+path="res://.godot/imported/BatVampire_Sleeping.png-f65a4aa53e02d305bc1c8fe212067e92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Penguin/Falling (16 x 16).png"
-dest_files=["res://.godot/imported/Falling (16 x 16).png-c3ab8589412de60b79f43f1089befe52.ctex"]
+source_file="res://sprites/Vampire/BatVampire_Sleeping.png"
+dest_files=["res://.godot/imported/BatVampire_Sleeping.png-f65a4aa53e02d305bc1c8fe212067e92.ctex"]
 
 [params]
 

@@ -10,8 +10,10 @@ var space_display_timer := 0.05
 var punctuaction_display_timer := 0.02
 signal text_display_finished()
 
-func display_text(text_to_display: String):
-	text = text_to_display
+func display_text(text_to_display: String):	
+	size.x = 0
+	size.y = 0
+	text = text_to_display 
 	text_label.text = text_to_display
 	await  resized
 	custom_minimum_size.x = min(size.x, MAX_WIDTH)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csaj2jvej4lex"
-path="res://.godot/imported/Blink (16 x 16).png-d0d976245cddfdeb5352cdd9483331c2.ctex"
+uid="uid://c2d3mhja1rl2b"
+path="res://.godot/imported/BatVampire_Attack.png-2569237927724482e572fe136c3012dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Penguin/Blink (16 x 16).png"
-dest_files=["res://.godot/imported/Blink (16 x 16).png-d0d976245cddfdeb5352cdd9483331c2.ctex"]
+source_file="res://sprites/Vampire/BatVampire_Attack.png"
+dest_files=["res://.godot/imported/BatVampire_Attack.png-2569237927724482e572fe136c3012dc.ctex"]
 
 [params]
 

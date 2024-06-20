@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8pycqdgi56cu"
-path="res://.godot/imported/Victory_Dance (16 x 16).png-6498c9bdcc39bbf3f8d9a470815963a8.ctex"
+uid="uid://bnegkk4tqgim1"
+path="res://.godot/imported/BatVampire_Hurt.png-67faa2c4b86b3aba3a49410d6996f413.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Penguin/Victory_Dance (16 x 16).png"
-dest_files=["res://.godot/imported/Victory_Dance (16 x 16).png-6498c9bdcc39bbf3f8d9a470815963a8.ctex"]
+source_file="res://sprites/Vampire/BatVampire_Hurt.png"
+dest_files=["res://.godot/imported/BatVampire_Hurt.png-67faa2c4b86b3aba3a49410d6996f413.ctex"]
 
 [params]
 

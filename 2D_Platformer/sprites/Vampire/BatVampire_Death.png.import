@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctkxx1r4a4vo4"
-path="res://.godot/imported/Surprised (16 x 16).png-03463989f15dafb367abb1b445f5d384.ctex"
+uid="uid://b2jp0x328qsji"
+path="res://.godot/imported/BatVampire_Death.png-41b3a3a175121ef7def384ddde611c78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Penguin/Surprised (16 x 16).png"
-dest_files=["res://.godot/imported/Surprised (16 x 16).png-03463989f15dafb367abb1b445f5d384.ctex"]
+source_file="res://sprites/Vampire/BatVampire_Death.png"
+dest_files=["res://.godot/imported/BatVampire_Death.png-41b3a3a175121ef7def384ddde611c78.ctex"]
 
 [params]
 

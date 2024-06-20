@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qb4s1hmtu6xi"
-path="res://.godot/imported/Swimming (16 x 16).png-3e92cbbffb8f74c7ccc4500e4925a16f.ctex"
+uid="uid://d4j4hrb7yusyq"
+path="res://.godot/imported/phantom_camera_updater_panel_icon.svg-19823e6cbee8115f8b2554d0ee6e79db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Penguin/Swimming (16 x 16).png"
-dest_files=["res://.godot/imported/Swimming (16 x 16).png-3e92cbbffb8f74c7ccc4500e4925a16f.ctex"]
+source_file="res://addons/phantom_camera/icons/phantom_camera_updater_panel_icon.svg"
+dest_files=["res://.godot/imported/phantom_camera_updater_panel_icon.svg-19823e6cbee8115f8b2554d0ee6e79db.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

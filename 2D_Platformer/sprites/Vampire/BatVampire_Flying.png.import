@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw33exyk4cmcl"
-path="res://.godot/imported/Belly_Sliding (16 x 16).png-8f5647eb3b930e1be66355395051dc20.ctex"
+uid="uid://bd7h3h0p2jiw8"
+path="res://.godot/imported/BatVampire_Flying.png-e2f9f5141a3f68bb599ba4a5bd25bc37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Penguin/Belly_Sliding (16 x 16).png"
-dest_files=["res://.godot/imported/Belly_Sliding (16 x 16).png-8f5647eb3b930e1be66355395051dc20.ctex"]
+source_file="res://sprites/Vampire/BatVampire_Flying.png"
+dest_files=["res://.godot/imported/BatVampire_Flying.png-e2f9f5141a3f68bb599ba4a5bd25bc37.ctex"]
 
 [params]
 

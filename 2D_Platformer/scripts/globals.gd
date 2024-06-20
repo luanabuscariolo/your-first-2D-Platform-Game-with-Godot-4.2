@@ -8,6 +8,8 @@ var player = null
 var player_start_position = null
 var current_checkpoint = null
 
+var playerBody: CharacterBody2D
+
 func respawn_player():
 	if current_checkpoint != null:
 		player.position = current_checkpoint.global_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c05lwii8vx45h"]
+[gd_scene load_steps=39 format=3 uid="uid://c05lwii8vx45h"]
 
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_h4k5t"]
 [ext_resource type="Texture2D" uid="uid://bluib3dftrlk4" path="res://sprites/Assets/Interior-01.png" id="5_bayr8"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dnh3txm1twkhd" path="res://sprites/Assets/01_Coin-Sprites.png" id="26_6ok7t"]
 [ext_resource type="Texture2D" uid="uid://ftjx8yic2nyn" path="res://sprites/Keyboard Extras.png" id="26_yvp0s"]
 [ext_resource type="Texture2D" uid="uid://du5kkpk7halq5" path="res://sprites/Assets/02_Coin-Sprites.png" id="27_4jcw6"]
+[ext_resource type="PackedScene" uid="uid://dygg2yvybq70" path="res://actors/bat_enemy.tscn" id="27_vcjjv"]
 [ext_resource type="Texture2D" uid="uid://vak66cwuuc3q" path="res://sprites/Assets/03_Coin-Sprites.png" id="28_bvyy7"]
 [ext_resource type="FontFile" uid="uid://dxey55nghkbjc" path="res://04B_30__.TTF" id="29_1ayq0"]
 [ext_resource type="Texture2D" uid="uid://djeks4txfv2rv" path="res://sprites/Orange/life_orange.png" id="30_ekrlg"]
@@ -5570,7 +5571,7 @@ layer_4/tile_data = PackedInt32Array(1114250, 589826, 19, 1179786, 655362, 20, 1
 
 [node name="camera" type="Camera2D" parent="."]
 visible = false
-position = Vector2(1880.14, 120)
+position = Vector2(320, 180)
 limit_left = 0
 limit_top = 0
 limit_bottom = 300
@@ -5584,7 +5585,7 @@ script = ExtResource("11_w8mth")
 
 [node name="player" parent="player2" instance=ExtResource("22_rlkr1")]
 unique_name_in_owner = true
-position = Vector2(1880.14, 252.246)
+position = Vector2(43.4004, 124.101)
 
 [node name="alert" type="Sprite2D" parent="player2/player"]
 unique_name_in_owner = true
@@ -5596,7 +5597,7 @@ region_rect = Rect2(32, 48, 16, 16)
 
 [node name="PlayerPhantomCamera2D" type="Node2D" parent="player2" node_paths=PackedStringArray("follow_target")]
 visible = false
-position = Vector2(1880.14, 120)
+position = Vector2(320, 180)
 script = ExtResource("20_1wf7x")
 priority = 5
 follow_mode = 2
@@ -5742,7 +5743,6 @@ shape = SubResource("RectangleShape2D_r27hb")
 debug_color = Color(0.556863, 0.4, 1, 0.419608)
 
 [node name="warning_sign" type="Node2D" parent="."]
-visible = false
 position = Vector2(2216, 272.71)
 script = ExtResource("25_1gx3v")
 
@@ -5760,5 +5760,21 @@ collision_mask = 2
 position = Vector2(-1.18359, 7.82208)
 shape = SubResource("RectangleShape2D_xr85v")
 debug_color = Color(0.772549, 0.282353, 0.85098, 0.419608)
+
+[node name="BatEnemy" parent="." instance=ExtResource("27_vcjjv")]
+position = Vector2(339.341, 181.302)
+
+[node name="BatEnemy2" parent="." instance=ExtResource("27_vcjjv")]
+position = Vector2(300.097, 246.709)
+
+[node name="BatEnemy3" parent="." instance=ExtResource("27_vcjjv")]
+position = Vector2(190.69, 241.952)
+
+[node name="BatOnlyCollision" type="StaticBody2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BatOnlyCollision"]
+polygon = PackedVector2Array(12.4965, 281.391, 81.4501, 281.391, 79.7683, 261.21, 131.904, 261.21, 131.904, 286.437, 429.581, 286.437, 426.218, 257.846, 515.353, 257.846, 515.353, 284.755, 653.26, 286.437, 654.941, 257.846, 707.077, 257.846, 708.759, 289.8, 777.712, 289.8, 776.031, 257.846, 866.847, 257.846, 868.529, 289.8, 924.028, 289.8, 924.028, 262.892, 981.209, 261.21, 984.573, 289.8, 1389.89, 286.437, 1388.2, 256.164, 1475.66, 256.164, 1477.34, 281.391, 1709.37, 283.073, 1704.33, 210.756, 1381.42, 30.8041, 168.94, 42.5767, 168.94, 204.029, 93.2593, 126.666, 89.8957, 37.5313, 24.3058, 39.2131, 14.215, 264.573, -69.6971, 273.628, -53.9826, -67.6009, 1405.22, -85.5603, 1739.71, 123.218, 1755.43, 363.424, -33.7783, 363.424, -40.5131, 280.362)
 
 [connection signal="body_entered" from="area_of_death" to="area_of_death" method="_on_body_entered"]

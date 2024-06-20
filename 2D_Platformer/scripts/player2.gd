@@ -46,6 +46,8 @@ func _ready():
 	#key.body_exited.connect(return_to_player_cam)
 	#chest.body_exited.connect(return_to_player_cam)
 	
+	Globals.playerBody = self
+	
 	jump_velocity = (jump_height * 2) / max_time_to_peak
 	gravity = (jump_height * 2) / pow(max_time_to_peak, 2)
 	fall_gravity = gravity * 2
