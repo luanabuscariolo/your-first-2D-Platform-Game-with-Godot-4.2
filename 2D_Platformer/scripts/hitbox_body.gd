@@ -13,4 +13,4 @@ func _on_body_entered(body):
 	if body.name == "player":
 		if body.attack:
 			print("atacou")
-			anim.play("hurt")
+			anim.play("hurt_2")

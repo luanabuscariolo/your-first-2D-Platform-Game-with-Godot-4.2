@@ -41,9 +41,8 @@ func flip_direction():
 		texture.flip_h = false
 
 func _on_anim_animation_finished(anim_name):
-	if anim_name == "hurt":
+	if anim_name == "hurt_2":
 		Globals.score += enemy_score
-		#queue_free()
 		var playerX = Globals.player.position.x
 		var thisEnemyX = position.x
 		if playerX > thisEnemyX:
@@ -55,6 +54,9 @@ func _on_anim_animation_finished(anim_name):
 		canContinueJumpingYAxis = false
 		gravity *= 1.5
 		await get_tree().create_timer(.3).timeout
+		queue_free()
+	elif anim_name == "hurt":
+		Globals.score += enemy_score
 		queue_free()
 		
 

@@ -218,7 +218,7 @@ shape = SubResource("CapsuleShape2D_rsql5")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_87acc")
-animation = &"death"
+animation = &"damaged"
 autoplay = "fly"
 
 [node name="hitbox" parent="." instance=ExtResource("6_1hlek")]

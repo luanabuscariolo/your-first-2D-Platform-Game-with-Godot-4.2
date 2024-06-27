@@ -5719,6 +5719,7 @@ position = Vector2(411.12, 236.009)
 position = Vector2(590.303, 277.136)
 
 [node name="break_boxes" type="Node2D" parent="."]
+visible = false
 
 [node name="break_box" parent="break_boxes" instance=ExtResource("24_mxtjk")]
 position = Vector2(104.879, 225.765)
@@ -5761,16 +5762,19 @@ position = Vector2(-1.18359, 7.82208)
 shape = SubResource("RectangleShape2D_xr85v")
 debug_color = Color(0.772549, 0.282353, 0.85098, 0.419608)
 
-[node name="BatEnemy" parent="." instance=ExtResource("27_vcjjv")]
-position = Vector2(339.341, 181.302)
+[node name="BatEnemies" type="Node2D" parent="."]
 
-[node name="BatEnemy2" parent="." instance=ExtResource("27_vcjjv")]
-position = Vector2(300.097, 246.709)
+[node name="BatEnemy" parent="BatEnemies" instance=ExtResource("27_vcjjv")]
+position = Vector2(781.341, 68.302)
 
-[node name="BatEnemy3" parent="." instance=ExtResource("27_vcjjv")]
-position = Vector2(190.69, 241.952)
+[node name="BatEnemy2" parent="BatEnemies" instance=ExtResource("27_vcjjv")]
+position = Vector2(541.097, 71.709)
+
+[node name="BatEnemy3" parent="BatEnemies" instance=ExtResource("27_vcjjv")]
+position = Vector2(336.69, 173.952)
 
 [node name="BatOnlyCollision" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 128
 collision_mask = 128
 
