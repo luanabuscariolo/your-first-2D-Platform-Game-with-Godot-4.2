@@ -96,6 +96,14 @@ func _physics_process(delta):
 	apply_push_force()
 	attacking()
 
+func _input(event):
+	if event is InputEventScreenTouch:
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = jump_velocity
+			is_jumping = true
+		elif is_on_floor():
+			is_jumping = false
+
 func follow_camera(camera):
 	var camera_path = camera.get_path()
 	remote.remote_path = camera_path

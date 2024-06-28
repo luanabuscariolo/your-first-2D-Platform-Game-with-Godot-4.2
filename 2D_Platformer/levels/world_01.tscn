@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://err4w3svls65"]
+[gd_scene load_steps=74 format=3 uid="uid://err4w3svls65"]
 
 [ext_resource type="Texture2D" uid="uid://chdw26e1xv7pl" path="res://sprites/Background/Background.png" id="1_33noj"]
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_dj7cu"]
@@ -33,6 +33,14 @@
 [ext_resource type="PackedScene" uid="uid://b4n42etrxta80" path="res://prefabs/checkpoint.tscn" id="31_50jwf"]
 [ext_resource type="PackedScene" uid="uid://nhxj8orjmbbm" path="res://scenes/pause_menu.tscn" id="32_g2jfg"]
 [ext_resource type="Script" path="res://scripts/next_level.gd" id="33_j3j8s"]
+[ext_resource type="Texture2D" uid="uid://c7cs4ns3whxqk" path="res://sprites/buttons/ui_buttons_arrow_left_NORMAL.png" id="34_qdapj"]
+[ext_resource type="Texture2D" uid="uid://da4uein27eh0f" path="res://sprites/buttons/ui_buttons_arrow_left_PRESSED.png" id="35_74umt"]
+[ext_resource type="Texture2D" uid="uid://bphcot7r4fa4r" path="res://sprites/buttons/ui_buttons_arrow_right_NORMAL.png" id="36_f7728"]
+[ext_resource type="Texture2D" uid="uid://dxbncve1uf2dw" path="res://sprites/buttons/ui_buttons_arrow_right_PRESSED.png" id="37_ri2i2"]
+[ext_resource type="Texture2D" uid="uid://b55b87mrn7st7" path="res://sprites/buttons/ui_buttons_arrow_up_NORMAL.png" id="38_d8x0x"]
+[ext_resource type="Texture2D" uid="uid://wap0xl5wpmwh" path="res://sprites/buttons/ui_buttons_arrow_up_PRESSED.png" id="39_g7k5r"]
+[ext_resource type="Texture2D" uid="uid://ddei7el5ko6hx" path="res://sprites/buttons/ui_buttons_punch.png" id="40_3jtcl"]
+[ext_resource type="Texture2D" uid="uid://cuu7oe8t2ofs0" path="res://sprites/buttons/ui_buttons_punch_pressed.png" id="41_0577u"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ybpwa"]
 tile_data = PackedInt32Array(0, 327686, 1, 65536, 327686, 2)
@@ -24713,6 +24721,32 @@ tile_set = SubResource("TileSet_sc7bu")
 format = 2
 layer_0/name = "caverna"
 layer_0/tile_data = PackedInt32Array(983215, 1441792, 16, 1048751, 1441792, 17, 1114287, 1441792, 18, 1179823, 1441792, 19, 1245359, 1441792, 20, 983216, 1507328, 16, 1048752, 1507328, 17, 1114288, 1507328, 18, 1179824, 1507328, 19, 1245360, 1507328, 20, 983217, 1572864, 22, 1048753, 1572864, 17, 1114289, 1572864, 18, 1179825, 1572864, 19, 1245361, 1572864, 20, 983211, 1179648, 16, 983212, 1245184, 16, 983213, 1310720, 16, 983214, 1376256, 16, 983218, 1572864, 22, 1048754, 1572864, 22, 1114290, 1572864, 22, 1179826, 1572864, 22, 1245362, 1572864, 22, 1310898, 1572864, 22, 1310895, 1441792, 21, 1310896, 1507328, 21, 1310897, 1572864, 21)
+
+[node name="controls" type="CanvasLayer" parent="."]
+
+[node name="left" type="TouchScreenButton" parent="controls"]
+position = Vector2(13, 279)
+texture_normal = ExtResource("34_qdapj")
+texture_pressed = ExtResource("35_74umt")
+action = "ui_left"
+
+[node name="right" type="TouchScreenButton" parent="controls"]
+position = Vector2(52, 279)
+texture_normal = ExtResource("36_f7728")
+texture_pressed = ExtResource("37_ri2i2")
+action = "ui_right"
+
+[node name="jump" type="TouchScreenButton" parent="controls"]
+position = Vector2(520, 288)
+texture_normal = ExtResource("38_d8x0x")
+texture_pressed = ExtResource("39_g7k5r")
+action = "ui_accept"
+
+[node name="attack" type="TouchScreenButton" parent="controls"]
+position = Vector2(568, 288)
+texture_normal = ExtResource("40_3jtcl")
+texture_pressed = ExtResource("41_0577u")
+action = "attack"
 
 [connection signal="body_entered" from="chest" to="chest" method="_on_body_entered"]
 [connection signal="body_exited" from="chest" to="chest" method="_on_body_exited"]
